@@ -140,64 +140,7 @@ This project is licensed under the ISC License - see the [LICENSE](LICENSE) file
 
 # Project Directory Structure Explanation
 
-Movie_APP
-├── client/ # Frontend code
-│ ├── public/ # Public resources folder
-│ ├── src/ # Frontend source code
-│ │ ├── assets/ # Static resources folder (e.g., images, icons, etc.)
-│ │ ├── components/ # Reusable UI components
-│ │ ├── contexts/ # Context API for state management
-│ │ ├── pages/ # Page components of the application
-│ │ │ ├── home.js # Home page component
-│ │ │ ├── movieDetails.js # Movie details page component
-│ │ │ ├── signIn.js # Sign-in page component
-│ │ │ └── signUp.js # Sign-up page component
-│ │ ├── services/ # Service layer, used for interacting with backend APIs
-│ │ │ ├── authService.js # Handles authentication requests
-│ │ │ ├── tmdbService.js # API requests related to movies
-│ │ │ └── reviewService.js # API requests related to reviews
-│ │ │ └── finnkinoService.js # Finnkino API service
-│ │ ├── App.js # Root component of the application
-│ │ ├── App.test.js # Test file for the App component
-│ │ ├── index.js # Entry point of the frontend application
-│ │ ├── logo.svg # Default icon
-│ │ ├── reportWebVitals.js # File for performance reporting
-│ │ └── setupTests.js # Setup for the testing environment
-│ ├── .env # Frontend environment variables file
-│ ├── .gitignore # Git ignore file
-│ └── package.json # Frontend dependencies and script configuration
-├── server/ # Backend code
-│ ├── controllers/ # Controllers folder for handling routing logic
-│ │ ├── authController.js # User authentication controller
-│ │ ├── groupController.js # User group controller
-│ │ ├── movieController.js # Movie controller
-│ │ └── reviewController.js # Review controller
-│ ├── database/ # Database configuration
-│ │ └── db.js # Database connection configuration
-│ │ └── seeders/ # SQL scripts for initial data
-│ ├── models/ # Data models folder
-│ │ ├── groupModel.js # User group model
-│ │ ├── movieModel.js # Movie model
-│ │ ├── reviewModel.js # Review model
-│ │ └── userModel.js # User model
-│ ├── routes/ # Routes folder
-│ │ ├── authRoutes.js # User authentication routes
-│ │ ├── groupRoutes.js # User group routes
-│ │ ├── movieRoutes.js # Movie routes
-│ │ └── reviewRoutes.js # Review routes
-│ ├── services/ # Service layer for interacting with external APIs
-│ │ ├── finnkinoService.js # Finnkino API service
-│ │ ├── tmdbService.js # Movie service
-│ │ └── reviewService.js # Review service
-│ │ └── authService.js # Authentication service
-│ ├── index.js # Entry point for the backend application
-│ ├── index.test.js # Test file for the backend application entry
-│ ├── .env # Backend environment variables file
-│ ├── .gitignore # Git ignore file
-│ └── package.json # Backend dependencies and script configuration
-├── .env # Global environment variables file for Git
-├── .gitignore # Global Git ignore file
-├── README.md # Global project documentation
+project-root/ ├── client/ # Frontend code │ ├── public/ # Public resources folder │ ├── src/ # Frontend source code │ │ ├── assets/ # Static resources folder (e.g., images, icons, etc.) │ │ ├── components/ # Reusable UI components │ │ ├── contexts/ # Context API for state management │ │ ├── pages/ # Page components of the application │ │ │ ├── home.js # Home page component │ │ │ ├── movieDetails.js # Movie details page component │ │ │ ├── signIn.js # Sign-in page component │ │ │ └── signUp.js # Sign-up page component │ │ ├── services/ # Service layer for backend API interactions │ │ │ ├── authService.js # Handles authentication requests │ │ │ ├── tmdbService.js # Movie-related API requests │ │ │ ├── reviewService.js # Review-related API requests │ │ │ └── finnkinoService.js # Finnkino API service │ │ ├── App.js # Root component of the application │ │ ├── App.test.js # Test file for the App component │ │ ├── index.js # Entry point of the frontend application │ │ ├── logo.svg # Default icon │ │ ├── reportWebVitals.js # Performance reporting file │ │ └── setupTests.js # Testing environment setup │ ├── .env # Frontend environment variables file │ ├── .gitignore # Git ignore file │ └── package.json # Frontend dependencies and scripts ├── server/ # Backend code │ ├── controllers/ # Controllers for routing logic │ │ ├── authController.js # User authentication controller │ │ ├── groupController.js # User group controller │ │ ├── movieController.js # Movie controller │ │ └── reviewController.js # Review controller │ ├── database/ # Database configuration │ │ ├── db.js # Database connection config │ │ └── seeders/ # SQL scripts for initial data │ ├── models/ # Data models │ │ ├── groupModel.js # User group model │ │ ├── movieModel.js # Movie model │ │ ├── reviewModel.js # Review model │ │ └── userModel.js # User model │ ├── routes/ # Routing files │ │ ├── authRoutes.js # User authentication routes │ │ ├── groupRoutes.js # User group routes │ │ ├── movieRoutes.js # Movie routes │ │ └── reviewRoutes.js # Review routes │ ├── services/ # External API service layer │ │ ├── finnkinoService.js # Finnkino API service │ │ ├── tmdbService.js # Movie service │ │ ├── reviewService.js # Review service │ │ └── authService.js # Authentication service │ ├── index.js # Backend application entry │ ├── index.test.js # Backend entry test file │ ├── .env # Backend environment variables │ ├── .gitignore # Git ignore file │ └── package.json # Backend dependencies and scripts ├── .env # Global environment variables ├── .gitignore # Global Git ignore file ├── README.md # Project documentation
 
 ---
 
