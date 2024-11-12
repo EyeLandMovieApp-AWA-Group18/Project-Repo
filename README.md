@@ -1,3 +1,11 @@
+# Overall Project Design Principles
+
+This project uses a frontend-backend separation design. The frontend code is in the client folder, and the backend code is in the server folder, with each part having its own package.json file to manage dependencies separately. Each section also includes .env and .gitignore files for environment settings and to keep sensitive information secure.
+
+The project structure follows the Separation of Concerns principle, organizing features into separate modules and folders for a clear and organized layout. This setup makes the code easier to read and supports future development, scalability, and maintenance.
+
+---
+
 # Client Project Directory
 
 This is the client-side project for the application, built with React.
