@@ -86,8 +86,10 @@ In the project directory, you can run:
 
 ### `npm run devStart`
 
-Runs the server in development mode with `nodemon`.  
-The server will start and automatically restart when code changes are made.
+Runs the backend server in development mode.  
+Open [http://localhost:5000](http://localhost:5000) to interact with the API.  
+The server will automatically restart when you make changes.  
+You may also see any errors or logs in the terminal.
 
 ### `npm run testStart`
 
@@ -133,5 +135,7 @@ These dependencies are used during development:
 ## License
 
 This project is licensed under the ISC License - see the [LICENSE](LICENSE) file for details.
+
+---
 
 # May continue to increase as the project progresses
