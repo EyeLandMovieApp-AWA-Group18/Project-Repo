@@ -208,7 +208,7 @@ This project is licensed under the ISC License - see the [LICENSE](LICENSE) file
 
 ---
 
-# about .env file
+# about .env files
 
 Since the .gitignore file is set to ignore the .env file, it won't be tracked or uploaded to GitHub. Therefore, you'll need to create your own .env files locally. There are three .env files in total, located as follows: one in the root directory (currently an empty file), one in the client directory (also currently empty), and one in the server directory.
 
