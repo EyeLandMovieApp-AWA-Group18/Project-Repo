@@ -214,15 +214,15 @@ Since the .gitignore file is set to ignore the .env file, it won't be tracked or
 
 I have set up the .env file in the server directory with the following content:
 
-PORT = 5000 ( )
-DB_HOST = localhost ( )
-DB_PORT = 5432 ( )
-DB_USER = postgres ( )
-DB_PASSWORD = your_password ( )
-DB_NAME = movieapp ( )
-TEST_DB_NAME = test_movieapp ( )
-JWT_SECRET = your_jwt_secret ( )
-TMDB_API_KEY = your_tmdb_api_key ( )
+PORT = 5000 <br>
+DB_HOST = localhost <br>
+DB_PORT = 5432 <br>
+DB_USER = postgres <br>
+DB_PASSWORD = your_password <br>
+DB_NAME = movieapp <br>
+TEST_DB_NAME = test_movieapp <br>
+JWT_SECRET = your_jwt_secret <br>
+TMDB_API_KEY = your_tmdb_api_key <br>
 
 Please add this to your local environment files accordingly.
 
