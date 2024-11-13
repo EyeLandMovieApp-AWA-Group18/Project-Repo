@@ -1,14 +1,29 @@
-import express from "express";
+import express from 'express';
+import dotenv from 'dotenv';
+import authRoutes from './routes/authRoutes.js';
+import pool from './database/db.js';
+import cors from 'cors';
+
+
+dotenv.config();
 
 const app = express();
+const PORT = process.env.PORT || 5000;
+app.use(cors());
+app.use(express.json());
 
-// Set up the root route
-app.get("/", (req, res) => {
-  res.send("Hello, World!");
+// Routes
+app.use('/api', authRoutes);
+
+// Database connection test
+pool.connect((err) => {
+    if (err) {
+        console.error('Database connection failed:', err);
+    } else {
+        console.log('Connected to the database');
+    }
 });
 
-// Start the server and listen on a specified port
-const PORT = process.env.PORT || 5000; // Use environment port or default to 5000
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+    console.log(`Server running on port ${PORT}`);
 });
