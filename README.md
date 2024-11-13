@@ -208,4 +208,24 @@ This project is licensed under the ISC License - see the [LICENSE](LICENSE) file
 
 ---
 
+# about .env files
+
+Since the .gitignore file is set to ignore the .env file, it won't be tracked or uploaded to GitHub. Therefore, you'll need to create your own .env files locally. There are three .env files in total, located as follows: one in the root directory (currently an empty file), one in the client directory (also currently empty), and one in the server directory.
+
+I have set up the .env file in the server directory with the following content:
+
+PORT = 5000 <br>
+DB_HOST = localhost <br>
+DB_PORT = 5432 <br>
+DB_USER = postgres <br>
+DB_PASSWORD = your_password <br>
+DB_NAME = movieapp <br>
+TEST_DB_NAME = test_movieapp <br>
+JWT_SECRET = your_jwt_secret <br>
+TMDB_API_KEY = your_tmdb_api_key <br>
+
+Please add this to your local environment files accordingly.
+
+---
+
 # May continue to increase as the project progresses
