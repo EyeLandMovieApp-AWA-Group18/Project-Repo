@@ -1,22 +1,22 @@
 import React, { useState } from 'react';
 
-const SignIn = () => {
+const RemoveAccount = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSignIn = () => {
-    // Sign in logic here
+  const handleRemoveAccount = () => {
+    // Account deletion logic here
   };
 
   return (
     <div>
-      <h2>Sign In</h2>
+      <h2>Remove Account</h2>
       <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
       <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      <button onClick={handleSignIn}>Sign In</button>
-      <a href="/forgot-password">Forgot Password?</a>
+      <button onClick={handleRemoveAccount}>Confirm Deletion</button>
+      <p>Warning: This action is irreversible!</p>
     </div>
   );
 };
 
-export default SignIn;
+export default RemoveAccount;
