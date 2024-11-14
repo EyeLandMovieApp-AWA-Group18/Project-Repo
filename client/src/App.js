@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Authentication from './Authentication.js';
+import SearchPage from './pages/searchPage.js';
 
 const App = () => {
   return (
@@ -18,10 +19,11 @@ const App = () => {
         <h2 className="section1_header">In Theaters Now</h2>
       </section>
       <main>
-        <h2>Eyeland; your destination for film discoveries</h2>
+        <h2>Eyeland: your destination for film discoveries</h2>
       </main>
       <Routes>
         <Route path="/auth" element={<Authentication />} />
+        <Route path="/search" element={<SearchPage />} />
       </Routes>
       <Footer />
     </Router>
