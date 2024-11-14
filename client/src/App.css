@@ -11,6 +11,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 10px 30px;
+  background-color: #000;
 }
 
 /* Logo image styling */
@@ -59,11 +60,6 @@
   color : #e6925a;
 }
 
-.header_separator {
-  border-right: 1px solid #fff;
-  height: 10%;
-  margin-right: 100px;
-}
 
 /*Now on theaters */
 /* Styling for the featured section */
@@ -71,7 +67,7 @@
   width: 100%;
   text-align: center;
   margin-bottom: 20px;
-  
+  background-color: #000;
 }
 
 .section1_img {
@@ -86,6 +82,15 @@
   color: white; 
   margin-top: 10px;
 }
+
+.section2_header {
+  font-size: 28px;
+  text-align: left;
+  margin-left: 30px;
+  color: white; 
+  margin-top: 10px;
+}
+
 
 
 /* Footer Styling */
