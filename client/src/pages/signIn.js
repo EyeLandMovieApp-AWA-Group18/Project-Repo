@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../App.css';
 
 const SignIn = () => {
   const [email, setEmail] = useState('');
@@ -9,12 +10,12 @@ const SignIn = () => {
   };
 
   return (
-    <div>
-      <h2>Sign In</h2>
-      <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-      <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      <button onClick={handleSignIn}>Sign In</button>
-      <a href="/forgot-password">Forgot Password?</a>
+    <div className="pages">
+    <h2>Log In</h2>
+    <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+    <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+    <button onClick={handleSignIn}>Sign In</button>
+    <a href="/forgot-password">Forgot Password?</a>
     </div>
   );
 };

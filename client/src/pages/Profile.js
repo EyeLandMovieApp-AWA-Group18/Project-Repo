@@ -1,26 +1,67 @@
 import React, { useState } from 'react';
+import '../App.css';
 
 const Profile = () => {
-  const [username, setUsername] = useState('User123');
-  const [email, setEmail] = useState('user@example.com');
-  const [favoriteMovies, setFavoriteMovies] = useState(['Inception', 'The Matrix', 'Interstellar']);
-
-  const handleSaveChanges = () => {
-    // Save profile changes logic here
-  };
+  const [username] = useState('JohnDoe'); // Sample username
+  const [groups] = useState(['Group 1', 'Group 2']); // Sample groups
+  const [favoriteMovies] = useState([
+    { name: 'Inception', posterUrl: 'https://picsum.photos/50/75?random=1' },
+    { name: 'The Matrix', posterUrl: 'https://picsum.photos/50/75?random=2' },
+  ]); // Sample favorite movies with poster images
+  const [watchlist] = useState([
+    { name: 'Interstellar', posterUrl: 'https://picsum.photos/50/75?random=3' },
+    { name: 'Fight Club', posterUrl: 'https://picsum.photos/50/75?random=4' },
+  ]); // Sample watchlist with poster images
 
   return (
-    <div>
+    <div className="profile-container">
       <h2>Profile</h2>
-      <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
-      <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-      <h3>Favorite Movies</h3>
-      <ul>
-        {favoriteMovies.map((movie, index) => (
-          <li key={index}>{movie}</li>
-        ))}
-      </ul>
-      <button onClick={handleSaveChanges}>Save Changes</button>
+      
+      {/* Username Section */}
+      <div className="profile-section">
+        <h3>Username</h3>
+        <div className="separator"></div>
+        <p>{username}</p>
+      </div>
+      
+      {/* Groups Section */}
+      <div className="profile-section">
+        <h3>Groups</h3>
+        <div className="separator"></div>
+        <ul>
+          {groups.map((group, index) => (
+            <li key={index}>{group}</li>
+          ))}
+        </ul>
+      </div>
+      
+      {/* Favorite Movies Section */}
+      <div className="profile-section">
+        <h3>Favorite Movies</h3>
+        <div className="separator"></div>
+        <ul>
+          {favoriteMovies.map((movie, index) => (
+            <li key={index} className="movie-item">
+              <img src={movie.posterUrl} alt={`${movie.name} poster`} className="movie-poster" />
+              <br/><span>{movie.name}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      
+      {/* Watchlist Section */}
+      <div className="profile-section">
+        <h3>Watchlist</h3>
+        <div className="separator"></div>
+        <ul>
+          {watchlist.map((movie, index) => (
+            <li key={index} className="movie-item">
+              <img src={movie.posterUrl} alt={`${movie.name} poster`} className="movie-poster" />
+              <br/><span>{movie.name}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
