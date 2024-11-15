@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import authRoutes from './routes/authRoutes.js';
+import searchRoutes from './routes/searchRoutes.js';
 import pool from './database/db.js';
 import cors from 'cors';
 
@@ -14,6 +15,7 @@ app.use(express.json());
 
 // Routes
 app.use('/api', authRoutes);
+app.use('/api/search', searchRoutes);
 
 // Database connection test
 pool.connect((err) => {
