@@ -1,11 +1,5 @@
 /*    CSS for the entire application    */
-body, html {
-  background-color: #000;
-  color: #fff;
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
+
 
 .movie-grid {
   display: flex;
@@ -44,50 +38,110 @@ body, html {
   background-color: #ddd;
   color: #fff;
 }
-
-
 .header {
   display: flex;
-  align-items: center;
+  align-items: flex-start; 
   justify-content: space-between;
   padding: 10px 30px;
   background-color: #000;
 }
 
-/* Logo image styling */
 .logo_img {
-  width: 200px;
-  margin-left: 0;
+  width: 250px;
 }
 
+.header__content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin-left: 20px;
+}
+
+.header__top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 .header_menu {
   display: flex;
-  gap: 60px;
+  gap: 80px;
+  margin-top: 10px;
 }
 
 .header_menu a {
   color: #fff;
-  /*bold font*/
   font-weight: 600;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 20px;
+}
+
+.header_menu-item {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: flex;
+  flex-direction: column;
+  background-color: #1a1a1a;
+  position: absolute;
+  top: 30px;
+  left: 0;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.dropdown-menu a {
+  color: #fff;
+  padding: 5px 15px;
+  font-size: 16px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-menu a:hover {
+  background-color: #333;
+  border-radius: 3px;
 }
 
 .header_menu a:hover {
   text-decoration: underline;
 }
 
+.header_login {
+  padding: 5px 25px;
+  background-color: #e6925a;
+  color: #fff;
+  font-size: 15px;
+  margin-right: 5px;
+}
+
+.header_login:hover {
+  background-color: #ffffff;
+  color: #e6925a;
+}
+
+.header__bottom-row {
+  display: flex;
+  justify-content: center; 
+  margin-top: 0px;
+  width: 100%; 
+}
+
 .header_search input {
-  padding: 5px;
-  size: 40px 100px;
-  font-size: 14px;
+  width: 1050px; 
+  height: 20px;
+  padding: 15px; 
+  font-size: 100%; 
   border-radius: 4px;
   border: 1px solid #ccc;
 }
 
-.header_login {
-  padding: 5px 10px;
+.search-button {
+  padding: 18px;
+  width: 100px;
   background-color: #e6925a;
   color: #fff;
   border: none;
@@ -95,19 +149,11 @@ body, html {
   cursor: pointer;
 }
 
-.header_login:hover {
-  background-color: #ffffff;
-  color : #e6925a;
-}
-
-
 /*Now on theaters */
-/* Styling for the featured section */
 .section1 {
   width: 100%;
   text-align: center;
   margin-bottom: 20px;
-  background-color: #000;
 }
 
 .section1_img {
@@ -119,7 +165,6 @@ body, html {
   font-size: 28px;
   text-align: left;
   margin-left: 30px;
-  color: white; 
   margin-top: 10px;
 }
 
@@ -127,7 +172,6 @@ body, html {
   font-size: 28px;
   text-align: left;
   margin-left: 30px;
-  color: white; 
   margin-top: 10px;
 }
 
@@ -139,6 +183,7 @@ body, html {
   justify-content: space-between;
   padding: 30px;
   color: #fff;
+  background-color: #000;
 }
 
 .footer_column {
