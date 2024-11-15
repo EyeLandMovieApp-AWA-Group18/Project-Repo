@@ -1,0 +1,199 @@
+/* Reset and base styles */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", Arial, sans-serif;
+  background: linear-gradient(135deg, #eef2f3, #8e9eab);
+  color: #333;
+  line-height: 1.6;
+}
+
+/* General container for the page */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Header styling */
+h1 {
+  text-align: center;
+  color: #2d2d2d; /* Deeper color for header */
+  margin-bottom: 20px;
+  font-size: 3rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #0078d7, #72c6ef);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Selector container */
+.selector-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding: 15px 20px;
+  background: #f4f7f8;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.selector-container label {
+  font-weight: bold;
+  color: #555; /* Darker label color for more contrast */
+}
+
+.selector-container select,
+.selector-container input {
+  padding: 10px 15px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  background: #fff;
+  transition: all 0.3s ease;
+}
+
+.selector-container select:hover,
+.selector-container input:hover {
+  border-color: #0078d7;
+  transform: scale(1.02);
+}
+
+.selector-container select:focus,
+.selector-container input:focus {
+  border-color: #005bbb;
+  box-shadow: 0 0 5px rgba(0, 91, 187, 0.5);
+}
+
+/* Showtimes list styling */
+.showtimes-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  padding-top: 10px;
+}
+
+/* Individual showtime item */
+.showtime-item {
+  background: linear-gradient(145deg, #ffffff, #f0f0f0);
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.showtime-item:hover {
+  transform: translateY(-3px); /* Reduced hover effect */
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* Movie title styling */
+.showtime-item h3 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #005bbb; /* Darker and richer color for movie title */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Theatre name and start time styling */
+.showtime-item p {
+  margin: 5px 0;
+  font-size: 1rem;
+  color: #444; /* Darker text color for paragraph */
+}
+
+/* Add decorative line under text */
+.showtime-item p::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 2px;
+  background: #0078d7;
+  margin: 8px 0;
+}
+
+/* Button styling */
+button {
+  padding: 12px 20px;
+  font-size: 1rem;
+  background: linear-gradient(90deg, #0078d7, #005bbb);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+button:hover {
+  background: linear-gradient(90deg, #005bbb, #004799);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+  transform: scale(1.05);
+}
+
+button:active {
+  background: #004799;
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive adjustments for tablets and phones */
+@media (max-width: 768px) {
+  .selector-container {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .selector-container label {
+    margin-bottom: 10px;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  button {
+    font-size: 0.9rem;
+    padding: 10px 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .showtimes-list {
+    grid-template-columns: 1fr;
+  }
+
+  .showtime-item {
+    padding: 15px;
+    font-size: 0.9rem;
+  }
+
+  .showtime-item h3 {
+    font-size: 1.5rem;
+  }
+
+  .showtime-item p {
+    font-size: 0.85rem;
+  }
+
+  button {
+    font-size: 0.8rem;
+    padding: 8px 12px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+}
