@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import SearchBar from '../components/SearchBar.js';
+//import SearchBar from '../components/SearchBar.js';
 import { fetchMovies } from '../services/searchService.js';
 import MovieCard from '../components/MovieCard.js';
 import ReactPaginate from 'react-paginate';
@@ -31,9 +31,9 @@ const SearchPage = () => {
   };
 
   return (
-    <div className="search-page">
-      <SearchBar onSearch={(q) => handleSearch(q)} />
-	  {query && (
+   <div className="search-page">
+      {/*<SearchBar onSearch={(q) => handleSearch(q)} />*/}
+	{query && (
         <h2 className="search-results-text">Search results for: "{query}"</h2>
       )}
       <div className="movie-grid">
