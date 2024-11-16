@@ -1,42 +1,40 @@
-import React, { useState } from 'react';
-import '../App.css';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { fetchMovieDetails } from '../services/tmdbService'
 
 const MovieDetail = () => {
-  const [movies] = useState([
-    {
-      title: 'Inception',
-      rating: '8.8',
-      posterUrl: 'https://picsum.photos/100/150?random=1',
-      showtime: 'No information available',
-    },
-    {
-      title: 'The Matrix',
-      rating: '8.7',
-      posterUrl: 'https://picsum.photos/100/150?random=2',
-      showtime: 'No information available',
-    },
-    {
-      title: 'Interstellar',
-      rating: '8.6',
-      posterUrl: 'https://picsum.photos/100/150?random=3',
-      showtime: 'No information available',
-    },
-  ]);
+  const { id } = useParams(); 
+  const [movie, setMovie] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadMovieDetails = async () => {
+      const details = await fetchMovieDetails(id);
+      setMovie(details);
+      setLoading(false);
+    };
+
+    loadMovieDetails();
+  }, [id]);
+
+  if (loading) {
+    return <div>Loading movie details...</div>;
+  }
+
+  if (!movie) {
+    return <div>Movie details not found.</div>;
+  }
 
   return (
-    <div className="movie">
-      <h2>Movies Information</h2>
-      <div className="movie-grid">
-        {movies.map((movie, index) => (
-          <div key={index} className="movie-item">
-            <img src={movie.posterUrl} alt={`${movie.title} poster`} className="movie-poster" />
-            <h3>{movie.title}</h3>
-            <p>Rating: {movie.rating}</p>
-            <p>Showtime: {movie.showtime}</p>
-            <button onClick={() => alert(`More info about ${movie.title}`)}>More Info</button>
-          </div>
-        ))}
-      </div>
+    <div>
+      <h1>{movie.title}</h1>
+      <img
+        src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
+        alt={movie.title}
+      />
+      <p><strong>Overview:</strong> {movie.overview}</p>
+      <p><strong>Release Date:</strong> {movie.release_date}</p>
+      <p><strong>Rating:</strong> ⭐ {movie.vote_average}</p>
     </div>
   );
 };

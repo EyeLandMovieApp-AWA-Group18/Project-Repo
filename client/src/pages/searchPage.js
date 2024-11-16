@@ -31,10 +31,13 @@ const SearchPage = () => {
   };
 
   return (
-   <div className="search-page">
+    <div className="search-page">
       {/*<SearchBar onSearch={(q) => handleSearch(q)} />*/}
-	{query && (
+      {query && (
         <h2 className="search-results-text">Search results for: "{query}"</h2>
+      )}
+      {movies.length === 0 && query && (
+        <p className="no-results-message">No movies found for "{query}". Please try a different keyword.</p>
       )}
       <div className="movie-grid">
         {movies.map((movie) => (
