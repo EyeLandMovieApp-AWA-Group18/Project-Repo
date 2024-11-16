@@ -22,7 +22,7 @@ const App = () => {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/moviedetail" element={<MovieDetail />} />
+          <Route path="/movie/:id" element={<MovieDetail />} /> 
           <Route path="/auth" element={<Authentication />} />
           <Route path="/removeaccount" element={<RemoveAccount />} /> 
           <Route path="/auth" element={<Authentication />} />
