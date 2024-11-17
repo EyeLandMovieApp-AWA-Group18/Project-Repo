@@ -203,6 +203,7 @@ This project is licensed under the ISC License - see the [LICENSE](LICENSE) file
     - `tmdbService.js` - Movie API
     - `reviewService.js` - Review API
     - `authService.js` - Authentication API
+  - `test.rest` - Backend checking API
   - `index.js` - Backend entry point
   - `index.test.js` - Backend entry test file
   - `.env` - Backend environment variables
@@ -230,5 +231,14 @@ TMDB_API_KEY = your_tmdb_api_key <br>
 Please add this to your local environment files accordingly.
 
 ---
+
+
+# Restclient 
+
+First send request for Register user with email and password
+Second send request for Login with email and password.
+When Login successfully this will generate a token.
+With the help of token the account can be deleted. Paste the token when sending delete request.
+
 
 # May continue to increase as the project progresses
