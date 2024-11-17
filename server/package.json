@@ -5,9 +5,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "testStart": "cross-env NODE_ENV=test nde index.js",
+    "testStart": "cross-env NODE_ENV=test node index.js",
     "devStart": "cross-env NODE_ENV=development nodemon index.js",
-    "test": "mocha *.test.js"
+    "test": "mocha './index.test.js'"
   },
   "keywords": [],
   "author": "",
@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "chai": "^5.1.2",
+    "chai-http": "^5.1.1",
     "cross-env": "^7.0.3",
     "mocha": "^10.8.2"
   }
