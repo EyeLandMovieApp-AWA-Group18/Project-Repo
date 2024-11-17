@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import SearchBar from '../components/SearchBar.js';
+//import SearchBar from '../components/SearchBar.js';
 import { fetchMovies } from '../services/searchService.js';
 import MovieCard from '../components/MovieCard.js';
 import ReactPaginate from 'react-paginate';
@@ -32,9 +32,12 @@ const SearchPage = () => {
 
   return (
     <div className="search-page">
-      <SearchBar onSearch={(q) => handleSearch(q)} />
-	  {query && (
+      {/*<SearchBar onSearch={(q) => handleSearch(q)} />*/}
+      {query && (
         <h2 className="search-results-text">Search results for: "{query}"</h2>
+      )}
+      {movies.length === 0 && query && (
+        <p className="no-results-message">No movies found for "{query}". Please try a different keyword.</p>
       )}
       <div className="movie-grid">
         {movies.map((movie) => (

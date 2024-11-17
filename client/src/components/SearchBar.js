@@ -21,7 +21,7 @@ const SearchBar = ({ onSearch }) => {
   };
 
   return (
-    <div className="search-bar">
+    <div className="header_search">
       <input
         type="text"
         value={query}

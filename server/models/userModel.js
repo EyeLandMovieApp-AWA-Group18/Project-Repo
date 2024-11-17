@@ -11,10 +11,16 @@ const UserModel = {
     },
 
     async findUserByEmail(email) {
-        const query = 'SELECT * FROM users WHERE email = $1';
-        const { rows } = await pool.query(query, [email]);
-        return rows[0];
+        try {
+            const query = 'SELECT * FROM users WHERE email = $1';
+            const { rows } = await pool.query(query, [email]);
+            return rows[0];
+        } catch (error) {
+            console.error('Error finding user by email:', error);
+            throw error; 
+        }
     }
+    
 };
 
 export default UserModel;
