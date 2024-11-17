@@ -64,6 +64,7 @@ The following core dependencies are used in the project:
 - **react-router-dom**: DOM bindings for React Router to handle routing.
 - **web-vitals**: A library for measuring web performance metrics.
 - **react-paginate**: A React component library used to implement pagination in your application.
+- **xml2js**: A library used to parse XML data into JavaScript objects and convert JavaScript objects back into XML format.
 
 ## Development Dependencies
 
@@ -232,13 +233,11 @@ Please add this to your local environment files accordingly.
 
 ---
 
-
-# Restclient 
+# Restclient
 
 First send request for Register user with email and password
 Second send request for Login with email and password.
 When Login successfully this will generate a token.
 With the help of token the account can be deleted. Paste the token when sending delete request.
-
 
 # May continue to increase as the project progresses
