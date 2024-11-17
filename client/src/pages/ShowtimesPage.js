@@ -16,6 +16,7 @@ const ShowtimesPage = () => {
   const [loadingAreas, setLoadingAreas] = useState(true);
   const [loadingShowtimes, setLoadingShowtimes] = useState(false);
   const [error, setError] = useState(null);
+  const [isMessageVisible, setIsMessageVisible] = useState(true); // Track message visibility
 
   // Fetch theatre areas
   useEffect(() => {
@@ -41,6 +42,7 @@ const ShowtimesPage = () => {
     const fetchShowtimesData = async () => {
       if (selectedArea && selectedDate) {
         setLoadingShowtimes(true);
+        setIsMessageVisible(true); // Show loading message while fetching
         try {
           const showtimesData = await fetchShowtimes(
             selectedArea,
@@ -48,14 +50,17 @@ const ShowtimesPage = () => {
           );
           if (showtimesData.length === 0) {
             setError("No showtimes available for the selected date and area.");
+            setShowtimes([]); // Clear showtimes
           } else {
             setShowtimes(groupShowtimesByTime(showtimesData));
             setError(null); // Clear any previous error
           }
         } catch (err) {
           setError("Failed to load showtimes.");
+          setShowtimes([]); // Clear showtimes on error
         } finally {
           setLoadingShowtimes(false);
+          setIsMessageVisible(false); // Hide loading message after data is fetched
         }
       }
     };
@@ -98,28 +103,31 @@ const ShowtimesPage = () => {
         <div className="selector-container">
           <TimeSelector
             selectedDate={selectedDate}
-            onDateChange={(newDate) => setSelectedDate(newDate)} // Update the date
-            disabled={loadingAreas || loadingShowtimes} // Disable date selector while loading areas or showtimes
+            onDateChange={(newDate) => setSelectedDate(newDate)}
+            disabled={loadingAreas || loadingShowtimes}
           />
+
           <LocationSelector
             areas={areas}
             selectedArea={selectedArea}
-            onAreaChange={(newArea) => setSelectedArea(newArea)} // Update the area
-            disabled={loadingAreas || loadingShowtimes} // Disable area selector while loading areas or showtimes
+            onAreaChange={(newArea) => setSelectedArea(newArea)}
+            disabled={loadingAreas || loadingShowtimes}
           />
         </div>
 
-        {/* Move the slogan outside the selector container but still inside the main container */}
-        <p className="slogan">Enjoy Your Happy Time</p>
+        {/* Loading message visible only during data fetch */}
+        {loadingShowtimes && isMessageVisible && (
+          <p className="loading-message">Loading showtimes...</p>
+        )}
 
-        {loadingShowtimes ? (
-          <p>Loading showtimes...</p>
-        ) : (
+        {/* Showtimes list */}
+        {!loadingShowtimes && !error && (
           <div className="showtimes-list">
             {Object.keys(showtimes).length > 0 ? (
               <div className="date-container">
-                <h2>{formatDate(selectedDate)}</h2>{" "}
-                {/* Use the formatted date */}
+                <div className="date-image-container">
+                  <h2 className="date-title">{formatDate(selectedDate)}</h2>
+                </div>
               </div>
             ) : (
               <p className="no-showtimes-message">
@@ -144,6 +152,11 @@ const ShowtimesPage = () => {
               </div>
             ))}
           </div>
+        )}
+
+        {/* No showtimes message */}
+        {showtimes.length === 0 && !loadingShowtimes && !error && (
+          <p>No showtimes available for the selected date and area.</p>
         )}
       </div>
       <Footer />
