@@ -42,6 +42,7 @@ const ShowtimesPage = () => {
     const fetchShowtimesData = async () => {
       if (selectedArea && selectedDate) {
         setLoadingShowtimes(true);
+        setIsMessageVisible(true); // Show loading message while fetching
         try {
           const showtimesData = await fetchShowtimes(
             selectedArea,
@@ -49,16 +50,17 @@ const ShowtimesPage = () => {
           );
           if (showtimesData.length === 0) {
             setError("No showtimes available for the selected date and area.");
+            setShowtimes([]); // Clear showtimes
           } else {
             setShowtimes(groupShowtimesByTime(showtimesData));
             setError(null); // Clear any previous error
           }
         } catch (err) {
           setError("Failed to load showtimes.");
+          setShowtimes([]); // Clear showtimes on error
         } finally {
           setLoadingShowtimes(false);
-          // Only hide the message when loading finishes
-          setIsMessageVisible(false);
+          setIsMessageVisible(false); // Hide loading message after data is fetched
         }
       }
     };
@@ -113,9 +115,13 @@ const ShowtimesPage = () => {
           />
         </div>
 
-        {loadingShowtimes && isMessageVisible ? (
+        {/* Loading message visible only during data fetch */}
+        {loadingShowtimes && isMessageVisible && (
           <p className="loading-message">Loading showtimes...</p>
-        ) : (
+        )}
+
+        {/* Showtimes list */}
+        {!loadingShowtimes && !error && (
           <div className="showtimes-list">
             {Object.keys(showtimes).length > 0 ? (
               <div className="date-container">
@@ -146,6 +152,11 @@ const ShowtimesPage = () => {
               </div>
             ))}
           </div>
+        )}
+
+        {/* No showtimes message */}
+        {showtimes.length === 0 && !loadingShowtimes && !error && (
+          <p>No showtimes available for the selected date and area.</p>
         )}
       </div>
       <Footer />
