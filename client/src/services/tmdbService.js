@@ -1,4 +1,5 @@
 import axios from 'axios';
+const apiKey = process.env.REACT_APP_TMDB_API_KEY || process.env.TMDB_API_KEY;
 
 // Create an Axios instance with default configuration
 const apiClient = axios.create({
@@ -31,6 +32,7 @@ export const fetchMovieDetails = async (movieId) => {
     const response = await apiClient.get(`/movie/${movieId}`, {
       params: {
         language: 'en-US',
+        api_key: apiKey,
       },
     });
     return response.data; // Return movie details
