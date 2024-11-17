@@ -16,6 +16,7 @@ const ShowtimesPage = () => {
   const [loadingAreas, setLoadingAreas] = useState(true);
   const [loadingShowtimes, setLoadingShowtimes] = useState(false);
   const [error, setError] = useState(null);
+  const [isMessageVisible, setIsMessageVisible] = useState(true); // Track message visibility
 
   // Fetch theatre areas
   useEffect(() => {
@@ -56,6 +57,8 @@ const ShowtimesPage = () => {
           setError("Failed to load showtimes.");
         } finally {
           setLoadingShowtimes(false);
+          // Only hide the message when loading finishes
+          setIsMessageVisible(false);
         }
       }
     };
@@ -98,28 +101,27 @@ const ShowtimesPage = () => {
         <div className="selector-container">
           <TimeSelector
             selectedDate={selectedDate}
-            onDateChange={(newDate) => setSelectedDate(newDate)} // Update the date
-            disabled={loadingAreas || loadingShowtimes} // Disable date selector while loading areas or showtimes
+            onDateChange={(newDate) => setSelectedDate(newDate)}
+            disabled={loadingAreas || loadingShowtimes}
           />
+
           <LocationSelector
             areas={areas}
             selectedArea={selectedArea}
-            onAreaChange={(newArea) => setSelectedArea(newArea)} // Update the area
-            disabled={loadingAreas || loadingShowtimes} // Disable area selector while loading areas or showtimes
+            onAreaChange={(newArea) => setSelectedArea(newArea)}
+            disabled={loadingAreas || loadingShowtimes}
           />
         </div>
 
-        {/* Move the slogan outside the selector container but still inside the main container */}
-        <p className="slogan">Enjoy Your Happy Time</p>
-
-        {loadingShowtimes ? (
-          <p>Loading showtimes...</p>
+        {loadingShowtimes && isMessageVisible ? (
+          <p className="loading-message">Loading showtimes...</p>
         ) : (
           <div className="showtimes-list">
             {Object.keys(showtimes).length > 0 ? (
               <div className="date-container">
-                <h2>{formatDate(selectedDate)}</h2>{" "}
-                {/* Use the formatted date */}
+                <div className="date-image-container">
+                  <h2 className="date-title">{formatDate(selectedDate)}</h2>
+                </div>
               </div>
             ) : (
               <p className="no-showtimes-message">
