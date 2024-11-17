@@ -63,6 +63,7 @@ The following core dependencies are used in the project:
 - **react-dom**: Provides DOM-specific methods for React.
 - **react-router-dom**: DOM bindings for React Router to handle routing.
 - **web-vitals**: A library for measuring web performance metrics.
+- **react-paginate**: A React component library used to implement pagination in your application.
 
 ## Development Dependencies
 
@@ -139,6 +140,8 @@ This project is licensed under the ISC License - see the [LICENSE](LICENSE) file
 ---
 
 # Project Directory Structure Explanation
+
+## Since the project is ongoing, the directory file structure may continue to change. Therefore, the displayed structure is the initial one, and adjustments will be made once the project is completed.
 
 ## Root Directory
 
