@@ -8,16 +8,18 @@ const TimeSelector = ({ selectedDate, onDateChange, disabled }) => {
   };
 
   return (
-    <div>
-      <label htmlFor="date">Select Date:</label>
-      <input
-        type="date"
-        id="date"
-        value={selectedDate}
-        onChange={handleDateChange} // Trigger date change
-        min={new Date().toISOString().split("T")[0]} // Minimum date is today
-        disabled={disabled} // Disable the date picker if data is loading
-      />
+    <div className="selector-container">
+      <div>
+        <label htmlFor="date">Select Date:</label>
+        <input
+          type="date"
+          id="date"
+          value={selectedDate}
+          onChange={handleDateChange} // Trigger date change
+          min={new Date().toISOString().split("T")[0]} // Minimum date is today
+          disabled={disabled} // Disable the date picker if data is loading
+        />
+      </div>
     </div>
   );
 };

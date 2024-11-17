@@ -1,4 +1,4 @@
-/* Reset and base styles */
+/* General styling */
 body,
 html {
   margin: 0;
@@ -9,10 +9,37 @@ html {
   line-height: 1.6;
 }
 
-/* General container for the page */
+/* Header Styling */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 10px 30px;
+  background-color: #000;
+}
+
+/* Footer Styling */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px;
+  color: #fff;
+  background-color: #000;
+}
+
+/* Showtimes Title */
+.showtimes-title {
+  text-align: center;
+  font-size: 3rem;
+  color: #005bbb;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+/* Main Container */
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 1100px;
+  margin: 50px auto 60px;
   padding: 20px;
   background: #fff;
   border-radius: 12px;
@@ -20,180 +47,213 @@ html {
   overflow: hidden;
 }
 
-/* Header styling */
-h1 {
-  text-align: center;
-  color: #2d2d2d; /* Deeper color for header */
-  margin-bottom: 20px;
-  font-size: 3rem;
-  font-weight: 700;
-  background: linear-gradient(90deg, #0078d7, #72c6ef);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+/* Showtimes List Styling */
+.showtimes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 10px;
 }
 
-/* Selector container */
+/* Time and Location Selectors */
+.selector-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 0px;
+}
+
+.selector-container label {
+  font-size: 1.25rem !important;
+  font-weight: bold;
+  color: #333;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.selector-container select {
+  width: 100%;
+  padding: 10px 20px;
+  font-size: 0.8rem !important;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  background-color: #f9f9f9;
+  color: #333;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  appearance: none;
+  background-position: right 10px center;
+  background-repeat: no-repeat;
+  background-size: 12px 12px;
+}
+
+.selector-container select option {
+  font-size: 0.8rem !important;
+  padding: 10px !important;
+}
+
+.selector-container select:focus {
+  outline: none;
+  border-color: #0078d7;
+  box-shadow: 0 0 5px rgba(0, 120, 215, 0.5);
+}
+
+.selector-container select:disabled {
+  background-color: #e0e0e0;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Hover and Focus Effects */
+.selector-container select:hover,
+.selector-container select:focus {
+  border-color: #005bbb;
+  box-shadow: 0 0 8px rgba(0, 91, 187, 0.6);
+}
+
+/* Showtimes Group Styling */
+.showtime-group {
+  background: linear-gradient(145deg, #f5f5f5, #ffffff);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.showtime-header {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #005bbb;
+  text-align: center;
+  background: #ff6f00;
+  border-radius: 8px;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+}
+
+.showtime-item {
+  padding: 15px 20px;
+  background: #fafafa;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.showtime-item h3 {
+  margin: 0;
+  color: #ff6f00;
+}
+
+.showtime-item p {
+  margin: 5px 0;
+}
+
+/* Error Messages */
+.error-message {
+  color: #e53e3e;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.no-showtimes-message {
+  color: #ff6f00;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+/* Container for Selectors */
 .selector-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 30px;
-  padding: 15px 20px;
-  background: #f4f7f8;
-  border: 1px solid #ddd;
+  background-color: #f3d8d8; /* Match pink background */
+  padding: 10px 20px;
   border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+/* Date and Location Selectors */
+.selector-container label {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.selector-container select {
+  font-size: 0.9rem;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Date Header */
+.date-container h2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+/* Showtimes Group */
+.showtime-group {
+  margin: 20px 0;
+  background-color: #f3d8d8; /* Pink group background */
+  border-radius: 12px;
+  padding: 15px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.selector-container label {
+/* Showtime Header (Time) */
+.showtime-header {
+  font-size: 1.5rem;
   font-weight: bold;
-  color: #555; /* Darker label color for more contrast */
-}
-
-.selector-container select,
-.selector-container input {
-  padding: 10px 15px;
-  font-size: 1rem;
-  border: 1px solid #ccc;
+  color: #333;
+  text-align: left;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #e9d1d1; /* Light pink header */
   border-radius: 8px;
-  outline: none;
-  background: #fff;
-  transition: all 0.3s ease;
 }
 
-.selector-container select:hover,
-.selector-container input:hover {
-  border-color: #0078d7;
-  transform: scale(1.02);
-}
-
-.selector-container select:focus,
-.selector-container input:focus {
-  border-color: #005bbb;
-  box-shadow: 0 0 5px rgba(0, 91, 187, 0.5);
-}
-
-/* Showtimes list styling */
-.showtimes-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 25px;
-  padding-top: 10px;
-}
-
-/* Individual showtime item */
+/* Showtime Item */
 .showtime-item {
-  background: linear-gradient(145deg, #ffffff, #f0f0f0);
-  border: 1px solid #ddd;
-  border-radius: 15px;
-  padding: 20px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  position: relative;
+  padding: 10px 15px;
+  background-color: #fff;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.showtime-item:hover {
-  transform: translateY(-3px); /* Reduced hover effect */
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
-}
-
-/* Movie title styling */
 .showtime-item h3 {
-  font-size: 1.8rem;
-  font-weight: 600;
-  margin-bottom: 15px;
-  color: #005bbb; /* Darker and richer color for movie title */
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
-/* Theatre name and start time styling */
 .showtime-item p {
   margin: 5px 0;
   font-size: 1rem;
-  color: #444; /* Darker text color for paragraph */
+  color: #333;
 }
 
-/* Add decorative line under text */
-.showtime-item p::after {
-  content: "";
-  display: block;
-  width: 50px;
-  height: 2px;
-  background: #0078d7;
-  margin: 8px 0;
+/* Styling for the slogan */
+.slogan {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ff6f00;
+  margin: 0 20px;
+  align-self: center;
+  text-align: center;
 }
 
-/* Button styling */
-button {
-  padding: 12px 20px;
-  font-size: 1rem;
-  background: linear-gradient(90deg, #0078d7, #005bbb);
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-button:hover {
-  background: linear-gradient(90deg, #005bbb, #004799);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
-  transform: scale(1.05);
-}
-
-button:active {
-  background: #004799;
-  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.2);
-}
-
-/* Responsive adjustments for tablets and phones */
-@media (max-width: 768px) {
-  .selector-container {
-    flex-direction: column;
-    gap: 15px;
-    text-align: center;
-  }
-
-  .selector-container label {
-    margin-bottom: 10px;
-  }
-
-  h1 {
-    font-size: 2.5rem;
-  }
-
-  button {
-    font-size: 0.9rem;
-    padding: 10px 15px;
-  }
-}
-
-@media (max-width: 480px) {
-  .showtimes-list {
-    grid-template-columns: 1fr;
-  }
-
-  .showtime-item {
-    padding: 15px;
-    font-size: 0.9rem;
-  }
-
-  .showtime-item h3 {
-    font-size: 1.5rem;
-  }
-
-  .showtime-item p {
-    font-size: 0.85rem;
-  }
-
-  button {
-    font-size: 0.8rem;
-    padding: 8px 12px;
-  }
-
-  h1 {
-    font-size: 2rem;
-  }
+/* Date header styling */
+.date-container h2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
 }

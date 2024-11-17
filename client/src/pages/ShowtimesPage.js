@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { fetchTheatreAreas, fetchShowtimes } from "../services/FinnkinoAPI";
 import TimeSelector from "../components/TimeSelector";
 import LocationSelector from "../components/LocationSelector";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 import "../ShowtimesPage.css";
 
 const ShowtimesPage = () => {
@@ -40,18 +42,16 @@ const ShowtimesPage = () => {
       if (selectedArea && selectedDate) {
         setLoadingShowtimes(true);
         try {
-          console.log(
-            "Fetching showtimes for area:",
-            selectedArea,
-            "and date:",
-            selectedDate
-          ); // Debug log
           const showtimesData = await fetchShowtimes(
             selectedArea,
             selectedDate
           );
-          console.log("Showtimes data:", showtimesData); // Debug log
-          setShowtimes(showtimesData);
+          if (showtimesData.length === 0) {
+            setError("No showtimes available for the selected date and area.");
+          } else {
+            setShowtimes(groupShowtimesByTime(showtimesData));
+            setError(null); // Clear any previous error
+          }
         } catch (err) {
           setError("Failed to load showtimes.");
         } finally {
@@ -61,54 +61,93 @@ const ShowtimesPage = () => {
     };
 
     fetchShowtimesData();
-  }, [selectedArea, selectedDate]); // Re-run when selected area or date changes
+  }, [selectedArea, selectedDate]);
+
+  const groupShowtimesByTime = (showtimes) => {
+    const grouped = {};
+    showtimes.forEach((show) => {
+      const startTime = new Date(show.startTime).toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: true,
+      }); // Format time as HH:MM:SS AM/PM
+      if (!grouped[startTime]) {
+        grouped[startTime] = [];
+      }
+      grouped[startTime].push(show);
+    });
+    return grouped;
+  };
+
+  // Function to format date in DD.MM.YYYY format
+  const formatDate = (date) => {
+    const d = new Date(date);
+    return `${d.getDate().toString().padStart(2, "0")}.${(d.getMonth() + 1)
+      .toString()
+      .padStart(2, "0")}.${d.getFullYear()}`;
+  };
 
   return (
-    <div className="container">
-      <h1>Showtimes</h1>
+    <>
+      <Header />
+      <h1 className="showtimes-title">Show Times</h1>
+      <div className="container">
+        {error && <p className="error-message">{error}</p>}
 
-      {error && <p className="error-message">{error}</p>}
-
-      <div className="selector-container">
-        <TimeSelector
-          selectedDate={selectedDate}
-          onDateChange={(newDate) => setSelectedDate(newDate)} // Update the date
-          disabled={loadingAreas} // Disable date selector while loading areas
-        />
-
-        <LocationSelector
-          areas={areas}
-          selectedArea={selectedArea}
-          onAreaChange={(newArea) => setSelectedArea(newArea)} // Update the area
-          disabled={loadingAreas} // Disable area selector while loading areas
-        />
-      </div>
-
-      {loadingShowtimes ? (
-        <p>Loading showtimes...</p>
-      ) : (
-        <div className="showtimes-list">
-          {showtimes.length > 0 ? (
-            showtimes.map((show, index) => (
-              <div key={index} className="showtime-item">
-                <h3>{show.title}</h3>
-                <p>
-                  <strong>Theatre:</strong> {show.theatre}
-                </p>
-                <p>
-                  <strong>Start Time:</strong>{" "}
-                  {new Date(show.startTime).toLocaleString()}
-                </p>
-              </div>
-            ))
-          ) : (
-            <p className="no-showtimes-message">
-              No showtimes available for the selected date and area.
-            </p>
-          )}
+        <div className="selector-container">
+          <TimeSelector
+            selectedDate={selectedDate}
+            onDateChange={(newDate) => setSelectedDate(newDate)} // Update the date
+            disabled={loadingAreas || loadingShowtimes} // Disable date selector while loading areas or showtimes
+          />
+          <LocationSelector
+            areas={areas}
+            selectedArea={selectedArea}
+            onAreaChange={(newArea) => setSelectedArea(newArea)} // Update the area
+            disabled={loadingAreas || loadingShowtimes} // Disable area selector while loading areas or showtimes
+          />
         </div>
-      )}
-    </div>
+
+        {/* Move the slogan outside the selector container but still inside the main container */}
+        <p className="slogan">Enjoy Your Happy Time</p>
+
+        {loadingShowtimes ? (
+          <p>Loading showtimes...</p>
+        ) : (
+          <div className="showtimes-list">
+            {Object.keys(showtimes).length > 0 ? (
+              <div className="date-container">
+                <h2>{formatDate(selectedDate)}</h2>{" "}
+                {/* Use the formatted date */}
+              </div>
+            ) : (
+              <p className="no-showtimes-message">
+                No showtimes available for the selected date and area.
+              </p>
+            )}
+            {Object.keys(showtimes).map((time, index) => (
+              <div key={index} className="showtime-group">
+                <h3 className="showtime-header">{time}</h3>
+                {showtimes[time].map((show, idx) => (
+                  <div key={idx} className="showtime-item">
+                    <h3>{show.title}</h3>
+                    <p>
+                      <strong>Theatre:</strong> {show.theatre}
+                    </p>
+                    <p>
+                      <strong>Start Time:</strong>{" "}
+                      {new Date(show.startTime).toLocaleString()}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+      <Footer />
+    </>
   );
 };
 
