@@ -21,7 +21,7 @@ function Header() {
         <div className="header__top-row">
         <img className="logo_img" src={require('../assets/logo.png')} alt="Logo" />
           <nav className="header_menu">
-            <a href="#home">Home</a>
+            <a href="/">Home</a>
             <div
               className="header_menu-item"
               onMouseEnter={toggleMoviesMenu}
@@ -40,7 +40,7 @@ function Header() {
             <a href="#coming-soon">Show Times</a>
             <a href="#about-us">About Us</a>
           </nav>
-          <button className="header_login">Log In</button>
+          <button className="header_login" >Log In</button>
         </div>
         <div className="header__bottom-row">
           <SearchBar className="header_search" onSearch={handleSearch} />
