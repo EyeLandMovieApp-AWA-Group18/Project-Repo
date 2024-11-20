@@ -95,7 +95,7 @@ const ShowtimesPage = () => {
 
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <h1 className="showtimes-title">Show Times</h1>
       <div className="container">
         {error && <p className="error-message">{error}</p>}
@@ -159,7 +159,7 @@ const ShowtimesPage = () => {
           <p>No showtimes available for the selected date and area.</p>
         )}
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
