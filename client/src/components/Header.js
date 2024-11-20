@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import SearchBar from './SearchBar.js';
 import '../App.css';
 
 
 function Header() {
   const [isMoviesMenuOpen, setMoviesMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const handleSearch = (query) => {
     // Redirect to search page with query as a parameter
@@ -14,6 +16,10 @@ function Header() {
   const toggleMoviesMenu = () => {
     setMoviesMenuOpen(!isMoviesMenuOpen);
   };
+
+  const handleLoginClick = () => {
+    navigate('/auth');
+  }
 
   return (
     <header className="header">
@@ -40,7 +46,7 @@ function Header() {
             <a href="#coming-soon">Show Times</a>
             <a href="#about-us">About Us</a>
           </nav>
-          <button className="header_login" >Log In</button>
+          <button className="header_login" onClick={ handleLoginClick } >Log In</button>
         </div>
         <div className="header__bottom-row">
           <SearchBar className="header_search" onSearch={handleSearch} />
