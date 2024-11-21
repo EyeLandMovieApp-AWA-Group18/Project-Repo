@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const Authentication = () => {
     const [isLogin, setIsLogin] = useState(true);
     const [formData, setFormData] = useState({ username: '', email: '', password: '' });
+    const navigate = useNavigate(); 
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -17,6 +19,7 @@ const Authentication = () => {
             alert(response.data.message);
             if (isLogin) {
                 localStorage.setItem('token', response.data.token);
+                navigate('/');
             }
         } catch (error) {
             alert(error.response?.data?.message || 'Authentication failed');
