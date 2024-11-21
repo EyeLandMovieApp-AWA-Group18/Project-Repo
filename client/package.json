@@ -11,6 +11,7 @@
     "client": "file:",
     "dotenv": "^16.4.5",
     "formik": "^2.4.6",
+    "jsonwebtoken": "^9.0.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-paginate": "^8.2.0",
