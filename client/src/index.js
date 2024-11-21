@@ -24,8 +24,6 @@ const router = createBrowserRouter([
   { 
     path: "/",
     element: <MainLayout />,
-   
-  
     children: [
       {
         path: "/",
@@ -34,10 +32,6 @@ const router = createBrowserRouter([
       {
         path:"/movie/:id",
         element:<MovieDetail />,
-      },
-      {
-        path:"/profile",
-        element:<Profile />,
       },
       {
         path: "/signin",
@@ -60,12 +54,7 @@ const router = createBrowserRouter([
         element:<ShowtimesPage />
       },
       {
-        // 需要用户认证的路由
-        element: (
-          <>
-            <ProtectedRoute />
-          </>
-        ),
+        element: <ProtectedRoute />,
         children: [
           {
             path: "/profile",
