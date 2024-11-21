@@ -19,8 +19,9 @@ const Authentication = () => {
             alert(response.data.message);
             if (isLogin) {
                 localStorage.setItem('token', response.data.token);
-                navigate('/');
-            }
+                 navigate('/');
+            } else {
+                 navigate('/auth');}
         } catch (error) {
             alert(error.response?.data?.message || 'Authentication failed');
         }
