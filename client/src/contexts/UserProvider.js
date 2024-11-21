@@ -33,10 +33,11 @@ export default function UserProvider({ children }) {
         try {
             const response = await axios.post(url + "/login", JSON.stringify(payload), headers);
             const { token, user: userData } = response.data; // Extract user data and token
-            setUser(userData);
+            //setUser(userData);
+            setUser({ ...userData, token });
             //const token = response.data.token;
             //setUser(response.data);
-            sessionStorage.setItem("user", JSON.stringify(userData));
+            sessionStorage.setItem("user", JSON.stringify({ ...userData, token }));
             console.log("User saved to sessionStorage:", sessionStorage.getItem("user"));
             sessionStorage.setItem('token', token);
         } catch (error) {
