@@ -22,6 +22,7 @@ const AuthController = {
     },
 
     async login(req, res) {
+        //console.log("Incoming login request:", req.body);
         const { email, password } = req.body;
     
         try {
@@ -32,7 +33,14 @@ const AuthController = {
             if (!isMatch) return res.status(400).json({ message: 'Invalid credentials' });
     
             const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET_KEY, { expiresIn: '1h' });
-            res.status(200).json({ message: 'Login successful', token });
+            res.status(200).json({ 
+                message: 'Login successful',
+                user: {
+                    id: user.id,
+                    username: user.username,
+                    email: user.email,
+                },
+                 token });
         } catch (error) {
             // console.error('Login error:', error);  // Log the error to the console
             res.status(500).json({ error: 'Internal server error' });
