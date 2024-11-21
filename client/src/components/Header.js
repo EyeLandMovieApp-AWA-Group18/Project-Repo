@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext,useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../contexts/UserContext.js";
 import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar.js";
 import "../App.css";
 
 function Header() {
   const [isMoviesMenuOpen, setMoviesMenuOpen] = useState(false);
+  const { user, signOut } = useContext(UserContext); // Access user and signOut
   const navigate = useNavigate();
 
   const handleSearch = (query) => {
@@ -18,7 +20,13 @@ function Header() {
   };
 
   const handleLoginClick = () => {
-    navigate("/auth");
+    navigate("/signin");
+  };
+
+  const handleSignOut = () => {
+    signOut(); // Clear user context and session storage
+    console.log("Session storage after logout:", sessionStorage.getItem("user")); 
+    navigate("/signin"); // Redirect to login page
   };
 
   return (
@@ -50,9 +58,19 @@ function Header() {
             <Link to="/showtimes">Show Times</Link>
             <a href="#about-us">About Us</a>
           </nav>
-          <button className="header_login" onClick={handleLoginClick}>
-            Log In
-          </button>
+          <div >
+            {user && user.email ? (
+              <>
+                <button className="header_login" onClick={handleSignOut}>Log Out</button>
+              </>
+            ) : (
+              <>
+                <button className="header_login" onClick={handleLoginClick}>Log In</button>
+                
+              </>
+            )}
+          </div>
+          
         </div>
         <div className="header__bottom-row">
           <SearchBar className="header_search" onSearch={handleSearch} />
@@ -63,3 +81,6 @@ function Header() {
 }
 
 export default Header;
+/*<button className="header_login" onClick={handleLoginClick}>
+Log In
+</button>*/

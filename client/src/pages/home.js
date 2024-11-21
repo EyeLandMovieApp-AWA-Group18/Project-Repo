@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from '../components/Footer';
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
       <main>
         <h2 className="section2_header">Eyeland; your destination for film discoveries</h2>
       </main>
+      <Footer />
     </div>
   );
 };

@@ -22,7 +22,6 @@ const App = () => {
           <Route path="/movie/:id" element={<MovieDetail />} />
           <Route path="/auth" element={<Authentication />} />
           <Route path="/removeaccount" element={<RemoveAccount />} />
-          <Route path="/auth" element={<Authentication />} />
           <Route path="/search" element={<SearchPage />} />
           <Route path="/showtimes" element={<ShowtimesPage />} />
         </Routes>
