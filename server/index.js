@@ -1,10 +1,10 @@
-import express from 'express';
-import dotenv from 'dotenv';
-import authRoutes from './routes/authRoutes.js';
-import searchRoutes from './routes/searchRoutes.js';
-import pool from './database/db.js';
-import cors from 'cors';
-
+import express from "express";
+import dotenv from "dotenv";
+import authRoutes from "./routes/authRoutes.js";
+import searchRoutes from "./routes/searchRoutes.js";
+import reviewRoutes from "./routes/reviewRoutes.js";
+import pool from "./database/db.js";
+import cors from "cors";
 
 dotenv.config();
 
@@ -14,18 +14,19 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
-app.use('/api', authRoutes);
-app.use('/api/search', searchRoutes);
+app.use("/api", authRoutes);
+app.use("/api/search", searchRoutes);
+app.use("/api/reviews", reviewRoutes);
 
 // Database connection test
 pool.connect((err) => {
-    if (err) {
-        console.error('Database connection failed:', err);
-    } else {
-        console.log('Connected to the database');
-    }
+  if (err) {
+    console.error("Database connection failed:", err);
+  } else {
+    console.log("Connected to the database");
+  }
 });
 
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
