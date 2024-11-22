@@ -41,7 +41,8 @@ export default function UserProvider({ children }) {
             console.log("User saved to sessionStorage:", sessionStorage.getItem("user"));
             sessionStorage.setItem('token', token);
         } catch (error) {
-            setUser({ email: "", password: "" });
+            //setUser({ email: "", password: "" });
+            setUser(null);
             throw error;
         }
     };
