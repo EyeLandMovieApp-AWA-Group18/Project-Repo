@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useUser } from '../contexts/useUser';
 import axios from 'axios';
-import "./FavoriteButton.css"; // Assuming a CSS file for styling
+import "./FavoriteButton.css"; 
 
 const FavoriteButton = ({ movieId }) => {
   const { user } = useUser();
