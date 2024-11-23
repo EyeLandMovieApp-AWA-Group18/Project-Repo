@@ -1,15 +1,15 @@
-// ReviewList.js
 import React from "react";
-import ReviewItem from "./ReviewItem"; // 引入 ReviewItem 组件
+import ReviewItem from "./ReviewItem";
 
 const ReviewList = ({ reviews }) => {
   return (
-    <div>
-      <h3>Reviews</h3>
+    <div className="review-list-container">
       {reviews.length === 0 ? (
-        <p>No reviews yet. Be the first to write one!</p>
+        <p style={{ fontStyle: "italic", textAlign: "center" }}>
+          No reviews yet. Be the first to write one!
+        </p>
       ) : (
-        <ul style={{ padding: "0" }}>
+        <ul className="review-list">
           {reviews.map((review) => (
             <ReviewItem key={review.id} review={review} />
           ))}
