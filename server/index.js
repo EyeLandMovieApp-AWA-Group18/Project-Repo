@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import authRoutes from "./routes/authRoutes.js";
 import searchRoutes from "./routes/searchRoutes.js";
 import reviewRoutes from "./routes/reviewRoutes.js";
+import favouritesRoutes from "./routes/favouritesRoutes.js";
 import pool from "./database/db.js";
 import cors from "cors";
 
@@ -17,6 +18,7 @@ app.use(express.json());
 app.use("/api", authRoutes);
 app.use("/api/search", searchRoutes);
 app.use("/api/reviews", reviewRoutes);
+app.use("/api/favourites", favouritesRoutes);
 
 // Database connection test
 pool.connect((err) => {

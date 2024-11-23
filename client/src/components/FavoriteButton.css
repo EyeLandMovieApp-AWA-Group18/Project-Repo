@@ -1,0 +1,27 @@
+.favorite-button {
+	background: none;
+	border: none;
+	font-size: 16px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+  }
+  
+  .heart-symbol {
+	font-size: 20px;
+	margin-right: 8px;
+	transition: color 0.3s ease;
+  }
+  
+  .favorite-button.favorited .heart-symbol {
+	color: red;
+  }
+  
+  .favorite-button:not(.favorited) .heart-symbol {
+	color: grey;
+  }
+  
+  .favorite-button:hover .heart-symbol {
+	transform: scale(1.1);
+  }
+  
