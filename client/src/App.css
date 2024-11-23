@@ -9,6 +9,14 @@
   padding: 10px;
 }
 
+.favorites-grid {
+  display: flex; /* Use flexbox for horizontal alignment */
+  flex-wrap: wrap; /* Wrap items to the next line */
+  justify-content: space-between;  /* Distribute items evenly */
+  gap: 20px; /* Add space between movie cards */
+  padding: 10px;
+}
+
 .search-results-text {
   margin-top: 25px; /* Add space above */
   padding-left: 45px; /* Add space to the left */
@@ -285,7 +293,8 @@
   display: flex;
   flex-direction: column;
   align-items: left;
-  max-width: 600px;
+  max-width: 650px;
+  width: 100%; /* Allow full width */
   margin-left: 30px;
   padding: 40px 20px;
   background-color: #000;
@@ -294,7 +303,7 @@
 
 /* Section titles and separator line */
 .profile-section h3 {
-  margin-top: 70px;
+  margin-top: 50px;
   font-size: 1.2em;
 }
 
