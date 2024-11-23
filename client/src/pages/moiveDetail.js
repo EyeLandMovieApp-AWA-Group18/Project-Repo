@@ -1,9 +1,12 @@
+
 import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { fetchMovieDetails } from "../services/tmdbService";
 import axios from "axios";
 import ReviewList from "../components/ReviewList";
 import { UserContext } from "../contexts/UserContext";
+import FavoriteButton from '../components/FavoriteButton.js';
+import './movieDetail.css';
 
 const MovieDetail = () => {
   const { id } = useParams();
@@ -14,7 +17,7 @@ const MovieDetail = () => {
   const [reviewText, setReviewText] = useState("");
   const [rating, setRating] = useState(1);
   const [showReviews, setShowReviews] = useState(false);
-  const [message, setMessage] = useState({ text: "", type: "" }); // 控制提示消息
+  const [message, setMessage] = useState({ text: "", type: "" }); 
 
   useEffect(() => {
     const loadMovieDetails = async () => {
@@ -82,12 +85,15 @@ const MovieDetail = () => {
   }
 
   return (
-    <div>
+    <div className="movie-detail">
+    <div className="container">
       <h1>{movie.title}</h1>
       <img
         src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
         alt={movie.title}
       />
+            {/* Add the FavoriteButton here */}
+            <FavoriteButton movieId={movie.id} />
       <p>
         <strong>Overview:</strong> {movie.overview}
       </p>
@@ -191,6 +197,7 @@ const MovieDetail = () => {
           </div>
         )}
       </div>
+
     </div>
   );
 };
