@@ -1,0 +1,18 @@
+.shared-favorites {
+	padding: 20px;
+	text-align: center;
+  }
+  
+  .shared-favorites-grid {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	justify-content: center;
+  }
+  
+  .loading, .error {
+	color: red;
+	font-size: 18px;
+	margin-top: 20px;
+  }
+  
