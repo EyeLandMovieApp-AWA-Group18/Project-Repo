@@ -57,6 +57,7 @@ function Header() {
             </div>
             <Link to="/showtimes">Show Times</Link>
             <a href="#about-us">About Us</a>
+            {user && user.email && <Link to="/profile">Profile</Link>}
           </nav>
           <div >
             {user && user.email ? (

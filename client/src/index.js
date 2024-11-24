@@ -16,6 +16,7 @@ import MovieDetail from "./pages/moiveDetail.js";
 import RemoveAccount from "./pages/RemoveAccount.js";
 import SearchPage from "./pages/searchPage.js";
 import ShowtimesPage from "./pages/ShowtimesPage.js";
+import SharedFavoritesPage from "./pages/SharedFavoritesPage.js";
 import UserProvider from "./contexts/UserProvider.js";
 import Authentication, { AuthenticationMode } from './pages/Authentication.js';
 //import "./App.css";
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
       {
         path:"/showtimes",
         element:<ShowtimesPage />
+      },
+      {
+        path:"/shared/:id",
+        element:<SharedFavoritesPage />
       },
       {
         element: <ProtectedRoute />,

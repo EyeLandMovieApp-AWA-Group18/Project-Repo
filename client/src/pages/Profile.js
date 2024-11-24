@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import FavoritesList from '../components/FavoritesList'; // Import FavoritesList
-import { useUser } from '../contexts/useUser'; // Import useUser for username
+import FavoritesList from '../components/FavoritesList.js'; 
+import { useUser } from '../contexts/useUser.js'; 
+import ShareFavoritesButton from '../components/ShareFavoritesButton.js';
 import '../App.css';
 
 const Profile = () => {
@@ -27,6 +28,7 @@ const Profile = () => {
       {/* Favorite Movies Section */}
       <div className="profile-section">
       <h3>My Favorites</h3>
+      <ShareFavoritesButton />
       <FavoritesList />
       </div>
 
