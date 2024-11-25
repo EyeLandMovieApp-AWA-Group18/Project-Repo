@@ -65,7 +65,7 @@ The following core dependencies are used in the project:
 - **web-vitals**: A library for measuring web performance metrics.
 - **react-paginate**: A React component library used to implement pagination in your application.
 - **xml2js**: A library used to parse XML data into JavaScript objects and convert JavaScript objects back into XML format.
-- **uuid**: A library used to generate universally unique identifiers (UUIDs). 
+
 ## Development Dependencies
 
 These dependencies are used during development:
@@ -125,6 +125,7 @@ The following core dependencies are used in the project:
 - **jsonwebtoken**: For creating and verifying JSON Web Tokens (JWT).
 - **nodemon**: For auto-restarting the server during development.
 - **pg**: PostgreSQL client for Node.js to interact with the database.
+- **uuid**: A library used to generate universally unique identifiers (UUIDs).
 
 ## Development Dependencies
 
