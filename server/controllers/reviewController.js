@@ -5,7 +5,6 @@ export const getReviews = async (req, res) => {
   const { film_id } = req.params;
 
   try {
-    // 修改查询，增加了 `user_email`
     const result = await pool.query(
       `SELECT reviews.id, reviews.review_text, reviews.rating, reviews.created_at, users.email AS user_email
        FROM reviews
@@ -14,7 +13,7 @@ export const getReviews = async (req, res) => {
        ORDER BY reviews.created_at DESC`,
       [film_id]
     );
-    res.json(result.rows); // 返回评论列表，包括用户邮箱
+    res.json(result.rows);
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Failed to fetch reviews" });
