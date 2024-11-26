@@ -1,4 +1,4 @@
-import React, { useContext,useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext.js";
 import { Link } from "react-router-dom";
@@ -25,7 +25,10 @@ function Header() {
 
   const handleSignOut = () => {
     signOut(); // Clear user context and session storage
-    console.log("Session storage after logout:", sessionStorage.getItem("user")); 
+    console.log(
+      "Session storage after logout:",
+      sessionStorage.getItem("user")
+    );
     navigate("/signin"); // Redirect to login page
   };
 
@@ -56,22 +59,25 @@ function Header() {
               )}
             </div>
             <Link to="/showtimes">Show Times</Link>
+            <Link to="/public-reviews">Reviews</Link>
             <a href="#about-us">About Us</a>
             {user && user.email && <Link to="/profile">Profile</Link>}
           </nav>
-          <div >
+          <div>
             {user && user.email ? (
               <>
-                <button className="header_login" onClick={handleSignOut}>Log Out</button>
+                <button className="header_login" onClick={handleSignOut}>
+                  Log Out
+                </button>
               </>
             ) : (
               <>
-                <button className="header_login" onClick={handleLoginClick}>Log In</button>
-                
+                <button className="header_login" onClick={handleLoginClick}>
+                  Log In
+                </button>
               </>
             )}
           </div>
-          
         </div>
         <div className="header__bottom-row">
           <SearchBar className="header_search" onSearch={handleSearch} />

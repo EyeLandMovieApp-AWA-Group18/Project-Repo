@@ -5,6 +5,7 @@ import searchRoutes from "./routes/searchRoutes.js";
 import reviewRoutes from "./routes/reviewRoutes.js";
 import favouritesRoutes from "./routes/favouritesRoutes.js";
 import sharedFavoritesRoutes from "./routes/sharedFavoritesRoutes.js";
+import publicReviewsRoutes from "./routes/publicReviewsRoutes.js";
 import pool from "./database/db.js";
 import cors from "cors";
 
@@ -21,6 +22,7 @@ app.use("/api/search", searchRoutes);
 app.use("/api/reviews", reviewRoutes);
 app.use("/api/favourites", favouritesRoutes);
 app.use("/api/shared-favorites", sharedFavoritesRoutes);
+app.use("/api/public-reviews", publicReviewsRoutes);
 // Database connection test
 pool.connect((err) => {
   if (err) {
