@@ -14,41 +14,27 @@ export const getAllPublicReviews = async (req, res) => {
        ORDER BY reviews.created_at DESC`
     );
 
-    console.log("Query Result:", result.rows);
-
     const reviewsWithFilmData = await Promise.all(
       result.rows.map(async (review) => {
         const { film_id, user_email, review_text, rating, created_at } = review;
 
-        console.log(`Fetching data for film_id: ${film_id}`);
-
-        const parsedFilmId = parseInt(film_id);
-        if (isNaN(parsedFilmId)) {
-          console.error(`Invalid film_id: ${film_id}`);
-          return {
-            film_title: "Unknown Film",
-            rating: rating,
-            review_text: review_text,
-            user_email: user_email,
-            created_at: created_at,
-          };
-        }
-
         try {
-          const response = await axios.get(`${TMDB_API_URL}${parsedFilmId}`, {
+          const response = await axios.get(`${TMDB_API_URL}${film_id}`, {
             params: { api_key: TMDB_API_KEY },
           });
-
-          console.log("TMDB API Response:", response.data);
 
           const film = response.data;
 
           return {
+            id: review.id,
             film_title: film.title || "Unknown Film",
-            rating: rating,
-            review_text: review_text,
-            user_email: user_email,
-            created_at: created_at,
+            poster_url: film.poster_path
+              ? `https://image.tmdb.org/t/p/w500${film.poster_path}`
+              : null,
+            rating,
+            review_text,
+            user_email,
+            created_at,
           };
         } catch (error) {
           console.error(
@@ -56,11 +42,13 @@ export const getAllPublicReviews = async (req, res) => {
             error
           );
           return {
+            id: review.id,
             film_title: "Unknown Film",
-            rating: rating,
-            review_text: review_text,
-            user_email: user_email,
-            created_at: created_at,
+            poster_url: null,
+            rating,
+            review_text,
+            user_email,
+            created_at,
           };
         }
       })
