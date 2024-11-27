@@ -1,11 +1,12 @@
 .reviews-item {
   display: flex;
   background-color: #f9f9f9;
-  border-radius: 10px;
-  padding: 20px;
+  border-radius: 20px;
+  padding: 30px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   align-items: center;
-  margin-bottom: 20px;
+  margin: 30px auto;
+  width: 1100px;
 }
 
 .review-item__avatar {
@@ -14,8 +15,8 @@
 }
 
 .review-item__image {
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -69,7 +70,7 @@
 
 .review-item__details-button {
   margin-top: 10px;
-  background-color: #007bff;
+  background-color: #5277a0;
   color: white;
   border: none;
   padding: 10px 15px;

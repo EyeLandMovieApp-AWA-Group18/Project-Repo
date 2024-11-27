@@ -6,7 +6,7 @@
 }
 
 .review-title-search-bar__input {
-  height: 40px; /* 高度与按钮一致 */
+  height: 40px;
   padding: 0 15px;
   width: 250px;
   border: 1px solid #ccc;
@@ -22,12 +22,12 @@
 }
 
 .review-title-search-bar__button {
-  width: 40px; /* 设置按钮宽度为40px，保持正方形 */
-  height: 40px; /* 按钮高度为40px，保持一致 */
+  width: 40px;
+  height: 40px;
   padding: 0;
   margin: 0;
   border: none;
-  background-color: #007bff;
+  background-color: #5277a0;
   color: #fff;
   font-size: 1rem;
   font-weight: bold;
