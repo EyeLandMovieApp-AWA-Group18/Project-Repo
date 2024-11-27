@@ -4,16 +4,17 @@
 }
 
 .public-reviews__title {
-  font-size: 2rem;
-  margin-bottom: 20px;
+  font-size: 3rem;
+  margin-bottom: 30px;
 }
 
 .public-reviews__search-bar {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 30px;
+  align-items: center;
+  gap: 50px;
+  margin-bottom: 50px;
+  justify-content: center; /* 水平居中 */
 }
-
 .public-reviews__list {
   list-style: none;
   padding: 0;
