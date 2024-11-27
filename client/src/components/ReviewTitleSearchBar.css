@@ -1,17 +1,56 @@
 .review-title-search-bar {
-  margin: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
 }
 
 .review-title-search-bar__input {
-  padding: 10px;
-  width: 200px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  height: 40px; /* 高度与按钮一致 */
+  padding: 0 15px;
+  width: 250px;
+  border: 1px solid #ccc;
+  border-right: none;
+  border-radius: 5px 0 0 5px;
   font-size: 1rem;
+  box-sizing: border-box;
 }
 
 .review-title-search-bar__input:focus {
   outline: none;
   border-color: #007bff;
-  background-color: #f8f8f8;
+}
+
+.review-title-search-bar__button {
+  width: 40px; /* 设置按钮宽度为40px，保持正方形 */
+  height: 40px; /* 按钮高度为40px，保持一致 */
+  padding: 0;
+  margin: 0;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  line-height: 0;
+}
+
+.review-title-search-bar__button:hover {
+  background-color: #0056b3;
+  box-shadow: 0 0 5px rgba(0, 86, 179, 0.5);
+}
+
+.review-title-search-bar__button:active {
+  transform: scale(0.98);
+}
+
+.review-title-search-bar__button svg {
+  width: 20px;
+  height: 20px;
+  fill: #fff;
 }
