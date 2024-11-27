@@ -1,0 +1,39 @@
+.group-list-page {
+    padding: 10px;
+      
+}
+
+.group-list-page .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+    background-color: transparent;
+}
+
+.group-list-page .header h1 {
+    font-size: 2rem;
+}
+
+.group-list-page button {
+    background-color: #7a5df8;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.group-list-page button:hover {
+    background-color: #5d47c3;
+}
+
+.group-list-page button::before {
+    content: '+';
+    margin-right: 5px;
+    font-size: 1.5rem;
+}
+
