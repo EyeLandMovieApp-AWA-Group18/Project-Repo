@@ -1,4 +1,5 @@
-import React, { useState } from "react"; // Add this import statement
+import React, { useState } from "react";
+import "./ReviewTitleSearchBar.css";
 
 const ReviewTitleSearchBar = ({ onTitleChange }) => {
   const [title, setTitle] = useState("");
@@ -10,16 +11,14 @@ const ReviewTitleSearchBar = ({ onTitleChange }) => {
   };
 
   return (
-    <div>
-      <label>
-        Movie Title:
-        <input
-          type="text"
-          value={title}
-          onChange={handleTitleChange}
-          placeholder="Search by movie title"
-        />
-      </label>
+    <div className="review-title-search-bar">
+      <input
+        type="text"
+        value={title}
+        onChange={handleTitleChange}
+        placeholder="Search movie"
+        className="review-title-search-bar__input"
+      />
     </div>
   );
 };
