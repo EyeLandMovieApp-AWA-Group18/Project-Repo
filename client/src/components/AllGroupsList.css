@@ -1,0 +1,13 @@
+.all-groups-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Dynamic column layout */
+    gap: 20px; /* Space between cards */
+    padding: 20px;
+   
+    justify-content: center;
+}
+
+.grid-layout {
+    max-width: 1200px; /* Limit the grid width for better aesthetics */
+    margin: 0 auto; /* Center the grid container */
+}

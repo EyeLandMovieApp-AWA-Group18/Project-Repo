@@ -80,8 +80,9 @@
 
 .header_menu {
   display: flex;
-  gap: 80px;
+  justify-content: space-evenly;
   margin-top: 10px;
+  width: 100%;
 }
 
 .header_menu a {
@@ -126,11 +127,12 @@
 }
 
 .header_login {
-  padding: 5px 25px;
+  padding: 5px 23px;
   background-color: #e6925a;
   color: #fff;
   font-size: 15px;
   margin-right: 5px;
+  width: 100px;
 }
 
 .header_login:hover {

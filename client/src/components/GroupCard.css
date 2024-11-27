@@ -1,0 +1,64 @@
+.group-card.elegant {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    width: 300px; /* Fixed width */
+    margin: 0 auto; /* Center the card */
+    
+}
+
+.group-card.elegant:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.group-card-header h3 {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+    color: #333;
+    text-align: center;
+}
+
+.group-card-body {
+    margin: 8px 0;
+}
+
+.group-description {
+    color: #555;
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+}
+
+.group-info {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.symbol {
+    margin-right: 8px;
+    font-size: 1.1rem;
+}
+
+
+
+.group-card-footer {
+    text-align: right;
+}
+
+.view-button {
+    background-color: #7a5df8;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.view-button:hover {
+    background-color: #5d47c3;
+}
