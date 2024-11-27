@@ -1,7 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+import ReviewTitleSearchBar from "../components/ReviewTitleSearchBar";
+import ReviewStarsSearchBar from "../components/ReviewStarsSearchBar";
+import PublicReviewsItem from "../components/PublicReviewsItem";
 
 const PublicReviews = () => {
   const [reviews, setReviews] = useState([]);
+  const [filteredReviews, setFilteredReviews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -16,6 +20,7 @@ const PublicReviews = () => {
         }
         const data = await response.json();
         setReviews(data);
+        setFilteredReviews(data);
         setLoading(false);
       } catch (err) {
         setError(err.message);
@@ -26,56 +31,43 @@ const PublicReviews = () => {
     fetchReviews();
   }, []);
 
+  const handleSearch = (title = "", rating = null) => {
+    let filtered = reviews;
+    if (title) {
+      filtered = filtered.filter((review) =>
+        review.film_title.toLowerCase().includes(title.toLowerCase())
+      );
+    }
+    if (rating !== null) {
+      filtered = filtered.filter(
+        (review) => review.rating === parseInt(rating)
+      );
+    }
+    setFilteredReviews(filtered);
+  };
+
   if (loading) return <p>Loading reviews...</p>;
   if (error) return <p>Error: {error}</p>;
 
   return (
     <div>
       <h1>All Reviews</h1>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          marginBottom: "20px",
+        }}
+      >
+        <ReviewTitleSearchBar onTitleChange={(title) => handleSearch(title)} />
+        <ReviewStarsSearchBar
+          onStarChange={(rating) => handleSearch("", rating)}
+        />
+      </div>
       <ul style={{ listStyle: "none", padding: 0 }}>
-        {reviews.map((review) => (
+        {filteredReviews.map((review) => (
           <li key={review.id} style={{ marginBottom: "20px" }}>
-            <div style={{ display: "flex", alignItems: "center" }}>
-              {review.poster_url ? (
-                <img
-                  src={review.poster_url}
-                  alt={review.film_title}
-                  style={{
-                    width: "100px",
-                    height: "150px",
-                    marginRight: "15px",
-                    objectFit: "cover",
-                  }}
-                />
-              ) : (
-                <div
-                  style={{
-                    width: "100px",
-                    height: "150px",
-                    backgroundColor: "#ddd",
-                    marginRight: "15px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <span>No Image</span>
-                </div>
-              )}
-              <div>
-                <h3>{review.film_title}</h3>
-                <p>
-                  <strong>User:</strong> {review.user_email}
-                </p>
-                <p>
-                  <strong>Rating:</strong> {review.rating}/5
-                </p>
-                <p>{review.review_text}</p>
-                <small>
-                  Posted on: {new Date(review.created_at).toLocaleString()}
-                </small>
-              </div>
-            </div>
+            <PublicReviewsItem review={review} />
           </li>
         ))}
       </ul>
