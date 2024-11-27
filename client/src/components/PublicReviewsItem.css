@@ -1,13 +1,16 @@
-.review-item {
+.reviews-item {
   display: flex;
   background-color: #f9f9f9;
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .review-item__avatar {
   margin-right: 20px;
+  position: relative;
 }
 
 .review-item__image {
@@ -26,6 +29,7 @@
   align-items: center;
   justify-content: center;
   font-size: 0.9rem;
+  color: #fff;
 }
 
 .review-item__content {
@@ -34,30 +38,32 @@
 }
 
 .review-item__title {
-  font-size: 1.2rem;
-  font-weight: bold;
+  font-size: 1.4rem;
+  font-weight: 600;
   margin-bottom: 10px;
 }
 
 .review-item__email {
-  font-size: 0.9rem;
+  font-size: 1rem;
+  font-weight: 600;
   color: #555;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .review-item__rating {
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: #ffcc00;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .review-item__text {
   font-size: 1rem;
+  color: #333;
   margin-bottom: 10px;
 }
 
 .review-item__date {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   color: #888;
 }
 
@@ -70,6 +76,7 @@
   border-radius: 5px;
   cursor: pointer;
   text-transform: uppercase;
+  font-size: 0.9rem;
 }
 
 .review-item__details-button:hover {

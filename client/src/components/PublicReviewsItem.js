@@ -3,7 +3,7 @@ import "./PublicReviewsItem.css";
 
 const PublicReviewsItem = ({ review }) => {
   return (
-    <div className="review-item">
+    <div className="reviews-item">
       <div className="review-item__avatar">
         {review.poster_url ? (
           <img
