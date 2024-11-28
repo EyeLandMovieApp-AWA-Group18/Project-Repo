@@ -7,19 +7,25 @@ import {
     getGroupDetails, 
     deleteGroup 
 } from '../controllers/groupController.js';
+import {
+    addGroupMember,
+    removeGroupMember,
+    getGroupMembers,
+    checkMembership
+} from '../controllers/groupMembershipController.js';
 
 const router = express.Router();
 
-// Create a new group
+// Group CRUD operations
 router.post('/', auth, createGroup);
-
-// Get all groups
 router.get('/', auth, getAllGroups);
-
-// Get group details
 router.get('/:id', auth, getGroupDetails);
-
-// Delete a group (only owner)
 router.delete('/:id', auth, groupOwnerMiddleware, deleteGroup);
+
+// Group membership operations
+router.post('/:id/members', auth, addGroupMember);
+router.delete('/:id/members', auth, removeGroupMember);
+router.get('/:id/members', auth, getGroupMembers);
+router.get('/:id/membership', auth, checkMembership);
 
 export default router;
