@@ -60,7 +60,6 @@ function Header() {
             </div>
             <Link to="/showtimes">Show Times</Link>
             <Link to="/public-reviews">Reviews</Link>
-            <a href="#about-us">About Us</a>
 
             {user && user.email && <Link to="/profile">Profile</Link>}
             {user && user.email && <Link to="/groups">Groups</Link>}
