@@ -4,7 +4,7 @@ import TimeSelector from "../components/TimeSelector";
 import LocationSelector from "../components/LocationSelector";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import "../ShowtimesPage.css";
+import "./ShowtimesPage.css";
 
 const ShowtimesPage = () => {
   const [areas, setAreas] = useState([]);

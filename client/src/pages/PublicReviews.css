@@ -1,0 +1,25 @@
+.public-reviews {
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.public-reviews__title {
+  font-size: 3rem;
+  margin-bottom: 30px;
+}
+
+.public-reviews__search-bar {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  margin-bottom: 50px;
+  justify-content: center; /* 水平居中 */
+}
+.public-reviews__list {
+  list-style: none;
+  padding: 0;
+}
+
+.public-reviews__list-item {
+  margin-bottom: 20px;
+}

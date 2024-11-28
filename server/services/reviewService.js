@@ -1,6 +1,5 @@
 import pool from "../database/db.js";
 
-// 添加评论
 export const addReview = async (film_id, user_id, rating, review_text) => {
   const query = `
     INSERT INTO reviews (film_id, user_id, rating, review_text)
@@ -11,14 +10,12 @@ export const addReview = async (film_id, user_id, rating, review_text) => {
   return result.rows[0];
 };
 
-// 根据电影 ID 获取评论
 export const getReviewsByFilmId = async (film_id) => {
   const query = `SELECT * FROM reviews WHERE film_id = $1 ORDER BY created_at DESC;`;
   const result = await pool.query(query, [film_id]);
   return result.rows;
 };
 
-// 删除评论
 export const deleteReviewById = async (id) => {
   const query = `DELETE FROM reviews WHERE id = $1;`;
   await pool.query(query, [id]);

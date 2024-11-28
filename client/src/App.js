@@ -9,6 +9,7 @@ import Authentication from "./pages/Authentication.js";
 import RemoveAccount from "./pages/RemoveAccount.js";
 import SearchPage from "./pages/searchPage.js";
 import ShowtimesPage from "./pages/ShowtimesPage.js";
+import PublicReviews from "./pages/PublicReviews";
 import "./App.css";
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
           <Route path="/removeaccount" element={<RemoveAccount />} />
           <Route path="/search" element={<SearchPage />} />
           <Route path="/showtimes" element={<ShowtimesPage />} />
+          <Route path="/public-reviews" element={<PublicReviews />} />
         </Routes>
 
         {/* Conditionally render Footer only on the Home page */}
