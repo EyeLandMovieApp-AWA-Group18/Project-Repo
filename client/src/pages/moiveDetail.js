@@ -108,7 +108,7 @@ const MovieDetail = () => {
       <div className="container">
         <h1>{movie.title}</h1>
         <img
-          src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
+          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
           alt={movie.title}
           className="movie-image"
         />
