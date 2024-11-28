@@ -22,7 +22,6 @@ import GroupPage from "./pages/GroupPage.js";
 import UserProvider from "./contexts/UserProvider.js";
 import Authentication, { AuthenticationMode } from "./pages/Authentication.js";
 import CreateGroupPage from "./pages/CreateGroupPage.js";
-import Authentication, { AuthenticationMode } from "./pages/Authentication.js";
 import PublicReviews from "./pages/PublicReviews";
 //import "./App.css";
 
