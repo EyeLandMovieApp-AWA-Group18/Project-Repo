@@ -1,20 +1,17 @@
 import pool from "../database/db.js";
 
-// Controller to get reviews for a specific movie
 export const getReviews = async (req, res) => {
   const { film_id } = req.params;
+  const { user_id } = req.query;
 
   try {
-    // 修改查询，增加了 `user_email`
-    const result = await pool.query(
-      `SELECT reviews.id, reviews.review_text, reviews.rating, reviews.created_at, users.email AS user_email
-       FROM reviews
-       JOIN users ON reviews.user_id = users.id
-       WHERE reviews.film_id = $1
-       ORDER BY reviews.created_at DESC`,
-      [film_id]
-    );
-    res.json(result.rows); // 返回评论列表，包括用户邮箱
+    const query = `
+      SELECT reviews.id, reviews.review_text, reviews.rating, reviews.created_at
+      FROM reviews
+      WHERE reviews.film_id = $1 AND reviews.user_id = $2
+    `;
+    const result = await pool.query(query, [film_id, user_id]);
+    res.json(result.rows);
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Failed to fetch reviews" });
@@ -35,5 +32,32 @@ export const addReview = async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Failed to add review" });
+  }
+};
+
+export const deleteReview = async (req, res) => {
+  const { review_id } = req.params;
+  const { user_id } = req.query;
+
+  try {
+    const checkOwnershipQuery = `
+      SELECT 1 FROM reviews WHERE id = $1 AND user_id = $2
+    `;
+    const ownershipResult = await pool.query(checkOwnershipQuery, [
+      review_id,
+      user_id,
+    ]);
+
+    if (ownershipResult.rowCount === 0) {
+      return res
+        .status(403)
+        .json({ error: "Unauthorized to delete this review" });
+    }
+
+    await pool.query("DELETE FROM reviews WHERE id = $1", [review_id]);
+    res.status(204).send();
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to delete review" });
   }
 };
