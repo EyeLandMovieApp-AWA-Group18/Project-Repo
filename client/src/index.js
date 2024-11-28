@@ -17,9 +17,12 @@ import RemoveAccount from "./pages/RemoveAccount.js";
 import SearchPage from "./pages/searchPage.js";
 import ShowtimesPage from "./pages/ShowtimesPage.js";
 import SharedFavoritesPage from "./pages/SharedFavoritesPage.js";
+import GroupListPage from "./pages/GroupListPage.js";
+import GroupPage from "./pages/GroupPage.js";
 import UserProvider from "./contexts/UserProvider.js";
 import Authentication, { AuthenticationMode } from './pages/Authentication.js';
-//import "./App.css";
+import CreateGroupPage from "./pages/CreateGroupPage.js";
+
 
 const router = createBrowserRouter([
   { 
@@ -64,6 +67,18 @@ const router = createBrowserRouter([
           {
             path: "/profile",
             element: <Profile />,
+          },
+          {
+            path: "/groups",
+            element: <GroupListPage />,
+          },
+          {
+            path: "/groups/:id",
+            element: <GroupPage />,
+          },
+          {
+            path: "/groups/new",
+            element: <CreateGroupPage />,
           },
         ],
       },
