@@ -1,0 +1,90 @@
+.group-page {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.group-page-header {
+    position: relative; /* Make this a positioning context for the delete button */
+    
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.group-page h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: #333;
+    text-align: center;
+}
+
+.group-page p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.group-page section {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.group-page section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.group-page ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.group-page ul li {
+    padding: 5px 0;
+    font-size: 1rem;
+    color: #555;
+}
+
+.group-page .delete-group-button {
+    position: absolute; /* Position the button absolutely within its container */
+    top: 20px; /* Adjust the distance from the top */
+    right: 5px; /* Adjust the distance from the right */
+    background-color: #f44336!important; /* Red background color */
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center; /* Align icon and text */
+    gap: 8px; /* Space between the icon and text */
+}
+
+.group-page .delete-group-button:hover {
+    background-color: #d32f2f!important; /* Darker red on hover */
+}
+
+.group-page button {
+    background-color: #7a5df8;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.group-page button:hover {
+    background-color: #5d47c3;
+}
+
+
