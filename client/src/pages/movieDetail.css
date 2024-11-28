@@ -269,3 +269,42 @@ h1 {
 .spacer {
   margin-top: 80px;
 }
+
+.star-rating {
+  display: flex;
+  gap: 5px;
+}
+
+.star {
+  font-size: 20px;
+  color: #d3d3d3; /* 灰色表示未点亮 */
+}
+
+.star.filled {
+  color: #ffbc00; /* 黄色表示已点亮 */
+}
+
+.review-item {
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.review-item p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.review-item .user-email {
+  color: blue;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.review-item .created-at {
+  font-size: 12px;
+  color: #666;
+  font-style: italic;
+}

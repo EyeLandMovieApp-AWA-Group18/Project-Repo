@@ -1,0 +1,17 @@
+.review-stars-search-bar {
+  margin: 0 10px;
+}
+
+.review-stars-search-bar__dropdown {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #ffffff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.review-stars-search-bar__dropdown:focus {
+  outline: none;
+  border-color: #007bff;
+}

@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 //import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 //import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 //import Header from "./components/Header";
 //import Footer from "./components/Footer";
@@ -20,12 +20,14 @@ import SharedFavoritesPage from "./pages/SharedFavoritesPage.js";
 import GroupListPage from "./pages/GroupListPage.js";
 import GroupPage from "./pages/GroupPage.js";
 import UserProvider from "./contexts/UserProvider.js";
-import Authentication, { AuthenticationMode } from './pages/Authentication.js';
+import Authentication, { AuthenticationMode } from "./pages/Authentication.js";
 import CreateGroupPage from "./pages/CreateGroupPage.js";
-
+import Authentication, { AuthenticationMode } from "./pages/Authentication.js";
+import PublicReviews from "./pages/PublicReviews";
+//import "./App.css";
 
 const router = createBrowserRouter([
-  { 
+  {
     path: "/",
     element: <MainLayout />,
     children: [
@@ -34,32 +36,40 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path:"/movie/:id",
-        element:<MovieDetail />,
+        path: "/movie/:id",
+        element: <MovieDetail />,
       },
       {
         path: "/signin",
-        element: <Authentication authenticationMode={AuthenticationMode.Login} />,
+        element: (
+          <Authentication authenticationMode={AuthenticationMode.Login} />
+        ),
       },
       {
         path: "/signup",
-        element: <Authentication authenticationMode={AuthenticationMode.Register} />,
+        element: (
+          <Authentication authenticationMode={AuthenticationMode.Register} />
+        ),
       },
       {
-        path:"/removeaccount",
-        element:<RemoveAccount />,
+        path: "/removeaccount",
+        element: <RemoveAccount />,
       },
       {
-        path:"/search",
-        element:<SearchPage />,
+        path: "/search",
+        element: <SearchPage />,
       },
       {
-        path:"/showtimes",
-        element:<ShowtimesPage />
+        path: "/showtimes",
+        element: <ShowtimesPage />,
       },
       {
-        path:"/shared/:id",
-        element:<SharedFavoritesPage />
+        path: "/public-reviews",
+        element: <PublicReviews />,
+      },
+      {
+        path: "/shared/:id",
+        element: <SharedFavoritesPage />,
       },
       {
         element: <ProtectedRoute />,
@@ -85,13 +95,12 @@ const router = createBrowserRouter([
     ],
   },
 ]);
-         
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <UserProvider>
-      <RouterProvider router = {router} />
+      <RouterProvider router={router} />
     </UserProvider>
   </React.StrictMode>
 );
