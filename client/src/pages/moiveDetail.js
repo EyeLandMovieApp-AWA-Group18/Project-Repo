@@ -16,8 +16,8 @@ const MovieDetail = () => {
   const [reviews, setReviews] = useState([]);
   const [reviewText, setReviewText] = useState("");
   const [rating, setRating] = useState(1);
-  const [showReviews, setShowReviews] = useState(false);
   const [message, setMessage] = useState({ text: "", type: "" });
+  const [showReviews, setShowReviews] = useState(false);
 
   useEffect(() => {
     const loadMovieDetails = async () => {
@@ -29,20 +29,23 @@ const MovieDetail = () => {
     loadMovieDetails();
   }, [id]);
 
-  useEffect(() => {
-    const loadReviews = async () => {
-      try {
+  const loadUserReviews = async () => {
+    try {
+      if (user) {
         const response = await axios.get(
-          `http://localhost:5000/api/reviews/${id}`
+          `http://localhost:5000/api/reviews/${id}?user_id=${user.id}`
         );
-        setReviews(response.data);
-      } catch (error) {
-        console.error("Failed to load reviews:", error);
+        const sortedReviews = response.data.sort(
+          (a, b) => new Date(b.created_at) - new Date(a.created_at)
+        );
+        setReviews(sortedReviews);
+      } else {
+        setReviews([]);
       }
-    };
-
-    loadReviews();
-  }, [id]);
+    } catch (error) {
+      console.error("Failed to load reviews:", error);
+    }
+  };
 
   const handleReviewSubmit = async () => {
     if (!user) {
@@ -66,17 +69,33 @@ const MovieDetail = () => {
       setRating(1);
       setMessage({ text: "Comment submitted successfully.", type: "success" });
       setTimeout(() => setMessage({ text: "", type: "" }), 3000);
-
-      const response = await axios.get(
-        `http://localhost:5000/api/reviews/${id}`
-      );
-      setReviews(response.data);
+      await loadUserReviews(); // Refresh reviews
     } catch (err) {
       setMessage({
         text: "You must be logged in to write a review.",
         type: "error",
       });
-      console.error("Error adding review:", err);
+      console.error("You must be logged in to write a review:", err);
+    }
+  };
+
+  const handleDeleteReview = async (reviewId) => {
+    try {
+      await axios.delete(
+        `http://localhost:5000/api/reviews/${reviewId}?user_id=${user.id}`
+      );
+      setReviews(reviews.filter((review) => review.id !== reviewId));
+    } catch (err) {
+      console.error("Error deleting review:", err);
+    }
+  };
+
+  const toggleShowReviews = () => {
+    if (showReviews) {
+      setShowReviews(false);
+    } else {
+      loadUserReviews();
+      setShowReviews(true);
     }
   };
 
@@ -87,7 +106,6 @@ const MovieDetail = () => {
   return (
     <div className="movie-detail">
       <div className="container">
-        {/* Movie details */}
         <h1>{movie.title}</h1>
         <img
           src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
@@ -105,7 +123,6 @@ const MovieDetail = () => {
           <strong>Rating:</strong> ⭐ {movie.vote_average}
         </p>
 
-        {/* Review section */}
         <div className="review-section">
           <div className="review-header">
             <h2>Write a Review</h2>
@@ -141,16 +158,12 @@ const MovieDetail = () => {
           )}
         </div>
         <div className="spacer"></div>
-        {/* Toggle reviews */}
-        <div className="review-actions">
-          <button
-            onClick={() => setShowReviews(!showReviews)}
-            className="toggle-reviews-button"
-          >
-            {showReviews ? "Hide Reviews" : "Show Reviews"}
-          </button>
-        </div>
-        {showReviews && <ReviewList reviews={reviews} />}
+        <button onClick={toggleShowReviews} className="show-reviews-button">
+          {showReviews ? "Hide Reviews" : "Show Reviews"}
+        </button>
+        {showReviews && (
+          <ReviewList reviews={reviews} onDeleteReview={handleDeleteReview} />
+        )}
       </div>
     </div>
   );

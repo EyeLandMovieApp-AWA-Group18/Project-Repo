@@ -1,6 +1,6 @@
 import React from "react";
 
-const ReviewItem = ({ review }) => {
+const ReviewItem = ({ review, onDeleteReview }) => {
   return (
     <li className="review-item">
       <p className="review-email">{review.user_email}</p>
@@ -9,6 +9,12 @@ const ReviewItem = ({ review }) => {
       <p>
         <em>Submitted on: {new Date(review.created_at).toLocaleString()}</em>
       </p>
+      <button
+        onClick={() => onDeleteReview(review.id)}
+        className="delete-button"
+      >
+        Delete
+      </button>
     </li>
   );
 };
