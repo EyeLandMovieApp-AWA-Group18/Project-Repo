@@ -165,7 +165,22 @@
   border-radius: 4px;
   cursor: pointer;
 }
+.filters-section {
+  display: flex; /* Use flexbox to align elements horizontally */
+  gap: 3rem;
+  flex-wrap: nowrap; /* Prevent wrapping to a new line */
+  margin-top: 1rem;
+  align-items: center; /* Align items vertically in the center */
+}
 
+.filters-section input,
+.filters-section select {
+  flex: 0 1 auto; /* Allow the items to resize dynamically without forcing full width */
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  max-width: 150px;
+}
 /*Now on theaters */
 .section1 {
   width: 100%;

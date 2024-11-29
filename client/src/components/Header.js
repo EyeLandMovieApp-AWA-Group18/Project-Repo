@@ -10,9 +10,8 @@ function Header() {
   const { user, signOut } = useContext(UserContext); // Access user and signOut
   const navigate = useNavigate();
 
-  const handleSearch = (query) => {
-    // Redirect to search page with query as a parameter
-    window.location.href = `/search?query=${encodeURIComponent(query)}`;
+  const handleSearch = (queryParams) => {
+    navigate(`/search?${queryParams}`);
   };
 
   const toggleMoviesMenu = () => {
