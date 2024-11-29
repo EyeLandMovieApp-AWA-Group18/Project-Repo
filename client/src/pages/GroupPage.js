@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useUser } from '../contexts/useUser.js';
 import axios from 'axios'; 
 import GroupMembers from '../components/GroupMembers';
+import PendingRequestsList from '../components/PendingRequestsList';
 import './GroupPage.css';
 
 const API_BASE_URL = process.env.REACT_APP_API_URL;
@@ -11,6 +12,7 @@ const GroupPage = () => {
     const { id } = useParams();
     const [group, setGroup] = useState(null);
     const [showModal, setShowModal] = useState(false);
+    const [activeSection, setActiveSection] = useState('members');
     const navigate = useNavigate();
     const { user } = useUser();
 
@@ -59,6 +61,23 @@ const GroupPage = () => {
 
     const isOwner = group.owner_id === user?.id;
 
+    const renderActiveSection = () => {
+        switch (activeSection) {
+            case 'requests':
+                return <PendingRequestsList groupId={id} />;
+            case 'members':
+                return <GroupMembers groupId={id} isOwner={isOwner} />;
+            case 'movies':
+                return (
+                    <div className="group-movies">
+                        <p>No movies added yet.</p>
+                    </div>
+                );
+            default:
+                return null;
+        }
+    };
+
     return (
         <div className="group-page">
             <div className="group-page-header">
@@ -74,6 +93,35 @@ const GroupPage = () => {
                         🗑️ Delete Group
                     </button>
                 )}
+            </div>
+
+            {/* Section Switcher */}
+            <div className="section-switcher">
+                <button 
+                    className={`switcher-button ${activeSection === 'members' ? 'active' : ''}`}
+                    onClick={() => setActiveSection('members')}
+                >
+                    👥 Members
+                </button>
+                {isOwner && (
+                    <button 
+                        className={`switcher-button ${activeSection === 'requests' ? 'active' : ''}`}
+                        onClick={() => setActiveSection('requests')}
+                    >
+                        ✉️ Requests
+                    </button>
+                )}
+                <button 
+                    className={`switcher-button ${activeSection === 'movies' ? 'active' : ''}`}
+                    onClick={() => setActiveSection('movies')}
+                >
+                    🎬 Movies
+                </button>
+            </div>
+
+            {/* Active Section Content */}
+            <div className="section-content">
+                {renderActiveSection()}
             </div>
 
             {/* Confirmation Modal */}
@@ -93,15 +141,6 @@ const GroupPage = () => {
                     </div>
                 </div>
             )}
-
-            {/* Group Members Section */}
-            <GroupMembers groupId={id} isOwner={isOwner} />
-
-            {/* Group Movies Section */}
-            <section className="group-movies">
-                <h2>🎬 Group Movies</h2>
-                <p>No movies added yet.</p>
-            </section>
         </div>
     );
 };

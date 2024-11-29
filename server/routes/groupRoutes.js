@@ -13,6 +13,14 @@ import {
     getGroupMembers,
     checkMembership
 } from '../controllers/groupMembershipController.js';
+import {
+    sendJoinRequest,
+    cancelJoinRequest,
+    getPendingRequests,
+    acceptJoinRequest,
+    deleteJoinRequest,
+    checkRequestStatus
+} from '../controllers/groupRequestController.js';
 
 const router = express.Router();
 
@@ -27,5 +35,13 @@ router.post('/:id/members', auth, addGroupMember);
 router.delete('/:id/members', auth, removeGroupMember);
 router.get('/:id/members', auth, getGroupMembers);
 router.get('/:id/membership', auth, checkMembership);
+
+// Group join request operations
+router.post('/:groupId/requests', auth, sendJoinRequest);
+router.delete('/:groupId/requests', auth, cancelJoinRequest);
+router.get('/:groupId/requests', auth, groupOwnerMiddleware, getPendingRequests);
+router.post('/:groupId/requests/:requestId/accept', auth, groupOwnerMiddleware, acceptJoinRequest);
+router.delete('/:groupId/requests/:requestId', auth, groupOwnerMiddleware, deleteJoinRequest);
+router.get('/:groupId/requests/status', auth, checkRequestStatus);
 
 export default router;
