@@ -1,0 +1,49 @@
+/* Styling for the profile page */
+.profile-container {
+	display: flex;
+	flex-direction: column;
+	align-items: left;
+	max-width: 650px;
+	width: 100%; /* Allow full width */
+	margin-left: 30px;
+	padding: 40px 20px;
+	background-color: #000;
+	color: #fff;
+  }
+  
+  /* Section titles and separator line */
+  .profile-section h3 {
+	margin-top: 50px;
+	font-size: 1.2em;
+  }
+  
+  .separator {
+	width: 100px; /* Short horizontal line */
+	height: 2px;
+	background-color: #fff;
+	margin: 8px 0 16px 0;
+  }
+  
+  /* Group and movie lists */
+  .profile-section ul {
+	list-style-type: none;
+	padding: 0;
+  }
+  
+  /* Movie items with poster images */
+  .movie-item {
+	display: eflex;
+	align-items: center;
+	margin-bottom: 50px;
+  }
+  
+  .movie-poster {
+	width: 100px;
+	height: 150px;
+	margin-right: 10px;
+	border-radius: 5px;
+  }
+  
+  .movie-item span {
+	font-size: 1em;
+  }

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import FavoritesList from '../components/FavoritesList.js'; 
 import { useUser } from '../contexts/useUser.js'; 
 import ShareFavoritesButton from '../components/ShareFavoritesButton.js';
-import '../App.css';
+import './Profile.css';
 
 const Profile = () => {
   const { user } = useUser();

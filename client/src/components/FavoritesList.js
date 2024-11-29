@@ -3,7 +3,7 @@ import { useUser } from '../contexts/useUser.js';
 import axios from 'axios';
 import MovieCard from '../components/MovieCard';
 import DeleteFavoriteButton from '../components/DeleteFavoriteButton';
-import '../App.css';
+import './FavoritesList.css';
 
 const FavoritesList = () => {
   const { user } = useUser();
