@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext.js";
 import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar.js";
-import "../App.css";
+import "./Header.css";
 
 function Header() {
   const [isMoviesMenuOpen, setMoviesMenuOpen] = useState(false);

@@ -4,7 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 import { fetchMovies } from '../services/searchService.js';
 import MovieCard from '../components/MovieCard.js';
 import ReactPaginate from 'react-paginate';
-import '../App.css';
+import './searchPage.css';
 
 const SearchPage = () => {
   const [searchParams] = useSearchParams();
