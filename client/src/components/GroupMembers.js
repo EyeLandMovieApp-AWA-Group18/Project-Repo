@@ -33,40 +33,6 @@ const GroupMembers = ({ groupId, isOwner }) => {
         }
     };
 
-    const handleJoinGroup = async () => {
-        try {
-            setError(null); // Clear any previous errors
-            const response = await axios.post(
-                `${API_BASE_URL}/groups/${groupId}/members`,
-                {},
-                {
-                    headers: { 
-                        Authorization: `Bearer ${user.token}`,
-                        'Content-Type': 'application/json'
-                    }
-                }
-            );
-            if (response.status === 201) {
-                await fetchMembers(); // Refresh member list
-            }
-        } catch (error) {
-            console.error('Error joining group:', error);
-            if (error.response?.data?.message) {
-                setError(error.response.data.message);
-            } else if (error.response?.status === 400) {
-                setError('Invalid request. Please try again.');
-            } else if (error.response?.status === 401) {
-                setError('You are not authorized to join this group.');
-            } else if (error.response?.status === 403) {
-                setError('You are not allowed to join this group.');
-            } else if (error.response?.status === 500) {
-                setError('Internal server error. Please try again later.');
-            } else {
-                setError('Failed to join group');
-            }
-        }
-    };
-
     const handleLeaveGroup = async () => {
         try {
             setError(null); // Clear any previous errors
@@ -117,11 +83,6 @@ const GroupMembers = ({ groupId, isOwner }) => {
         <div className="group-members">
             <div className="members-header">
                 <h2>Group Members ({members.length})</h2>
-                {!isMember && !isOwner && (
-                    <button className="join-button" onClick={handleJoinGroup}>
-                        Join Group
-                    </button>
-                )}
                 {isMember && !isOwner && (
                     <button className="leave-button" onClick={handleLeaveGroup}>
                         Leave Group
