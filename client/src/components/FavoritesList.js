@@ -63,7 +63,7 @@ const FavoritesList = () => {
     <div className="favorites-grid">
      
       {movies.map((movie) => (
-        <div key={movie.id}>
+        <div key={movie.id} className="favorite-item">
           <MovieCard movie={movie} />
           <DeleteFavoriteButton movieId={movie.id} onDelete={handleDelete} />
         </div>

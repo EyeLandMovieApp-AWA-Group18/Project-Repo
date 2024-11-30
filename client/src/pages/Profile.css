@@ -6,14 +6,39 @@
 	max-width: 650px;
 	width: 100%; /* Allow full width */
 	margin-left: 30px;
-	padding: 40px 20px;
+	padding: 10px 10px 40px 30px;
 	background-color: #000;
 	color: #fff;
   }
   
+  .profile-header {
+    position: relative; /* Enable absolute positioning for the link */
+    text-align: center; /* Center-align the title horizontally */
+    margin-bottom: 20px; /* Space below the header */
+}
+
+.delete-account-link {
+    position: absolute; /* Place the link in the top-right corner */
+    top: 0; /* Align with the top edge */
+    right: 10px; /* Add spacing from the right edge */
+    color: rgb(250, 245, 245);
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.delete-account-link:hover {
+    text-decoration: underline; /* Add underline on hover */
+}
+
+.profile-title {
+    margin: 20px 0 0 0; /* Add spacing above the title and remove other margins */
+    font-size: 1.8em; /* Keep the font size */
+    color: white; /* Ensure the title stands out */
+}
   /* Section titles and separator line */
   .profile-section h3 {
-	margin-top: 50px;
+	margin-top: 30px;
 	font-size: 1.2em;
   }
   
