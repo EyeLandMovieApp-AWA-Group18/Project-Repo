@@ -15,7 +15,11 @@ const Profile = () => {
 
   return (
     <div className="profile-container">
-      <h2>My Profile</h2>
+      <div className="profile-header">
+      
+          <a href="/deleteAccount" className="delete-account-link">Want to remove account? Click here</a>
+          <h2 className="profile-title">My Profile</h2>
+      </div>
       
       {/* Username Section */}
       <div className="profile-section">
