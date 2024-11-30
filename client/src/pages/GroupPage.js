@@ -4,6 +4,7 @@ import { useUser } from '../contexts/useUser.js';
 import axios from 'axios'; 
 import GroupMembers from '../components/GroupMembers';
 import PendingRequestsList from '../components/PendingRequestsList';
+import GroupMovies from '../components/GroupMovies';
 import './GroupPage.css';
 
 const API_BASE_URL = process.env.REACT_APP_API_URL;
@@ -13,6 +14,7 @@ const GroupPage = () => {
     const [group, setGroup] = useState(null);
     const [showModal, setShowModal] = useState(false);
     const [activeSection, setActiveSection] = useState('members');
+    const [isMember, setIsMember] = useState(false);
     const navigate = useNavigate();
     const { user } = useUser();
 
@@ -28,7 +30,22 @@ const GroupPage = () => {
             }
         };
 
-        fetchGroup();
+        const checkMembershipStatus = async () => {
+            try {
+                const response = await axios.get(`${API_BASE_URL}/groups/${id}/membership`, {
+                    headers: { Authorization: `Bearer ${user.token}` },
+                });
+                setIsMember(response.data.isMember);
+            } catch (error) {
+                console.error('Error checking membership:', error);
+                setIsMember(false);
+            }
+        };
+
+        if (user?.token) {
+            fetchGroup();
+            checkMembershipStatus();
+        }
     }, [id, user]);
 
     const handleDelete = async () => {
@@ -68,11 +85,7 @@ const GroupPage = () => {
             case 'members':
                 return <GroupMembers groupId={id} isOwner={isOwner} />;
             case 'movies':
-                return (
-                    <div className="group-movies">
-                        <p>No movies added yet.</p>
-                    </div>
-                );
+                return <GroupMovies groupId={id} />;
             default:
                 return null;
         }
@@ -111,12 +124,14 @@ const GroupPage = () => {
                         ✉️ Requests
                     </button>
                 )}
-                <button 
-                    className={`switcher-button ${activeSection === 'movies' ? 'active' : ''}`}
-                    onClick={() => setActiveSection('movies')}
-                >
-                    🎬 Movies
-                </button>
+                {(isMember || isOwner) && (
+                    <button 
+                        className={`switcher-button ${activeSection === 'movies' ? 'active' : ''}`}
+                        onClick={() => setActiveSection('movies')}
+                    >
+                        🎬 Movies
+                    </button>
+                )}
             </div>
 
             {/* Active Section Content */}

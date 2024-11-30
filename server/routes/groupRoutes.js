@@ -21,12 +21,20 @@ import {
     deleteJoinRequest,
     checkRequestStatus
 } from '../controllers/groupRequestController.js';
+import {
+    getUserGroups,
+    addMovieToGroup,
+    getGroupMovies,
+    getMovieSharedGroups,
+    deleteGroupMovie
+} from '../controllers/groupMoviesController.js';
 
 const router = express.Router();
 
 // Group CRUD operations
 router.post('/', auth, createGroup);
 router.get('/', auth, getAllGroups);
+router.get('/my-groups', auth, getUserGroups);
 router.get('/:id', auth, getGroupDetails);
 router.delete('/:id', auth, groupOwnerMiddleware, deleteGroup);
 
@@ -43,5 +51,11 @@ router.get('/:groupId/requests', auth, groupOwnerMiddleware, getPendingRequests)
 router.post('/:groupId/requests/:requestId/accept', auth, groupOwnerMiddleware, acceptJoinRequest);
 router.delete('/:groupId/requests/:requestId', auth, groupOwnerMiddleware, deleteJoinRequest);
 router.get('/:groupId/requests/status', auth, checkRequestStatus);
+
+// Group movies operations
+router.post('/:groupId/movies', auth, addMovieToGroup);
+router.get('/:groupId/movies', auth, getGroupMovies);
+router.get('/movies/:movieId/shared', auth, getMovieSharedGroups);
+router.delete('/:groupId/movies/:movieId', auth, deleteGroupMovie);
 
 export default router;

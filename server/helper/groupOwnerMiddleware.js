@@ -1,12 +1,12 @@
 import groupModel from '../models/groupModel.js';
 
 export const groupOwnerMiddleware = async (req, res, next) => {
-    const { id } = req.params;
+    const groupId = req.params.groupId || req.params.id; // Handle both parameter names
 
     try {
-        const group = await groupModel.getGroupById(id);
+        const group = await groupModel.getGroupById(groupId);
         if (!group) {
-            console.log('Group not found:', id);
+            console.log('Group not found:', groupId);
             return res.status(404).json({ message: 'Group not found' });
         }
 

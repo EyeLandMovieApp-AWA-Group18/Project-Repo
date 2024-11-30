@@ -1,6 +1,3 @@
--- Initialize database schema
-
--- Drop existing tables (in reverse dependency order)
 DROP TABLE IF EXISTS groupRequests;
 DROP TABLE IF EXISTS groupMovies;
 DROP TABLE IF EXISTS group_members;
@@ -11,7 +8,6 @@ DROP TABLE IF EXISTS favourites;
 DROP TABLE IF EXISTS films;
 DROP TABLE IF EXISTS users;
 
--- Create users table first as it's referenced by other tables
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     username VARCHAR(255) UNIQUE NOT NULL,
@@ -23,15 +19,12 @@ CREATE TABLE users (
     updated_at TIMESTAMP
 );
 
--- Create films table (referenced by reviews and group_movies)
 CREATE TABLE films (
     id SERIAL PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
-    -- Add other film-related columns as needed
     created_at TIMESTAMP DEFAULT NOW()
 );
 
--- Create favourites table
 CREATE TABLE favourites (
     id SERIAL PRIMARY KEY,
     user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
@@ -39,7 +32,6 @@ CREATE TABLE favourites (
     created_at TIMESTAMP DEFAULT NOW()
 );
 
--- Create shared_favorites table
 CREATE TABLE shared_favorites (
   id SERIAL PRIMARY KEY,
   user_id INT NOT NULL REFERENCES users(id),
@@ -47,7 +39,6 @@ CREATE TABLE shared_favorites (
   created_at TIMESTAMP DEFAULT NOW()
 );
 
--- Create reviews table
 CREATE TABLE reviews (
     id SERIAL PRIMARY KEY,
     film_id INTEGER NOT NULL,
@@ -59,7 +50,6 @@ CREATE TABLE reviews (
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
--- Create groups table
 CREATE TABLE groups (
     id SERIAL PRIMARY KEY,
     owner_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
@@ -68,7 +58,6 @@ CREATE TABLE groups (
     created_at TIMESTAMP DEFAULT NOW()
 );
 
--- Create group_members table
 CREATE TABLE group_members (
     id SERIAL PRIMARY KEY,
     group_id INTEGER NOT NULL,
@@ -80,7 +69,6 @@ CREATE TABLE group_members (
     UNIQUE (group_id, user_id)
 );
 
--- Create groupMovies table
 CREATE TABLE groupMovies (
     id SERIAL PRIMARY KEY,
     group_id INTEGER NOT NULL,
@@ -90,7 +78,6 @@ CREATE TABLE groupMovies (
     FOREIGN KEY (movie_id) REFERENCES films(id) ON DELETE CASCADE
 );
 
--- Create groupRequests table
 CREATE TABLE groupRequests (
     id SERIAL PRIMARY KEY,
     group_id INTEGER NOT NULL,
