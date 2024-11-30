@@ -22,7 +22,7 @@ export const getUserGroups = async (req, res) => {
 // Add movie to group
 export const addMovieToGroup = async (req, res) => {
     const { groupId } = req.params;
-    const { movieId, movieTitle } = req.body;
+    const { movieId } = req.body;
     const userId = req.user.id;
 
     const client = await pool.connect();
@@ -52,28 +52,23 @@ export const addMovieToGroup = async (req, res) => {
             return res.status(400).json({ message: 'Movie already exists in this group' });
         }
 
-        // Check if movie exists in films table, if not insert it
-        const filmCheck = await client.query(
-            'SELECT id FROM films WHERE id = $1',
-            [movieId]
-        );
-
-        if (filmCheck.rows.length === 0) {
-            // Movie doesn't exist, insert it
-            await client.query(
-                'INSERT INTO films (id, title) VALUES ($1, $2)',
-                [movieId, movieTitle || `Movie ${movieId}`]
-            );
-        }
-
         // Add movie to group
         const result = await client.query(
             'INSERT INTO groupMovies (group_id, movie_id) VALUES ($1, $2) RETURNING *',
             [groupId, movieId]
         );
 
+        // Get all movies in the group
+        const groupMovies = await client.query(
+            `SELECT gm.*, g.name as group_name 
+             FROM groupMovies gm
+             JOIN groups g ON gm.group_id = g.id
+             WHERE gm.group_id = $1`,
+            [groupId]
+        );
+
         await client.query('COMMIT');
-        res.status(201).json(result.rows[0]);
+        res.status(201).json(groupMovies.rows);
     } catch (error) {
         await client.query('ROLLBACK');
         console.error('Error in addMovieToGroup:', error);
@@ -101,13 +96,10 @@ export const getGroupMovies = async (req, res) => {
 
         // Get all movies with their titles and user information
         const result = await pool.query(
-            `SELECT gm.*, f.title, u.username as shared_by, gm.posted_at as shared_at
+            `SELECT gm.*, g.name as group_name 
              FROM groupMovies gm
-             JOIN films f ON gm.movie_id = f.id
-             JOIN group_members gms ON gm.group_id = gms.group_id
-             JOIN users u ON gms.user_id = u.id
-             WHERE gm.group_id = $1 
-             ORDER BY gm.posted_at DESC`,
+             JOIN groups g ON gm.group_id = g.id
+             WHERE gm.group_id = $1`,
             [groupId]
         );
 

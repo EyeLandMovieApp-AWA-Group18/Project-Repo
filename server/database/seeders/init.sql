@@ -5,7 +5,6 @@ DROP TABLE IF EXISTS groups;
 DROP TABLE IF EXISTS reviews;
 DROP TABLE IF EXISTS shared_favorites;
 DROP TABLE IF EXISTS favourites;
-DROP TABLE IF EXISTS films;
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
@@ -17,12 +16,6 @@ CREATE TABLE users (
     bio TEXT,
     created_at TIMESTAMP DEFAULT NOW(),
     updated_at TIMESTAMP
-);
-
-CREATE TABLE films (
-    id SERIAL PRIMARY KEY,
-    title VARCHAR(255) NOT NULL,
-    created_at TIMESTAMP DEFAULT NOW()
 );
 
 CREATE TABLE favourites (
@@ -41,7 +34,7 @@ CREATE TABLE shared_favorites (
 
 CREATE TABLE reviews (
     id SERIAL PRIMARY KEY,
-    film_id INTEGER NOT NULL,
+    movie_id INTEGER NOT NULL,
     user_id INTEGER NOT NULL,
     rating INTEGER CHECK (rating BETWEEN 1 AND 5),
     review_text TEXT,
@@ -74,8 +67,7 @@ CREATE TABLE groupMovies (
     group_id INTEGER NOT NULL,
     movie_id INTEGER NOT NULL,
     posted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (group_id) REFERENCES groups(id) ON DELETE CASCADE,
-    FOREIGN KEY (movie_id) REFERENCES films(id) ON DELETE CASCADE
+    FOREIGN KEY (group_id) REFERENCES groups(id) ON DELETE CASCADE
 );
 
 CREATE TABLE groupRequests (
