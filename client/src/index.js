@@ -13,7 +13,7 @@ import Home from "./pages/home.js";
 import Profile from "./pages/Profile.js";
 import MovieDetail from "./pages/moiveDetail.js";
 //import Authentication from "./pages/Authentication.js";
-import RemoveAccount from "./pages/RemoveAccount.js";
+import DeleteAccount from "./pages/DeleteAccount.js";
 import SearchPage from "./pages/searchPage.js";
 import ShowtimesPage from "./pages/ShowtimesPage.js";
 import SharedFavoritesPage from "./pages/SharedFavoritesPage.js";
@@ -51,8 +51,8 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/removeaccount",
-        element: <RemoveAccount />,
+        path: "/deleteAccount",
+        element: <DeleteAccount />,
       },
       {
         path: "/search",

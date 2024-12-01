@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import FavoritesList from '../components/FavoritesList.js'; 
 import { useUser } from '../contexts/useUser.js'; 
 import ShareFavoritesButton from '../components/ShareFavoritesButton.js';
-import '../App.css';
+import './Profile.css';
 
 const Profile = () => {
   const { user } = useUser();
@@ -15,7 +15,11 @@ const Profile = () => {
 
   return (
     <div className="profile-container">
-      <h2>My Profile</h2>
+      <div className="profile-header">
+      
+          <a href="/deleteAccount" className="delete-account-link">Want to remove account? Click here</a>
+          <h2 className="profile-title">My Profile</h2>
+      </div>
       
       {/* Username Section */}
       <div className="profile-section">

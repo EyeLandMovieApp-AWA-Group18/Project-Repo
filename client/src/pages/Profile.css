@@ -1,0 +1,74 @@
+/* Styling for the profile page */
+.profile-container {
+	display: flex;
+	flex-direction: column;
+	align-items: left;
+	max-width: 650px;
+	width: 100%; /* Allow full width */
+	margin-left: 30px;
+	padding: 10px 10px 40px 30px;
+	background-color: #000;
+	color: #fff;
+  }
+  
+  .profile-header {
+    position: relative; /* Enable absolute positioning for the link */
+    text-align: center; /* Center-align the title horizontally */
+    margin-bottom: 20px; /* Space below the header */
+}
+
+.delete-account-link {
+    position: absolute; /* Place the link in the top-right corner */
+    top: 0; /* Align with the top edge */
+    right: 10px; /* Add spacing from the right edge */
+    color: rgb(250, 245, 245);
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.delete-account-link:hover {
+    text-decoration: underline; /* Add underline on hover */
+}
+
+.profile-title {
+    margin: 20px 0 0 0; /* Add spacing above the title and remove other margins */
+    font-size: 1.8em; /* Keep the font size */
+    color: white; /* Ensure the title stands out */
+}
+  /* Section titles and separator line */
+  .profile-section h3 {
+	margin-top: 30px;
+	font-size: 1.2em;
+  }
+  
+  .separator {
+	width: 100px; /* Short horizontal line */
+	height: 2px;
+	background-color: #fff;
+	margin: 8px 0 16px 0;
+  }
+  
+  /* Group and movie lists */
+  .profile-section ul {
+	list-style-type: none;
+	padding: 0;
+  }
+  
+  /* Movie items with poster images */
+  .movie-item {
+	display: eflex;
+	align-items: center;
+	margin-bottom: 50px;
+  }
+  
+  .movie-poster {
+	width: 100px;
+	height: 150px;
+	margin-right: 10px;
+	border-radius: 5px;
+  }
+  
+  .movie-item span {
+	font-size: 1em;
+  }
