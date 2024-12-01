@@ -11,31 +11,30 @@ const SearchPage = () => {
   const [movies, setMovies] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
   const query = searchParams.get('query') || '';
-  const yearFrom = parseInt(searchParams.get('yearFrom')) || null;
-  const yearTo = parseInt(searchParams.get('yearTo')) || null;
-  const genre = parseInt(searchParams.get('genre')) || null;
-  const rating = parseFloat(searchParams.get('rating')) || null;
+  const yearFrom = searchParams.get('yearFrom') ? parseInt(searchParams.get('yearFrom')) : null; 
+  const yearTo = searchParams.get('yearTo') ? parseInt(searchParams.get('yearTo')) : null;
+  const genre = searchParams.get('genre') ? parseInt(searchParams.get('genre')) : null;
+  const rating = searchParams.get('rating') ? parseFloat(searchParams.get('rating')) : null;
 
-  const handleSearch = async (searchQuery, page = 1) => {
-    const data = await fetchMovies(searchQuery, page);
-    // Apply filters locally
-    const filteredMovies = data.results.filter((movie) => {
-      const releaseYear = parseInt(movie.release_date?.split('-')[0] || '');
-      return (
-        (!yearFrom || releaseYear >= yearFrom) &&
-        (!yearTo || releaseYear <= yearTo) &&
-        (!genre || movie.genre_ids.includes(genre)) &&
-        (!rating || movie.vote_average >= rating)
-      );
-    });
-    setMovies(filteredMovies);
-    setTotalPages(data.total_pages || 0);
-  };
+  const handleSearch = async () => {
+    setIsLoading(true); // Start loading
+    const filters = { yearFrom, yearTo, genre, rating }; 
+    try {
+    const data = await fetchMovies(query, currentPage, filters); 
+    setMovies(data.results);
+    console.log("Total Pages from Backend:", data.total_pages);
+    setTotalPages(data.total_pages > 0 ? data.total_pages : 1);
+  }  catch (error) {
+    console.error("Error fetching movies:", error);
+  } finally {
+    setIsLoading(false); // End loading
+    }};
 
   useEffect(() => {
     if (query) {
-      handleSearch(query, currentPage);
+      handleSearch();
     }
   }, [query, yearFrom, yearTo, genre, rating, currentPage]);
 
@@ -47,6 +46,10 @@ const SearchPage = () => {
   return (
     <div className="search-page">
       {/*<SearchBar onSearch={(q) => handleSearch(q)} />*/}
+      {isLoading ? (
+      <p className="loading-message">It's loading now, please wait...</p>
+    ) : (
+    <>
       {query && (
         <h2 className="search-results-text">Search results for: "{query}"</h2>
       )}
@@ -59,7 +62,7 @@ const SearchPage = () => {
         ))}
       </div>
       {/* Pagination component */}
-      {totalPages > 1 && (
+      {totalPages > 0 && (
         <ReactPaginate
           previousLabel={'← Previous'}
           nextLabel={'Next →'}
@@ -80,6 +83,8 @@ const SearchPage = () => {
           activeClassName={'active'}
         />
       )}
+    </>
+    )}
     </div>
   );
 };

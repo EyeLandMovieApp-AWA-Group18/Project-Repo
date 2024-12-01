@@ -21,6 +21,11 @@ export const getAllGroups = async () => {
     const response = await axios.get(BASE_URL, getHeaders());
     return response.data;
 };
+//Get the user's groups
+export const getUserGroups = async () => {
+    const response = await axios.get(`${BASE_URL}/my-groups`, getHeaders());
+    return response.data;
+};
 
 // Create a new group
 export const createGroup = async (groupData) => {

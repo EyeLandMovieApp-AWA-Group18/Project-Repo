@@ -4,7 +4,7 @@
 	flex-wrap: wrap; /* Wrap items to the next line */
 	justify-content: space-between;  /* Distribute items evenly */
 	gap: 20px; /* Add space between movie cards */
-	padding: 10px;
+	padding: 30px;
   }
   .favorite-item {
 	display: flex;

@@ -20,7 +20,15 @@ const SearchBar = ({ onSearch }) => {
   ];
 
   const handleInputChange = (e) => {
-    setFilters({ ...filters, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+
+    // Apply constraints for  rating
+    if (name === 'rating') {
+      const rating = parseFloat(value);
+      if (rating < 0 || rating > 10) return; // Prevent rating outside 0-10
+    }
+
+    setFilters({ ...filters, [name]: value });
   };
 
   const toggleFilters = () => setFiltersVisible(!filtersVisible);
@@ -68,6 +76,7 @@ const SearchBar = ({ onSearch }) => {
             value={filters.yearFrom}
             onChange={handleInputChange}
             placeholder="From Year"
+            min="1895"
           />
           <input
             type="number"
@@ -75,6 +84,7 @@ const SearchBar = ({ onSearch }) => {
             value={filters.yearTo}
             onChange={handleInputChange}
             placeholder="To Year"
+            min="1895"
           />
           <select name="genre" value={filters.genre} onChange={handleInputChange}>
             <option value="">All Genres</option>
@@ -91,6 +101,8 @@ const SearchBar = ({ onSearch }) => {
             value={filters.rating}
             onChange={handleInputChange}
             placeholder="Min Rating"
+            min="0"
+            max="10"
           />
         </div>
       )}
