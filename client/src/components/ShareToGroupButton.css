@@ -1,0 +1,74 @@
+.share-to-group {
+  position: relative;
+  display: inline-block;
+  z-index: 1000;
+}
+
+.share-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.share-button:hover {
+  background-color: #45a049;
+}
+
+.share-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.group-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1001;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 8px;
+  margin-top: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 200px;
+  width: max-content;
+}
+
+.group-dropdown select {
+  padding: 6px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 100%;
+  background-color: white;
+  color: #333;
+}
+
+.confirm-share-button {
+  background-color: #2196F3;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.confirm-share-button:hover {
+  background-color: #1976D2;
+}
+
+.confirm-share-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}

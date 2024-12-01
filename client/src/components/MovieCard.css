@@ -6,34 +6,116 @@
 	margin: 5px;
 	border-radius: 10px;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	overflow: hidden;
+	overflow: visible;
 	background-color: #1c1c1c;
 	color: #fff;
 	transition: transform 0.3s ease;
-  }
+}
   
-  .movie-card:hover {
+.movie-card:hover {
 	transform: translateY(-10px);
-  }
+}
   
-  .movie-backdrop {
+.movie-backdrop {
 	width: 100%;
 	height: 180px;
 	object-fit: cover;
-  }
+}
   
-  .movie-info {
+.movie-info {
 	padding: 15px;
 	text-align: center;
-  }
+	width: 100%;
+	position: relative;
+}
   
-  .movie-title {
+.movie-title {
 	font-size: 18px;
 	margin: 10px 0;
-  }
+}
   
-  .movie-rating {
+.movie-rating {
 	font-size: 16px;
 	color: #ffcc00;
-  }
-  
+	margin-bottom: 15px;
+}
+
+.movie-actions {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	align-items: center;
+	position: relative;
+}
+
+.movie-actions button {
+	min-width: 120px;
+	padding: 8px 16px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 14px;
+	transition: background-color 0.3s ease;
+}
+
+.movie-actions a button {
+	background-color: #1976D2;
+	color: white;
+}
+
+.movie-actions a button:hover {
+	background-color: #1565C0;
+}
+
+.movie-share-info {
+  margin-top: 8px;
+  margin-bottom: 12px;
+  font-size: 0.9em;
+  color: #666;
+}
+
+.shared-by {
+  margin: 0;
+  font-weight: 500;
+}
+
+.shared-at {
+  margin: 2px 0 0 0;
+  font-size: 0.9em;
+  color: #888;
+}
+
+.delete-movie-button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.delete-movie-button:hover {
+  background-color: #c82333;
+}
+
+.delete-movie-button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.share-button.shared-all {
+  background-color: #28a745;
+  cursor: default;
+}
+
+.share-button.shared-all:disabled {
+  opacity: 1;
+}
+
+.group-dropdown select option:disabled {
+  color: #6c757d;
+  font-style: italic;
+  background-color: #e9ecef;
+}
