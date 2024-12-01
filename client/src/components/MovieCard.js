@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './MovieCard.css';
 
 const MovieCard = ({ movie }) => {
-  const { id, backdrop_path, title, vote_average } = movie;
+  const { id, poster_path, title, vote_average } = movie;
 
   // Base URL for the TMDB images
   const imageBaseUrl = 'https://image.tmdb.org/t/p/w500';
@@ -11,7 +11,7 @@ const MovieCard = ({ movie }) => {
   return (
     <div className="movie-card">
       <img
-        src={backdrop_path ? `${imageBaseUrl}${backdrop_path}` : 'https://via.placeholder.com/500x280'}
+        src={poster_path? `${imageBaseUrl}${poster_path}` : 'https://via.placeholder.com/500x280'}
         alt={title}
         className="movie-backdrop"
       />

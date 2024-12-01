@@ -3,16 +3,15 @@ import { useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext.js";
 import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar.js";
-import "../App.css";
+import "./Header.css";
 
 function Header() {
   const [isMoviesMenuOpen, setMoviesMenuOpen] = useState(false);
   const { user, signOut } = useContext(UserContext); // Access user and signOut
   const navigate = useNavigate();
 
-  const handleSearch = (query) => {
-    // Redirect to search page with query as a parameter
-    window.location.href = `/search?query=${encodeURIComponent(query)}`;
+  const handleSearch = (queryParams) => {
+    navigate(`/search?${queryParams}`);
   };
 
   const toggleMoviesMenu = () => {

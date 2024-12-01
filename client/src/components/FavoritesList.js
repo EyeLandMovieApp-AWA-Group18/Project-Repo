@@ -3,7 +3,7 @@ import { useUser } from '../contexts/useUser.js';
 import axios from 'axios';
 import MovieCard from '../components/MovieCard';
 import DeleteFavoriteButton from '../components/DeleteFavoriteButton';
-import '../App.css';
+import './FavoritesList.css';
 
 const FavoritesList = () => {
   const { user } = useUser();
@@ -63,7 +63,7 @@ const FavoritesList = () => {
     <div className="favorites-grid">
      
       {movies.map((movie) => (
-        <div key={movie.id}>
+        <div key={movie.id} className="favorite-item">
           <MovieCard movie={movie} />
           <DeleteFavoriteButton movieId={movie.id} onDelete={handleDelete} />
         </div>
