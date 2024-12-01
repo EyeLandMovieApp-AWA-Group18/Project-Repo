@@ -1,0 +1,33 @@
+.group-movies {
+  padding: 20px;
+  width: 100%;
+}
+
+.group-movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+
+.group-movies-loading,
+.group-movies-error,
+.group-movies-empty {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+}
+
+.group-movies-error {
+  color: #dc3545;
+}
+
+.group-movies-empty {
+  font-style: italic;
+}
+
+.group-movies-empty .suggestion {
+  margin-top: 10px;
+  font-size: 0.9em;
+  color: #999;
+}

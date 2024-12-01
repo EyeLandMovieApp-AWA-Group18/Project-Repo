@@ -1,13 +1,12 @@
 .group-card.elegant {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 16px;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 15px;
+    width: 300px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-    width: 300px; /* Fixed width */
-    margin: 0 auto; /* Center the card */
-    
 }
 
 .group-card.elegant:hover {
@@ -16,49 +15,71 @@
 }
 
 .group-card-header h3 {
+    margin: 0;
+    color: #1976d2;
     font-size: 1.5rem;
-    margin-bottom: 8px;
-    color: #333;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .group-card-body {
-    margin: 8px 0;
+    margin: 15px 0;
 }
 
 .group-description {
-    color: #555;
-    font-size: 0.95rem;
-    margin-bottom: 8px;
+    color: #666;
+    margin: 10px 0;
+    line-height: 1.4;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
 }
 
 .group-info {
+    color: #888;
     font-size: 0.9rem;
-    color: #777;
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
-
-.symbol {
-    margin-right: 8px;
-    font-size: 1.1rem;
-}
-
-
 
 .group-card-footer {
-    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
 }
 
 .view-button {
-    background-color: #7a5df8;
+    background-color: #1976d2;
     color: white;
     border: none;
-    padding: 8px 12px;
+    padding: 8px 16px;
     border-radius: 4px;
-    font-size: 0.9rem;
     cursor: pointer;
+    font-weight: 500;
     transition: background-color 0.2s ease;
+    width: 100%;
 }
 
 .view-button:hover {
-    background-color: #5d47c3;
+    background-color: #1565c0;
+}
+
+.symbol {
+    font-size: 1.2rem;
+}
+
+.title-symbol {
+    color: #1976d2;
+}
+
+.description-symbol {
+    color: #666;
+}
+
+.member-symbol {
+    color: #4caf50;
 }
