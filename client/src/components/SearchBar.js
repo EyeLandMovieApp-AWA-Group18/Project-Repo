@@ -5,29 +5,40 @@ const SearchBar = ({ onSearch }) => {
   const [query, setQuery] = useState('');
 
   const [filtersVisible, setFiltersVisible] = useState(false);
-  const [filters, setFilters] = useState({ yearFrom: '', yearTo: '', genre: '', rating: '' });
+  const [filters, setFilters] = useState({
+    year: '',
+    language: '',
+    region: '',
+  });
 
-  const genres = [
-  { id: 18, name: 'Drama' },
-  { id: 28, name: 'Action' },
-  { id: 35, name: 'Comedy' },
-  { id: 27, name: 'Horror' },
-  { id: 12, name: 'Adventure' },
-  { id: 16, name: 'Animation' },
-  { id: 80, name: 'Crime' },
-  { id: 99, name: 'Documentary' },
-  { id: 14, name: 'Fantasy' }
+  const languages = [
+    { code: 'en', name: 'English' },
+    { code: 'es', name: 'Spanish' },
+    { code: 'fr', name: 'French' },
+    { code: 'de', name: 'German' },
+    { code: 'it', name: 'Italian' },
+    { code: 'zh', name: 'Chinese' },
+    { code: 'ja', name: 'Japanese' },
+    { code: 'ko', name: 'Korean' },
+    { code: 'hi', name: 'Hindi' },
+    { code: 'ar', name: 'Arabic' },
+  ];
+
+  const regions = [
+    { code: 'US', name: 'United States' },
+    { code: 'IN', name: 'India' },
+    { code: 'GB', name: 'United Kingdom' },
+    { code: 'FR', name: 'France' },
+    { code: 'DE', name: 'Germany' },
+    { code: 'JP', name: 'Japan' },
+    { code: 'KR', name: 'South Korea' },
+    { code: 'CN', name: 'China' },
+    { code: 'IT', name: 'Italy' },
+    { code: 'ES', name: 'Spain' },
   ];
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-
-    // Apply constraints for  rating
-    if (name === 'rating') {
-      const rating = parseFloat(value);
-      if (rating < 0 || rating > 10) return; // Prevent rating outside 0-10
-    }
-
     setFilters({ ...filters, [name]: value });
   };
 
@@ -35,10 +46,9 @@ const SearchBar = ({ onSearch }) => {
 
   const handleSearch = () => {
     const params = new URLSearchParams({ query });
-    if (filters.yearFrom) params.append('yearFrom', filters.yearFrom);
-    if (filters.yearTo) params.append('yearTo', filters.yearTo);
-    if (filters.genre) params.append('genre', filters.genre);
-    if (filters.rating) params.append('rating', filters.rating);
+    if (filters.year) params.append('primary_release_year', filters.year);
+    if (filters.language) params.append('language', filters.language);
+    if (filters.region) params.append('region', filters.region);
 
     if (onSearch) {
       onSearch(params.toString()); // Pass constructed query parameters to parent
@@ -72,38 +82,36 @@ const SearchBar = ({ onSearch }) => {
         <div className="filters-section">
           <input
             type="number"
-            name="yearFrom"
-            value={filters.yearFrom}
+            name="year"
+            value={filters.year}
             onChange={handleInputChange}
-            placeholder="From Year"
+            placeholder="Release Year"
             min="1895"
           />
-          <input
-            type="number"
-            name="yearTo"
-            value={filters.yearTo}
-            onChange={handleInputChange}
-            placeholder="To Year"
-            min="1895"
-          />
-          <select name="genre" value={filters.genre} onChange={handleInputChange}>
-            <option value="">All Genres</option>
-            {genres.map((g) => (
-              <option key={g.id} value={g.id}>
-                {g.name}
-              </option>
-            ))}
-          </select>
-          <input
-            type="number"
-            step="1"
-            name="rating"
-            value={filters.rating}
-            onChange={handleInputChange}
-            placeholder="Min Rating"
-            min="0"
-            max="10"
-          />
+            <select
+              name="language"
+              value={filters.language}
+              onChange={handleInputChange}
+            >
+              <option value="">All Languages</option>
+              {languages.map((lang) => (
+                <option key={lang.code} value={lang.code}>
+                  {lang.name}
+                </option>
+              ))}
+            </select>
+            <select
+              name="region"
+              value={filters.region}
+              onChange={handleInputChange}
+            >
+              <option value="">All Regions</option>
+              {regions.map((reg) => (
+                <option key={reg.code} value={reg.code}>
+                  {reg.name}
+                </option>
+              ))}
+            </select>
         </div>
       )}
       </div>
