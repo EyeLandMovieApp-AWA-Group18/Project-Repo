@@ -88,24 +88,26 @@ const SearchBar = ({ onSearch }) => {
             placeholder="Release Year"
             min="1895"
           />
+          
             <select
               name="language"
               value={filters.language}
               onChange={handleInputChange}
             >
-              <option value="">All Languages</option>
+              <option value="">Preferred Translation Language</option>
               {languages.map((lang) => (
                 <option key={lang.code} value={lang.code}>
                   {lang.name}
                 </option>
               ))}
             </select>
+          
             <select
               name="region"
               value={filters.region}
               onChange={handleInputChange}
             >
-              <option value="">All Regions</option>
+              <option value="">Release Region</option>
               {regions.map((reg) => (
                 <option key={reg.code} value={reg.code}>
                   {reg.name}
