@@ -13,14 +13,13 @@ const SearchPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const query = searchParams.get('query') || '';
-  const yearFrom = searchParams.get('yearFrom') ? parseInt(searchParams.get('yearFrom')) : null; 
-  const yearTo = searchParams.get('yearTo') ? parseInt(searchParams.get('yearTo')) : null;
-  const genre = searchParams.get('genre') ? parseInt(searchParams.get('genre')) : null;
-  const rating = searchParams.get('rating') ? parseFloat(searchParams.get('rating')) : null;
+  const primaryReleaseYear = searchParams.get('primary_release_year') || null;
+  const language = searchParams.get('language') || '';
+  const region = searchParams.get('region') || '';
 
   const handleSearch = async () => {
     setIsLoading(true); // Start loading
-    const filters = { yearFrom, yearTo, genre, rating }; 
+    const filters = { primary_release_year: primaryReleaseYear, language, region }; 
     try {
     const data = await fetchMovies(query, currentPage, filters); 
     setMovies(data.results);
@@ -36,7 +35,7 @@ const SearchPage = () => {
     if (query) {
       handleSearch();
     }
-  }, [query, yearFrom, yearTo, genre, rating, currentPage]);
+  }, [query, primaryReleaseYear, language, region, currentPage]);
 
   const handlePageClick = (event) => {
     const selectedPage = event.selected + 1; // `react-paginate` is zero-indexed
@@ -81,6 +80,7 @@ const SearchPage = () => {
           breakClassName={'page-item'}
           breakLinkClassName={'page-link'}
           activeClassName={'active'}
+          forcePage={currentPage - 1}
         />
       )}
     </>
