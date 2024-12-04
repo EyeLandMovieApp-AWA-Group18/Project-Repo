@@ -25,7 +25,12 @@ h1 {
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-
+.button-row {
+  display: flex;
+  gap: 10px; /* Adjust the gap as needed */
+  justify-content: center; /* Centers the buttons horizontally */
+  margin-top: 20px; /* Adds space above the buttons */
+}
 .review-section {
   margin-top: 30px;
   padding-top: 20px;

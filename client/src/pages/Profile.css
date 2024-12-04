@@ -62,20 +62,22 @@
 	padding: 0;
   }
   
-  /* Movie items with poster images */
-  .movie-item {
-	display: eflex;
-	align-items: center;
-	margin-bottom: 50px;
-  }
+  /* watch list */
+  .view-all {
+    margin: 20px 0;
+    text-align: center;
+    }
+  .view-all-button {
+    background-color: #007bff;
+    text-align: center;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    }
+    
+    .view-all-link:hover {
+    background-color: #0056b3;
+    }
   
-  .movie-poster {
-	width: 100px;
-	height: 150px;
-	margin-right: 10px;
-	border-radius: 5px;
-  }
-  
-  .movie-item span {
-	font-size: 1em;
-  }

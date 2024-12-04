@@ -23,6 +23,7 @@ import UserProvider from "./contexts/UserProvider.js";
 import Authentication, { AuthenticationMode } from "./pages/Authentication.js";
 import CreateGroupPage from "./pages/CreateGroupPage.js";
 import PublicReviews from "./pages/PublicReviews";
+import AllWatchlistPage from "./pages/AllWatchlistPage";
 //import "./App.css";
 
 const router = createBrowserRouter([
@@ -88,6 +89,10 @@ const router = createBrowserRouter([
           {
             path: "/groups/new",
             element: <CreateGroupPage />,
+          },
+          {
+            path: "/watchlist",
+            element: <AllWatchlistPage />,
           },
         ],
       },

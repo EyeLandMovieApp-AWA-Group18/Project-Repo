@@ -1,0 +1,19 @@
+/* WatchlistButton.css */
+.watchlist-button {
+	padding: 10px 15px;
+	font-size: 14px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	color: white;
+	background-color:  #7a5df8;
+	transition: background-color 0.3s ease;
+  }
+  
+ 
+  
+  .watchlist-button::before {
+	content: "+ ";
+	font-weight: bold;
+  }
+  
