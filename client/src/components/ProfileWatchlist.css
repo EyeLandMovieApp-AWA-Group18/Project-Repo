@@ -1,7 +1,7 @@
 .profile-watchlist-grid {
-	  display: flex; /* Use flexbox for horizontal alignment */
-	  flex-wrap: wrap; /* Wrap items to the next line */
-	  justify-content: space-between;  /* Distribute items evenly */
-	  gap: 30px; /* Add space between movie cards */
-	  padding: 20px;
+	display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsive columns */
+    gap: 50px; /* Space between grid items */
+    justify-content: center; /* Center items in the grid */
+	padding: 30px;
 	}

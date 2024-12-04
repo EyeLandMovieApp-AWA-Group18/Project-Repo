@@ -6,6 +6,7 @@ DROP TABLE IF EXISTS reviews;
 DROP TABLE IF EXISTS shared_favorites;
 DROP TABLE IF EXISTS favourites;
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS watchlist;
 
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
@@ -76,5 +77,13 @@ CREATE TABLE groupRequests (
     user_id INTEGER NOT NULL,
     approved BOOLEAN DEFAULT false,
     FOREIGN KEY (group_id) REFERENCES groups(id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE watchlist (
+    id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL,
+    movie_id INT NOT NULL,
+    added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
