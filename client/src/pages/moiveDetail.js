@@ -5,6 +5,7 @@ import axios from "axios";
 import ReviewList from "../components/ReviewList";
 import { UserContext } from "../contexts/UserContext";
 import FavoriteButton from "../components/FavoriteButton";
+import WatchlistButton from "../components/WatchlistButton";
 import RatingSelector from "../components/RatingSelector";
 import "./movieDetail.css";
 
@@ -112,7 +113,10 @@ const MovieDetail = () => {
           alt={movie.title}
           className="movie-image"
         />
-        <FavoriteButton movieId={movie.id} />
+        <div className="button-row">
+          <FavoriteButton movieId={movie.id} />
+          <WatchlistButton movieId={movie.id} />
+        </div>
         <p>
           <strong>Overview:</strong> {movie.overview}
         </p>

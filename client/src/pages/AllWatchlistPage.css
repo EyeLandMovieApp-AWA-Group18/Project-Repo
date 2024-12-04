@@ -1,0 +1,18 @@
+.watchlist {
+	padding: 20px;
+	text-align: center;
+  }
+
+.watchlist-grid {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	justify-content: center;
+  }
+  
+  .watchlist-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center; /* Center items horizontally */
+	
+}

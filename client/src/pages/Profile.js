@@ -1,15 +1,18 @@
 import React, { useState,useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import FavoritesList from '../components/FavoritesList.js'; 
 import { useUser } from '../contexts/useUser.js'; 
 import ShareFavoritesButton from '../components/ShareFavoritesButton.js';
 import { getUserGroups } from '../services/groupService';
 import GroupCard from '../components/GroupCard';
+import ProfileWatchlist from '../components/ProfileWatchlist';
 import './Profile.css';
 
 const Profile = () => {
   const { user } = useUser();
   const [groups, setGroups] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchGroups = async () => {
@@ -28,10 +31,9 @@ const Profile = () => {
     fetchGroups();
 }, [user]);
 
-  const [watchlist] = useState([
-    { name: 'Interstellar', posterUrl: 'https://picsum.photos/50/75?random=3' },
-    { name: 'Fight Club', posterUrl: 'https://picsum.photos/50/75?random=4' },
-  ]); // Sample watchlist with poster images
+const handleViewAllClick = () => {
+  navigate('/watchlist'); // Redirects to the watchlist page
+};
 
   return (
     <div className="profile-container">
@@ -48,12 +50,24 @@ const Profile = () => {
         <p>{user?.username || 'Guest'}</p>
       </div>
       
-      
+  
+
       {/* Favorite Movies Section */}
       <div className="profile-section">
       <h3>My Favorites</h3>
+      <div className="separator"></div>
       <ShareFavoritesButton />
       <FavoritesList />
+      </div>
+
+      {/* Watchlist Section */}
+      <div className="profile-section">
+        <h3>My Watchlist</h3>
+        <div className="separator"></div>
+        <div className="view-all">
+        <button  onClick={handleViewAllClick} className="view-all-button">View All Watchlist</button>
+        </div>
+        <ProfileWatchlist />
       </div>
 
       {/* Groups Section */}
@@ -75,19 +89,7 @@ const Profile = () => {
                 )}
       </div>
       
-      {/* Watchlist Section */}
-      <div className="profile-section">
-        <h3>Watchlist</h3>
-        <div className="separator"></div>
-        <ul>
-          {watchlist.map((movie, index) => (
-            <li key={index} className="movie-item">
-              <img src={movie.posterUrl} alt={`${movie.name} poster`} className="movie-poster" />
-              <br/><span>{movie.name}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
+     
     </div>
   );
 };
