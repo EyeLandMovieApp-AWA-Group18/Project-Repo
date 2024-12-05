@@ -28,15 +28,21 @@ app.use("/api/groups", groupRoutes);
 app.use("/api/public-reviews", publicReviewsRoutes);
 app.use("/api/watchlist", watchlistRoutes);
 
-// Database connection test
+//  Database connection test
 pool.connect((err) => {
   if (err) {
     console.error("Database connection failed:", err);
   } else {
-    console.log("Connected to the database");
+    console.log(
+      `Connected to the ${
+        process.env.NODE_ENV === "test" ? "test" : "production"
+      } database`
+    );
   }
 });
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+export default app;
