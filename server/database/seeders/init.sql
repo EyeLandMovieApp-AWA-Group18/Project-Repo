@@ -35,7 +35,7 @@ CREATE TABLE shared_favorites (
 
 CREATE TABLE reviews (
     id SERIAL PRIMARY KEY,
-    movie_id INTEGER NOT NULL,
+    film_id INTEGER NOT NULL,
     user_id INTEGER NOT NULL,
     rating INTEGER CHECK (rating BETWEEN 1 AND 5),
     review_text TEXT,
