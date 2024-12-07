@@ -35,7 +35,7 @@ describe("Delete Account API", () => {
     await pool.query("DELETE FROM users");
   });
 
-  it("should delete a user account successfully", async () => {
+  it("should delete a user account successfully - Positive Test", async () => {
     const res = await request
       .execute(app)
       .delete("/api/delete")
@@ -47,7 +47,7 @@ describe("Delete Account API", () => {
       .eql("Account deleted successfully, including all related data");
   });
 
-  it("should return an error if user does not exist", async () => {
+  it("should return an error if user does not exist - Negative Test", async () => {
     const nonExistentToken = jwt.sign(
       { userId: 999 },
       process.env.JWT_SECRET_KEY,

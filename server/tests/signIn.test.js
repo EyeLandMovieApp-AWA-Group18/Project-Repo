@@ -29,7 +29,7 @@ describe("Login API", () => {
     await pool.query("DELETE FROM users");
   });
 
-  it("should login successfully with valid credentials", async () => {
+  it("should login successfully with valid credentials - Positive Test", async () => {
     const res = await request
       .execute(app)
       .post("/api/login")
@@ -40,7 +40,7 @@ describe("Login API", () => {
     expect(res.body).to.have.property("token");
   });
 
-  it("should return an error with invalid credentials", async () => {
+  it("should return an error with invalid credentials - Negative Test", async () => {
     const res = await request
       .execute(app)
       .post("/api/login")
@@ -50,7 +50,7 @@ describe("Login API", () => {
     expect(res.body).to.have.property("message").eql("Invalid credentials");
   });
 
-  it("should return an error for non-existent user", async () => {
+  it("should return an error for non-existent user - Negative Test", async () => {
     const res = await request
       .execute(app)
       .post("/api/login")
