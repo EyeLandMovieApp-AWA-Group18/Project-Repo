@@ -14,6 +14,7 @@ const pool = new Pool({
     process.env.NODE_ENV === "test"
       ? process.env.TEST_DB_NAME
       : process.env.DB_NAME,
+  ssl: process.env.SSL === "true" ? { rejectUnauthorized: false } : false,
 });
 
 // pool.on("connect", () => {
