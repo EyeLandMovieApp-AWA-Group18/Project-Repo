@@ -9,6 +9,8 @@ import WatchlistButton from "../components/WatchlistButton";
 import RatingSelector from "../components/RatingSelector";
 import "./movieDetail.css";
 
+const API_BASE_URL = `${process.env.REACT_APP_API_URL}/reviews`;
+
 const MovieDetail = () => {
   const { id } = useParams();
   const { user } = useContext(UserContext);
@@ -34,7 +36,7 @@ const MovieDetail = () => {
     try {
       if (user) {
         const response = await axios.get(
-          `http://localhost:5000/api/reviews/${id}?user_id=${user.id}`
+          `${API_BASE_URL}/${id}?user_id=${user.id}`
         );
         const sortedReviews = response.data.sort(
           (a, b) => new Date(b.created_at) - new Date(a.created_at)
@@ -65,7 +67,7 @@ const MovieDetail = () => {
     };
 
     try {
-      await axios.post(`http://localhost:5000/api/reviews/${id}`, newReview);
+      await axios.post(`${API_BASE_URL}/${id}`, newReview);
       setReviewText("");
       setRating(1);
       setMessage({ text: "Comment submitted successfully.", type: "success" });
@@ -83,7 +85,7 @@ const MovieDetail = () => {
   const handleDeleteReview = async (reviewId) => {
     try {
       await axios.delete(
-        `http://localhost:5000/api/reviews/${reviewId}?user_id=${user.id}`
+        `${API_BASE_URL}/${reviewId}?user_id=${user.id}`
       );
       setReviews(reviews.filter((review) => review.id !== reviewId));
     } catch (err) {
