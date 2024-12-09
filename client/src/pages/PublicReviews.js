@@ -11,12 +11,12 @@ const PublicReviews = () => {
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState(""); // Track search term
   const [selectedRating, setSelectedRating] = useState(null); // Track selected star rating, default to null
-
+  const BASE_URL = `${process.env.REACT_APP_API_URL}/public-reviews`;
   useEffect(() => {
     const fetchReviews = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/public-reviews"
+          BASE_URL
         );
         if (!response.ok) {
           throw new Error("Failed to fetch reviews");

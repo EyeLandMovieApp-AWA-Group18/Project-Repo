@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:5000/api/groups';
+//const BASE_URL = 'http://localhost:5000/api/groups';
+const BASE_URL = `${process.env.REACT_APP_API_URL}/groups`;
 
 // Get token from sessionStorage
 const getToken = () => {

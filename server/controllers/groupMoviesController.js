@@ -6,10 +6,16 @@ export const getUserGroups = async (req, res) => {
 
     try {
         const query = `
-            SELECT g.* 
+           SELECT g.*, 
+                   COUNT(DISTINCT gm.user_id) as member_count
             FROM groups g
-            JOIN group_members gm ON g.id = gm.group_id
-            WHERE gm.user_id = $1;
+            LEFT JOIN group_members gm ON g.id = gm.group_id
+            WHERE g.id IN (
+                SELECT group_id
+                FROM group_members
+                WHERE user_id = $1
+            )
+            GROUP BY g.id;
         `;
         const result = await pool.query(query, [userId]);
         res.json(result.rows);
