@@ -11,7 +11,7 @@ import MainLayout from "./components/MainLayout";
 import ProtectedRoute from "./components/ProtectedRoute.js";
 import Home from "./pages/home.js";
 import Profile from "./pages/Profile.js";
-import MovieDetail from "./pages/moiveDetail.js";
+import MovieDetail from "./pages/movieDetail.js";
 //import Authentication from "./pages/Authentication.js";
 import DeleteAccount from "./pages/DeleteAccount.js";
 import SearchPage from "./pages/searchPage.js";
