@@ -4,10 +4,10 @@
   }
 
 .watchlist-grid {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 20px;
-	justify-content: center;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	gap: 0px;
+	margin-top: 20px;
   }
   
   .watchlist-item {
