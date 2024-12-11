@@ -17,6 +17,7 @@ export default function UserProvider({ children }) {
         try {
             await axios.post(url + "/register", JSON.stringify(payload), headers);
             setUser({ email: "", password: "" });
+            window.alert("Sign-up successful! Please sign in.");
         } catch (error) {
             throw error;
         }
@@ -40,6 +41,7 @@ export default function UserProvider({ children }) {
             sessionStorage.setItem("user", JSON.stringify({ ...userData, token }));
             console.log("User saved to sessionStorage:", sessionStorage.getItem("user"));
             sessionStorage.setItem('token', token);
+            window.alert("Sign-in successful! Welcome back.");
         } catch (error) {
             // Improved error handling to check if the backend response contains a message
             if (error.response && error.response.data && error.response.data.message) {
