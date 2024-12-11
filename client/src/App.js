@@ -10,11 +10,16 @@ import RemoveAccount from "./pages/RemoveAccount.js";
 import SearchPage from "./pages/searchPage.js";
 import ShowtimesPage from "./pages/ShowtimesPage.js";
 import PublicReviews from "./pages/PublicReviews";
+import ForgotPassword from "./pages/ForgotPassword.js"
+import ResetPassword from "./pages/ResetPassword.js"
+import { UserProvider } from './context/UserProvider';
+import SignIn from "./pages/signIn.js";
 import "./App.css";
 
 const App = () => {
   return (
     <div className="App">
+      <UserProvider>
       <Router>
         <Header />
         <Routes>
@@ -26,11 +31,18 @@ const App = () => {
           <Route path="/search" element={<SearchPage />} />
           <Route path="/showtimes" element={<ShowtimesPage />} />
           <Route path="/public-reviews" element={<PublicReviews />} />
+          <Route path="/resetpassword" element={<ResetPassword />} />
+          <Route path="/forgotpassword" element={<ForgotPassword />} /> 
+          <Route path="/Signin" element={<SignIn />} />
+
+      
         </Routes>
+        
 
         {/* Conditionally render Footer only on the Home page */}
         {window.location.pathname === "/" && <Footer />}
       </Router>
+      </UserProvider>
     </div>
   );
 };

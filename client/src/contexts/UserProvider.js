@@ -43,9 +43,14 @@ export default function UserProvider({ children }) {
             sessionStorage.setItem('token', token);
             window.alert("Sign-in successful! Welcome back.");
         } catch (error) {
-            //setUser({ email: "", password: "" });
-            setUser(null);
-            throw error;
+            // Improved error handling to check if the backend response contains a message
+            if (error.response && error.response.data && error.response.data.message) {
+              // If there's a message from the backend, throw that message
+              throw new Error(error.response.data.message); // This will be caught in the frontend
+            } else {
+              // Generic error handling
+              throw new Error("An unexpected error occurred. Please try again.");
+            }
         }
     };
     const signOut = () => {
@@ -53,8 +58,33 @@ export default function UserProvider({ children }) {
         sessionStorage.removeItem('user')
         // sessionStorage.removeItem('token') // 
       }
+
+      const forgotPassword = async (email) => {
+        const headers = { headers: { "Content-Type": "application/json" } };
+        try {
+            await axios.post(url + "/forgotpassword", JSON.stringify({ email }), headers);
+            console.log("Forgot password email sent successfully.");
+        } catch (error) {
+            console.error("Error in forgot password:", error);
+            throw error;
+        }
+    };
+    const resetPassword = async (token, newPassword) => {
+        const headers = { headers: { "Content-Type": "application/json" } };
+        try {
+            await axios.post(
+                url + "/resetpasswordtoken",
+                JSON.stringify({ token, newPassword }),
+                headers
+            );
+            console.log("Password reset successfully.");
+        } catch (error) {
+            console.error("Error in resetting password:", error);
+            throw error;
+        }
+    };
     return (
-        <UserContext.Provider value={{ user, setUser, signUp, signIn,signOut }}>
+        <UserContext.Provider value={{ user, setUser, signUp, signIn,signOut,forgotPassword,resetPassword }}>
             {children}
         </UserContext.Provider>
     );

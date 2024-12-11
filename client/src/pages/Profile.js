@@ -6,12 +6,19 @@ import ShareFavoritesButton from '../components/ShareFavoritesButton.js';
 import { getUserGroups } from '../services/groupService';
 import GroupCard from '../components/GroupCard';
 import ProfileWatchlist from '../components/ProfileWatchlist';
+import { updatePassword } from '../services/authService'; 
 import './Profile.css';
 
 const Profile = () => {
   const { user } = useUser();
   const [groups, setGroups] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [oldPassword, setOldPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [passwordSuccess, setPasswordSuccess] = useState('');
+  const [modalOpen, setModalOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -34,6 +41,29 @@ const Profile = () => {
 const handleViewAllClick = () => {
   navigate('/watchlist'); // Redirects to the watchlist page
 };
+
+const handlePasswordChange = async (e) => {
+  e.preventDefault();
+  if (newPassword !== confirmPassword) {
+    setPasswordError("New password and confirmation do not match.");
+    return;
+  }
+  try {
+    const token = user?.token;
+    await updatePassword(token, oldPassword, newPassword);
+    setPasswordSuccess("Password updated successfully!");
+    setPasswordError('');
+    setOldPassword('');
+    setNewPassword('');
+    setConfirmPassword('');
+    setModalOpen(false); 
+  } catch (err) {
+    setPasswordError("Failed to update password. Please try again.");
+    setPasswordSuccess('');
+  }
+};
+
+
 
   return (
     <div className="profile-container">
@@ -88,8 +118,72 @@ const handleViewAllClick = () => {
                     </div>
                 )}
       </div>
-      
-     
+
+
+      {/* Reset Password Section */}
+      <div className="profile-section">
+        <a
+          href="#"
+          className="reset-password-link"
+          onClick={() => setModalOpen(true)}
+        >
+          Reset Password
+        </a>
+      </div>
+
+      {/* Password Reset Modal */}
+      {modalOpen && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <h3>Reset Password</h3>
+            {passwordSuccess && <p className="success-message">{passwordSuccess}</p>}
+            {passwordError && <p className="error-message">{passwordError}</p>}
+            <form onSubmit={handlePasswordChange}>
+              <div>
+                <label htmlFor="oldPassword">Old Password</label>
+                
+                <input
+                  type="password"
+                  id="oldPassword"
+                  value={oldPassword}
+                  onChange={(e) => setOldPassword(e.target.value)}
+                  placeholder='Old Password'
+                  required
+                />
+              </div>
+              <div>
+                <label htmlFor="newPassword">New Password</label>
+                <input
+                  type="password"
+                  id="newPassword"
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                  placeholder="New Password"
+                  required
+                />
+              </div>
+              <div>
+                <label htmlFor="confirmPassword">Confirm New Password</label>
+                <input
+                  type="password"
+                  id="confirmPassword"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  placeholder="Confirm New Password"
+                  required
+                />
+              </div>
+              <button type="submit">Update Password</button>
+            </form>
+            <button
+              className="close-modal-button"
+              onClick={() => setModalOpen(false)}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
