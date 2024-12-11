@@ -102,8 +102,10 @@
   }
   
   .search-button {
-	padding: 18px;
+	height: 40px;
+	padding: 13px; 
 	width: 100px;
+	height: auto;
 	
 	background-color: #e6925a;
 	color: #fff;

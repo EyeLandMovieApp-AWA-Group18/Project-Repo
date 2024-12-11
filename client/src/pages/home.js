@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Slider from 'react-slick';
 import axios from 'axios';
 import Footer from '../components/Footer';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './home.css';
@@ -9,15 +10,18 @@ import './home.css';
 const Home = () => {
   const [movies, setMovies] = useState([]);
   const [casts, setCasts] = useState({});
-  const apiKey =process.env.REACT_APP_TMDB_API_KEY;// Use environment variable for API key
+  const [popularMovies, setPopularMovies] = useState([]);
+  const apiKey = process.env.REACT_APP_TMDB_API_KEY; // Use environment variable for API key
+  const navigate = useNavigate(); // Initialize the navigate function
 
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        const response = await axios.get(
+        // Fetch now playing movies
+        const nowPlayingResponse = await axios.get(
           `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=1`
         );
-        setMovies(response.data.results);
+        setMovies(nowPlayingResponse.data.results);
 
         // Fetch casts for each movie
         const fetchCasts = async (movieId) => {
@@ -28,10 +32,16 @@ const Home = () => {
         };
 
         const castData = {};
-        for (const movie of response.data.results) {
+        for (const movie of nowPlayingResponse.data.results) {
           castData[movie.id] = await fetchCasts(movie.id);
         }
         setCasts(castData);
+
+        // Fetch popular movies
+        const popularResponse = await axios.get(
+          `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`
+        );
+        setPopularMovies(popularResponse.data.results);
       } catch (error) {
         console.error('Error fetching movies or casts:', error);
       }
@@ -53,9 +63,74 @@ const Home = () => {
     prevArrow: <button className="slick-prev">Previous</button>,
   };
 
+  const PopularMoviesSection = ({ popularMovies }) => {
+    const [scrollIndex, setScrollIndex] = useState(0);
+    const visibleCards = 5; // Number of cards to show at a time
+
+    const handleNext = () => {
+      if (scrollIndex + visibleCards < popularMovies.length) {
+        setScrollIndex(scrollIndex + 1);
+      }
+    };
+
+    const handlePrev = () => {
+      if (scrollIndex > 0) {
+        setScrollIndex(scrollIndex - 1);
+      }
+    };
+
+    const handleNavigateToDetails = (movieId) => {
+      // Navigate to the movie details page
+      navigate(`/movie/${movieId}`);
+    };
+
+    return (
+      <section id="popular" className="section-popular">
+        <h3 className="section2_header">Popular Movies</h3>
+        <div className="popular-movies-container">
+          <button
+            className="popular-movies-arrow prev"
+            onClick={handlePrev}
+            disabled={scrollIndex === 0}
+          >
+            &#8592;
+          </button>
+          <div className="popular-movies-row">
+            {popularMovies
+              .slice(scrollIndex, scrollIndex + visibleCards)
+              .map((movie) => (
+                <div key={movie.id} className="movie-card">
+                  <img
+                    className="movie-card-poster"
+                    src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`}
+                    alt={movie.title}
+                  />
+                  <h4 className="movie-card-title">{movie.title}</h4>
+                  <button
+                    className="movie-details-button"
+                    onClick={() => handleNavigateToDetails(movie.id)} // On click, navigate to details page
+                  >
+                    View Details
+                  </button>
+                </div>
+              ))}
+          </div>
+          <button
+            className="popular-movies-arrow next"
+            onClick={handleNext}
+            disabled={scrollIndex + visibleCards >= popularMovies.length}
+          >
+            &#8594;
+          </button>
+        </div>
+      </section>
+    );
+  };
+
   return (
     <div>
-      <section className="section1">
+      <section id="now-playing" className="section1">
+        <h3 className="section1_header">In Theaters Now</h3>
         <Slider {...settings} className="carousel">
           {movies.map((movie) => (
             <div key={movie.id} className="carousel-slide">
@@ -97,11 +172,8 @@ const Home = () => {
             </div>
           ))}
         </Slider>
-        <h3 className="section1_header">In Theaters Now</h3>
       </section>
-      <main>
-        <h3 className="section2_header">Eyeland; your destination for film discoveries</h3>
-      </main>
+      <PopularMoviesSection id="popular" popularMovies={popularMovies} />
       <Footer />
     </div>
   );

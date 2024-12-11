@@ -50,10 +50,13 @@ body, html {
 .footer_column {
   width: 100%;
   margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align items to the left */
 }
 
 .footer_logo {
-  width: 120px;
+  width: 250px;
   margin-bottom: 10px;
 }
 
@@ -76,7 +79,7 @@ body, html {
 .footer_column ul {
   list-style-type: none;
   padding: 0;
-  text-align: center;
+  text-align: left; /* Align list items to the left */
 }
 
 .footer_column ul li {
@@ -96,12 +99,18 @@ body, html {
   .footer {
     flex-direction: row;
     justify-content: space-between;
-    text-align: left;
+    text-align: left; /* Align text left in larger screens */
   }
 
   .footer_column {
     width: 30%;
     margin-bottom: 0;
+    align-items: flex-start; /* Ensure content is aligned left */
+  }
+
+  /* Ensure the social media section aligns left as well */
+  .footer_socials {
+    justify-content: flex-start;
   }
 }
 
