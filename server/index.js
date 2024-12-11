@@ -15,7 +15,18 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-app.use(cors());
+app.use(cors({
+  origin: (origin, callback) => {
+    // Allow requests from any localhost origin or your production frontend
+    if (!origin || origin.startsWith("http://localhost") || origin === "https://project-repo-movieapp-frontend.onrender.com") {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true,
+}));
 app.use(express.json());
 
 // Routes

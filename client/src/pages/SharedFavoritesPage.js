@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import MovieCard from '../components/MovieCard'; // Assuming you have a reusable MovieCard component
-import './SharedFavoritesPage.css'; // Optional styling
+import MovieCard from '../components/MovieCard'; 
+import './SharedFavoritesPage.css'; 
 
 const SharedFavoritesPage = () => {
   const { id } = useParams(); // Get the shared_id from the URL
