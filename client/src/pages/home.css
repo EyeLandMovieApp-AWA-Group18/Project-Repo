@@ -1,0 +1,157 @@
+/* Carousel Slide Styling */
+.carousel-slide {
+    position: relative;
+    display: flex;
+    align-items: flex-end; /* Align content to the bottom */
+    justify-content: center;
+    height: 600px; /* Matches the slider height */
+    background-color: #000; /* Dark background for the slider */
+    overflow: hidden;
+}
+
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.4; /* Dimmed background */
+    z-index: 1;
+}
+
+/* Movie Details Section */
+.movie-details {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    z-index: 2;
+    width: 30%;
+    max-width: 1200px;
+    margin-top: 270px;
+    margin-left: 50px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent overlay */
+    border-radius: 10px;
+    gap: 20px;
+}
+
+/* Poster Styling */
+.poster-container {
+    flex: 0 0 150px; /* Fixed width for the poster */
+}
+
+.movie-poster {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+}
+
+/* Movie Details Text Styling */
+.details {
+    flex: 1; /* Allow text to take remaining space */
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+.actors{
+    font-size: 15px;
+    color: #ccc; /* Muted date text */
+    margin-bottom: 3px;
+    text-align: left;
+}
+
+.movie-title {
+    font-size: 28px; /* Bold and larger title text */
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.release-date {
+    font-size: 15px;
+    color: #ccc; /* Muted date text */
+    margin-bottom: 3px;
+    text-align: left;
+}
+
+/* Watch Trailer Button */
+.watch-trailer-button {
+    background-color: #00bfff; /* Bright blue */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-transform: uppercase;
+    transition: background-color 0.3s;
+}
+
+.watch-trailer-button:hover {
+    background-color: #007acc; /* Darker blue on hover */
+}
+
+/* Slick Carousel Arrows */
+.slick-prev,
+.slick-next {
+    z-index: 3; /* Buttons stay on top */
+    background-color: rgba(255, 255, 255, 0); /* Light, modern buttons */
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    outline: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0);
+    position: absolute;
+    top: 50%; /* Position them vertically centered within the banner */
+    transform: translateY(-50%);
+}
+
+.slick-prev {
+    left: 10px; /* Adjusted inside the banner */
+}
+
+.slick-next {
+    right: 35px; /* Adjusted inside the banner */
+}
+
+.slick-prev::before,
+.slick-next::before {
+    font-size: 24px;
+    color: #fff;
+    opacity: 1;
+}
+
+/* Dots Indicator Styling */
+.slick-dots {
+    bottom: 15px;
+}
+
+.slick-dots li button:before {
+    color: #fff; /* White dots */
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+.slick-dots li.slick-active button:before {
+    color: #00bfff; /* Highlight active dot */
+    opacity: 1;
+}
+
+/* Section Headers */
+.section1_header,
+.section2_header {
+    text-align: center;
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+
+}
