@@ -4,7 +4,7 @@
     display: flex;
     align-items: flex-end; /* Align content to the bottom */
     justify-content: center;
-    height: 600px; /* Matches the slider height */
+    height: 650px; /* Matches the slider height */
     background-color: #000; /* Dark background for the slider */
     overflow: hidden;
 }
@@ -22,14 +22,14 @@
 }
 
 /* Movie Details Section */
-.movie-details {
+.home-movie-details {
     position: relative;
     display: flex;
     align-items: flex-start;
     z-index: 2;
-    width: 30%;
+    width: 32%;
     max-width: 1200px;
-    margin-top: 270px;
+    margin-top: 250px;
     margin-left: 50px;
     padding: 20px;
     background: rgba(0, 0, 0, 0.7); /* Semi-transparent overlay */
@@ -65,7 +65,7 @@
     text-align: left;
 }
 
-.movie-title {
+.home-movie-title {
     font-size: 28px; /* Bold and larger title text */
     font-weight: bold;
     margin-bottom: 5px;
@@ -146,12 +146,19 @@
 }
 
 /* Section Headers */
-.section1_header,
-.section2_header {
-    text-align: center;
-    color: #fff;
-    font-size: 24px;
+.section1_header {
+    text-align:left;
+    color: #060606;
+    font-size: 28px;
     font-weight: bold;
-    margin-top: 20px;
+    margin-top: 20px; /* Keep existing spacing */
+    margin-bottom: 0px; /* Reduce space after this header */
+}
 
+.section2_header {
+    text-align: left;
+    color: #060606;
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: 0px; /* Reduce space before this header */
 }

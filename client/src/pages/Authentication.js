@@ -23,9 +23,23 @@ export default function Authentication({authenticationMode}) {
         const { name, value } = e.target;
         setFormInputs({ ...formInputs, [name]: value });
       };
+
+    // Add this function to validate the password
+    const validatePassword = (password) => {
+    const capitalLetterRegex = /[A-Z]/;
+    const numberRegex = /\d/;
+  return capitalLetterRegex.test(password) && numberRegex.test(password);
+};
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log("Form inputs before submission:", formInputs);
+        // Validate password for registration
+        if (authenticationMode === AuthenticationMode.Register && !validatePassword(formInputs.password)) {
+        alert("Password must contain at least one capital letter and one number.");
+        return;
+        }
+        
         try {
             if (authenticationMode === AuthenticationMode.Register) {
                 //setUser({ email: formInputs.email, username: formInputs.username, password: formInputs.password });

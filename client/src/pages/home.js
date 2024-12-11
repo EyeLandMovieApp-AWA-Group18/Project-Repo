@@ -9,7 +9,7 @@ import './home.css';
 const Home = () => {
   const [movies, setMovies] = useState([]);
   const [casts, setCasts] = useState({});
-  const apiKey = '70ebe398ec3017f14e26ce0a5acfcc4b'; // Use environment variable for API key
+  const apiKey =process.env.REACT_APP_TMDB_API_KEY;// Use environment variable for API key
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -65,7 +65,7 @@ const Home = () => {
                   backgroundImage: `url(https://image.tmdb.org/t/p/w1920_and_h600_bestv2${movie.backdrop_path})`,
                 }}
               ></div>
-              <div className="movie-details">
+              <div className="home-movie-details">
                 <div className="poster-container">
                   <img
                     className="movie-poster"
@@ -74,7 +74,7 @@ const Home = () => {
                   />
                 </div>
                 <div className="details">
-                  <h3 className="movie-title">{movie.title}</h3>
+                  <h3 className="home-movie-title">{movie.title}</h3>
                   <p className="release-date">Release Date: {movie.release_date}</p>
                   {casts[movie.id] && (
                     <p className="actors">
@@ -97,10 +97,10 @@ const Home = () => {
             </div>
           ))}
         </Slider>
-        <h2 className="section1_header">In Theaters Now</h2>
+        <h3 className="section1_header">In Theaters Now</h3>
       </section>
       <main>
-        <h2 className="section2_header">Eyeland; your destination for film discoveries</h2>
+        <h3 className="section2_header">Eyeland; your destination for film discoveries</h3>
       </main>
       <Footer />
     </div>
