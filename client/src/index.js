@@ -24,6 +24,8 @@ import Authentication, { AuthenticationMode } from "./pages/Authentication.js";
 import CreateGroupPage from "./pages/CreateGroupPage.js";
 import PublicReviews from "./pages/PublicReviews";
 import AllWatchlistPage from "./pages/AllWatchlistPage";
+import ForgotPassword from "./pages/ForgotPassword.js";
+import ResetPassword from "./pages/ResetPassword.js";
 //import "./App.css";
 
 const router = createBrowserRouter([
@@ -50,6 +52,14 @@ const router = createBrowserRouter([
         element: (
           <Authentication authenticationMode={AuthenticationMode.Register} />
         ),
+      },
+      {
+        path: "/resetpassword",
+        element: <ResetPassword />, 
+      },
+      {
+        path: "/forgotpassword",
+        element: <ForgotPassword />, 
       },
       {
         path: "/deleteAccount",
