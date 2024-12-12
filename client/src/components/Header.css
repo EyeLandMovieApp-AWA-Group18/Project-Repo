@@ -173,3 +173,8 @@
         max-width: none;
     }
 }
+
+html {
+	scroll-behavior: smooth;
+  }
+  

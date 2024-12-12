@@ -50,61 +50,61 @@ export const NowPlayingSection = ({ movies, casts, settings, navigate }) => (
   </section>
 );
 
-export const MoviesSection = ({ title, movies, navigate }) => {
-  const [scrollIndex, setScrollIndex] = useState(0);
-  const visibleCards = 5;
-
-  const handleNext = () => {
-    if (scrollIndex + visibleCards < movies.length) {
-      setScrollIndex(scrollIndex + 1);
-    }
-  };
-
-  const handlePrev = () => {
-    if (scrollIndex > 0) {
-      setScrollIndex(scrollIndex - 1);
-    }
-  };
-
-  return (
-    <section className="section-popular">
-      <h3 className="section2_header">{title}</h3>
-      <div className="popular-movies-container">
-        <button
-          className="popular-movies-arrow prev"
-          onClick={handlePrev}
-          disabled={scrollIndex === 0}
-        >
-          &#8592;
-        </button>
-        <div className="popular-movies-row">
-          {movies
-            .slice(scrollIndex, scrollIndex + visibleCards)
-            .map((movie) => (
-              <div key={movie.id} className="movie-card">
-                <img
-                  className="movie-card-poster"
-                  src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`}
-                  alt={movie.title}
-                />
-                <h4 className="movie-card-title">{movie.title}</h4>
-                <button
-                  className="movie-details-button"
-                  onClick={() => navigate(`/movie/${movie.id}`)}
-                >
-                  View Details
-                </button>
-              </div>
-            ))}
+export const MoviesSection = ({ id, title, movies, navigate }) => {
+    const [scrollIndex, setScrollIndex] = useState(0);
+    const visibleCards = 5;
+  
+    const handleNext = () => {
+      if (scrollIndex + visibleCards < movies.length) {
+        setScrollIndex(scrollIndex + 1);
+      }
+    };
+  
+    const handlePrev = () => {
+      if (scrollIndex > 0) {
+        setScrollIndex(scrollIndex - 1);
+      }
+    };
+  
+    return (
+      <section id={id} className="section-popular">
+        <h3 className="section2_header">{title}</h3>
+        <div className="popular-movies-container">
+          <button
+            className="popular-movies-arrow prev"
+            onClick={handlePrev}
+            disabled={scrollIndex === 0}
+          >
+            &#8592;
+          </button>
+          <div className="popular-movies-row">
+            {movies
+              .slice(scrollIndex, scrollIndex + visibleCards)
+              .map((movie) => (
+                <div key={movie.id} className="movie-card">
+                  <img
+                    className="movie-card-poster"
+                    src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`}
+                    alt={movie.title}
+                  />
+                  <h4 className="movie-card-title">{movie.title}</h4>
+                  <button
+                    className="movie-details-button"
+                    onClick={() => navigate(`/movie/${movie.id}`)}
+                  >
+                    View Details
+                  </button>
+                </div>
+              ))}
+          </div>
+          <button
+            className="popular-movies-arrow next"
+            onClick={handleNext}
+            disabled={scrollIndex + visibleCards >= movies.length}
+          >
+            &#8594;
+          </button>
         </div>
-        <button
-          className="popular-movies-arrow next"
-          onClick={handleNext}
-          disabled={scrollIndex + visibleCards >= movies.length}
-        >
-          &#8594;
-        </button>
-      </div>
-    </section>
-  );
-};
+      </section>
+    );
+  };

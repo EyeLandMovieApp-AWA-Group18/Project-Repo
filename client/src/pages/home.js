@@ -67,12 +67,13 @@ const Home = () => {
   return (
     <div>
       <NowPlayingSection movies={movies} casts={casts} settings={settings} />
-      <MoviesSection title="Popular Movies" movies={popularMovies} />
-      <MoviesSection title="Top Rated Movies" movies={topRatedMovies} />
-      <MoviesSection title="Upcoming Movies" movies={upcomingMovies} />
+      <MoviesSection id="popular-movies" title="Popular Movies" movies={popularMovies} />
+      <MoviesSection id="top-rated-movies" title="Top Rated Movies" movies={topRatedMovies} />
+      <MoviesSection id="upcoming-movies" title="Upcoming Movies" movies={upcomingMovies} />
       <Footer />
     </div>
   );
+  
 };
 
 export default Home;
