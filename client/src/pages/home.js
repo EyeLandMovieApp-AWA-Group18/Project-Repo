@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import Footer from '../components/Footer';
 import { NowPlayingSection, MoviesSection } from '../components/MovieSections';
 import './home.css';
@@ -11,6 +12,7 @@ const Home = () => {
   const [topRatedMovies, setTopRatedMovies] = useState([]);
   const [upcomingMovies, setUpcomingMovies] = useState([]);
   const apiKey = process.env.REACT_APP_TMDB_API_KEY;
+  const navigate = useNavigate(); // Define navigate using useNavigate
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -67,13 +69,27 @@ const Home = () => {
   return (
     <div>
       <NowPlayingSection movies={movies} casts={casts} settings={settings} />
-      <MoviesSection id="popular-movies" title="Popular Movies" movies={popularMovies} />
-      <MoviesSection id="top-rated-movies" title="Top Rated Movies" movies={topRatedMovies} />
-      <MoviesSection id="upcoming-movies" title="Upcoming Movies" movies={upcomingMovies} />
+      <MoviesSection
+        id="popular-movies"
+        title="Popular Movies"
+        movies={popularMovies}
+        navigate={navigate} // Pass navigate to MoviesSection
+      />
+      <MoviesSection
+        id="top-rated-movies"
+        title="Top Rated Movies"
+        movies={topRatedMovies}
+        navigate={navigate} // Pass navigate to MoviesSection
+      />
+      <MoviesSection
+        id="upcoming-movies"
+        title="Upcoming Movies"
+        movies={upcomingMovies}
+        navigate={navigate} 
+      />
       <Footer />
     </div>
   );
-  
 };
 
 export default Home;
