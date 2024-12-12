@@ -164,77 +164,91 @@
     margin-top: 0px; /* Reduce space before this header */
 }
 
-/* Popular Movies Section */
-
+/* General Section Styling */
 .section-popular {
-    padding: 10px;
-    margin-left: auto;
+    padding: 20px;
+    margin: auto;
     position: relative;
-  }
-  
-  .popular-movies-container {
+}
+
+.section2_header {
+    color: black;
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+/* Movies Container */
+.popular-movies-container {
     display: flex;
     align-items: center;
     position: relative;
-  }
-  
-  .popular-movies-arrow {
+}
+
+/* Navigation Arrows */
+.popular-movies-arrow {
     border: none;
     font-size: 20px;
     cursor: pointer;
+    background: none;
+    color: black;
+    font-style: bold;
     padding: 10px;
-  }
-  
-  .popular-movies-arrow.prev {
+    z-index: 10;
+}
+
+.popular-movies-arrow.prev {
     position: absolute;
     left: 0;
-    z-index: 10;
-  }
-  
-  .popular-movies-arrow.next {
+}
+
+.popular-movies-arrow.next {
     position: absolute;
     right: 0;
-    z-index: 10;
-  }
-  
-  .popular-movies-row {
+}
+
+/* Movie Row */
+.popular-movies-row {
     display: flex;
-    gap: 10px;
+    gap: 15px;
     overflow: hidden;
-    margin: 0 30px; /* Adds space around the row */
-  }
-  
-  .movie-card {
+    margin: 0 40px;
+}
+
+/* Movie Cards */
+.movie-card {
     flex: 0 0 auto;
-    width: 10px;
-    padding: 30px;
-    padding-left: 5px;
-    padding-right: 5px;
+    width: 180px;
     text-align: center;
-  }
-  
-  .movie-card-poster {
-    width: 200px;
+}
+
+.movie-card-poster {
+    width: 100%;
     border-radius: 8px;
-    margin: 0 auto;
-  }
-  
-  .movie-card-title {
+    transition: transform 0.3s ease;
+}
+
+.movie-card-poster:hover {
+    transform: scale(1.05);
+}
+
+.movie-card-title {
     color: white;
     margin-top: 8px;
     font-size: 20px;
     font-weight: bold;
     text-overflow: ellipsis;
     overflow: hidden;
-    white-space: nowrap; /* Prevents title from wrapping */
-    max-width: 100%; /* Ensures it doesn't overflow the card */
+    white-space: nowrap;
+    max-width: 100%;
 }
-  
-  .movie-details-button  {
+
+/* Buttons */
+.movie-details-button {
     background-color: #00bfff;
     color: white;
     border: none;
-    margin-top: 10px;
     margin-bottom: 10px;
     font-size: 12px;
     font-weight: bold;
@@ -242,5 +256,9 @@
     cursor: pointer;
     text-align: center;
     text-transform: uppercase;
-    transition: background-color 0.3s;
-  }
+    transition: background-color 0.3s ease;
+}
+
+.movie-details-button:hover {
+    background-color: #008fcc;
+}

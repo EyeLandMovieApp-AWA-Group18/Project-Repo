@@ -47,16 +47,17 @@ function Header() {
               onMouseEnter={toggleMoviesMenu}
               onMouseLeave={toggleMoviesMenu}
             >
-              <a href="#now-playing">Movies</a> 
+              <a href="#now-playing">Movies</a>
               {isMoviesMenuOpen && (
-              <div className="dropdown-menu">
-                <a href="#popular">Popular</a> 
-                <a href="#top-rated">Top Rated</a>
-                <a href="#upcoming">Upcoming</a>
-                <a href="#now-playing">Now Playing</a> 
-              </div>
+                <div className="dropdown-menu">
+                  <a href="#popular-movies">Popular</a> 
+                  <a href="#top-rated-movies">Top Rated</a>                   
+                  <a href="#upcoming-movies">Upcoming</a> 
+                  <a href="#now-playing">Now Playing</a>
+                </div>
               )}
             </div>
+
             <Link to="/showtimes">Show Times</Link>
             <Link to="/public-reviews">Reviews</Link>
 
