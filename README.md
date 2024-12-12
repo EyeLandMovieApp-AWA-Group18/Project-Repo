@@ -1,244 +1,161 @@
-# Overall Project Design Principles
+# EyeLandMovieApp Readme
 
-This project uses a frontend-backend separation design. The frontend code is in the client folder, and the backend code is in the server folder, with each part having its own package.json file to manage dependencies separately. Each section also includes .env and .gitignore files for environment settings and to keep sensitive information secure.
+## Project Overview
 
-The project structure follows the Separation of Concerns principle, organizing features into separate modules and folders for a clear and organized layout. This setup makes the code easier to read and supports future development, scalability, and maintenance.
-
----
-
-# Client Project Directory
-
-This is the client-side project for the application, built with React.
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.  
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.  
-The page will reload when you make changes.  
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.  
-This will run all the tests and display results in the terminal.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.  
-It correctly bundles React in production mode and optimizes the build for the best performance.  
-The build is minified and the filenames include the hashes. Your app is ready to be deployed.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**  
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time.  
-This command will remove the single build dependency from your project.  
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them.  
-At this point, you're on your own. You don't have to ever use `eject`, but if you need customizations, it is available.
-
-## Learn More
-
-You can learn more about React and other tools in the documentation:
-
-- [React documentation](https://reactjs.org/)
-- [React Router](https://reactrouter.com/)
-- [Formik](https://formik.org/)
-- [Yup](https://github.com/jquense/yup)
-- [Axios](https://axios-http.com/)
-- [Bootstrap](https://getbootstrap.com/)
-
-## Dependencies
-
-The following core dependencies are used in the project:
-
-- **axios**: A promise-based HTTP client for making API requests.
-- **bootstrap**: A front-end framework for building responsive websites.
-- **dotenv**: Loads environment variables from a `.env` file into `process.env`.
-- **formik**: A library for handling form state in React.
-- **react**: JavaScript library for building user interfaces.
-- **react-dom**: Provides DOM-specific methods for React.
-- **react-router-dom**: DOM bindings for React Router to handle routing.
-- **web-vitals**: A library for measuring web performance metrics.
-- **react-paginate**: A React component library used to implement pagination in your application.
-- **xml2js**: A library used to parse XML data into JavaScript objects and convert JavaScript objects back into XML format.
-
-## Development Dependencies
-
-These dependencies are used during development:
-
-- **cross-env**: A utility for setting environment variables across different platforms.
-
-## License
-
-## This project is licensed under the ISC License - see the [LICENSE](LICENSE) file for details.
+This project, **EyeLandMovieApp**, is a movie web application designed for movie enthusiasts. It provides access to open-source data from TMDB (The Movie Database) for movie details and Finnkino for showtimes at various theatres. Users can explore movies, access detailed information, and browse showtimes without the need to sign in. After signing up and logging in, users can create profiles, manage favorite movies, leave reviews, and join groups. The movie details page allows users to explore in-depth information about each movie, while the review feature lets signed-in users add comments and ratings. Users can also browse and read reviews from others. The app combines movie discovery, social interaction, and group management, delivering a captivating experience tailored for movie enthusiasts.
 
 ---
 
-# Server Project Directory
+## Tech Stack and Standards
 
-This is the server-side project for the application, built with Node.js and Express.
+### Frontend Technologies
 
-## Available Scripts
+- **React**
 
-In the project directory, you can run:
+  - Framework used for building user interfaces with component-based development and dynamic interactions.
 
-### `npm run devStart`
+- **HTML & CSS**
 
-Runs the backend server in development mode.  
-Open [http://localhost:5000](http://localhost:5000) to interact with the API.  
-The server will automatically restart when you make changes.  
-You may also see any errors or logs in the terminal.
+  - **HTML**: Defines the basic structure of the web pages and supports component rendering.
+  - **CSS**: Handles page styling, including layout, typography, and colors, with responsive design for various screen sizes.
 
-### `npm run testStart`
+- **JavaScript**
+  - Implements core functionalities such as state management, event handling, and API interactions.
 
-Runs the server in test mode with `nde`.  
-This is useful for running the server in a test environment.
+### Backend Technologies
 
-### `npm test`
+- **Node.js**
 
-Runs the tests using the `mocha` testing framework.  
-This will run all tests defined in your project and report the results.
+  - A runtime environment for building efficient, non-blocking server-side applications.
 
-## Learn More
+- **Express.js**
+  - A web framework used to create REST APIs, handling client requests and database interactions.
 
-You can learn more about the used technologies here:
+### Database
 
-- [Express.js documentation](https://expressjs.com/)
-- [Mocha testing framework](https://mochajs.org/)
-- [Axios HTTP client](https://axios-http.com/)
-- [Bcrypt for password hashing](https://www.npmjs.com/package/bcrypt)
-- [jsonwebtoken for JWT](https://www.npmjs.com/package/jsonwebtoken)
+- **PostgreSQL**
+  - A relational database used for storing application data, including user information, movies, reviews, favorites, and group details.
 
-## Dependencies
-
-The following core dependencies are used in the project:
-
-- **axios**: For making HTTP requests.
-- **bcrypt**: For password hashing.
-- **cors**: For enabling Cross-Origin Resource Sharing (CORS).
-- **dotenv**: For loading environment variables.
-- **express**: A web framework for building the API.
-- **jsonwebtoken**: For creating and verifying JSON Web Tokens (JWT).
-- **nodemon**: For auto-restarting the server during development.
-- **pg**: PostgreSQL client for Node.js to interact with the database.
-- **uuid**: A library used to generate universally unique identifiers (UUIDs).
-
-## Development Dependencies
-
-These dependencies are used during development:
-
-- **chai**: Assertion library for testing.
-- **cross-env**: For setting environment variables across different platforms.
-- **mocha**: JavaScript test framework for running tests.
-
-## License
-
-This project is licensed under the ISC License - see the [LICENSE](LICENSE) file for details.
+![Database Structure](./client/src/assets/database_structure.png)
 
 ---
 
-# Project Directory Structure Explanation
+## Installation
 
-## Since the project is ongoing, the directory file structure may continue to change. Therefore, the displayed structure is the initial one, and adjustments will be made once the project is completed.
+### Clone the project code
 
-## Root Directory
+```bash
+git clone https://github.com/EyeLandMovieApp-AWA-Group18/Project-Repo
+```
 
-- `.env` - Global environment variables
-- `.gitignore` - Global Git ignore file
-- `README.md` - Project documentation
+### Frontend Setup
 
-## Client (Frontend)
+1. Navigate to the client directory:
+   ```bash
+   cd client
+   ```
+2. Install frontend dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the frontend development server:
+   ```bash
+   npm start
+   ```
 
-- `client/`
-  - `public/` - Public resources folder
-  - `src/` - Frontend source code
-    - `assets/` - Static resources (e.g., images, icons)
-    - `components/` - Reusable UI components
-    - `contexts/` - Context API for state management
-    - `pages/` - Application pages
-      - `home.js` - Home page component
-      - `movieDetails.js` - Movie details page component
-      - `signIn.js` - Sign-in page component
-      - `signUp.js` - Sign-up page component
-    - `services/` - Service layer for backend API interactions
-      - `authService.js` - Authentication requests
-      - `tmdbService.js` - Movie-related API requests
-      - `reviewService.js` - Review-related API requests
-      - `finnkinoService.js` - Finnkino API service
-    - `App.js` - Root component
-    - `App.test.js` - App component tests
-    - `index.js` - Frontend entry point
-    - `logo.svg` - Default icon
-    - `reportWebVitals.js` - Performance reporting
-    - `setupTests.js` - Testing environment setup
-  - `.env` - Frontend environment variables
-  - `.gitignore` - Git ignore file
-  - `package.json` - Frontend dependencies and scripts
+### Backend Setup
 
-## Server (Backend)
+1. Navigate to the server directory:
+   ```bash
+   cd server
+   ```
+2. Install backend dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the backend server in development mode:
+   ```bash
+   npm run devStart
+   ```
 
-- `server/`
-  - `controllers/` - Routing logic controllers
-    - `authController.js` - User authentication
-    - `groupController.js` - User group
-    - `movieController.js` - Movie data
-    - `reviewController.js` - Review data
-  - `database/` - Database configuration
-    - `db.js` - Database connection config
-    - `seeders/` - SQL scripts for initial data
-  - `models/` - Data models
-    - `groupModel.js` - User group model
-    - `movieModel.js` - Movie model
-    - `reviewModel.js` - Review model
-    - `userModel.js` - User model
-  - `routes/` - Application routes
-    - `authRoutes.js` - User authentication routes
-    - `groupRoutes.js` - User group routes
-    - `movieRoutes.js` - Movie routes
-    - `reviewRoutes.js` - Review routes
-  - `services/` - External API services
-    - `finnkinoService.js` - Finnkino API
-    - `tmdbService.js` - Movie API
-    - `reviewService.js` - Review API
-    - `authService.js` - Authentication API
-  - `test.rest` - Backend checking API
-  - `index.js` - Backend entry point
-  - `index.test.js` - Backend entry test file
-  - `.env` - Backend environment variables
-  - `.gitignore` - Git ignore file
-  - `package.json` - Backend dependencies and scripts
+### PostgreSQL Database Setup
+
+1. Create a PostgreSQL database and configure the database connection in the `.env` file.
+2. Execute migration scripts to initialize the necessary database schema.
 
 ---
 
-# about .env files
+## API Endpoints
 
-Since the .gitignore file is set to ignore the .env file, it won't be tracked or uploaded to GitHub. Therefore, you'll need to create your own .env files locally. There are three .env files in total, located as follows: one in the root directory (currently an empty file), one in the client directory (also currently empty), and one in the server directory.
+### Base URL
 
-I have set up the .env file in the server directory with the following content:
+All endpoints are prefixed with `/api`
 
-PORT = 5000 <br>
-DB_HOST = localhost <br>
-DB_PORT = 5432 <br>
-DB_USER = postgres <br>
-DB_PASSWORD = your_password <br>
-DB_NAME = movieapp <br>
-TEST_DB_NAME = test_movieapp <br>
-JWT_SECRET = your_jwt_secret <br>
-TMDB_API_KEY = your_tmdb_api_key <br>
+### Authentication
 
-Please add this to your local environment files accordingly.
+- **Many endpoints require JWT token in the Authorization header**
+  ```text
+  Authorization: Bearer <your_token>
+  ```
+
+### Endpoints Overview:
+
+- **Authentication**: Register, login, logout, delete account  
+  `/auth/register`, `/auth/login`, `/auth/logout`, `/auth/delete`
+- **Groups**: Create, manage, and view groups, members, requests, and group movies  
+  `/groups`, `/groups/:id`, `/groups/:id/members`
+- **Watchlist**: Add, view, and remove movies from the watchlist  
+  `/watchlist`
+- **Favourites**: Add, view, and remove favourites movies  
+  `/favourites`
+- **Reviews**: Get, add, and delete reviews for movies  
+  `/reviews/:film_id`
+- **Search**: Search for movies  
+  `/search`
+- **Shared Favorites**: Manage shared favorites  
+  `/shared-favorites`
+- **Public Reviews**: Get all public reviews  
+  `/public-reviews`
 
 ---
 
-# Restclient
+## Testing
 
-First send request for Register user with email and password
-Second send request for Login with email and password.
-When Login successfully this will generate a token.
-With the help of token the account can be deleted. Paste the token when sending delete request.
+- Automated tests are implemented for the API endpoints to ensure proper functionality.
+- Tests encompass both positive and negative scenarios for critical endpoints such as Register, Login, Logout, Account Deletion, and Public Reviews.
 
-# May continue to increase as the project progresses
+### Testing Tools
+
+- **Mocha** and **Chai** are used for testing.
+- **Chai-Http** is used for HTTP assertions.
+
+---
+
+## The Project Team Members
+
+Our team, **Group18**, consists of 6 members:
+
+- **Mina Soltani**  
+  Responsible for arranging meetings, managing team communications, designing the frontend (including the landing page), ensuring the web app's responsiveness, fetching movie data from TMDB, retrieving landing page data from TMDB, and handling related routes.
+
+- **Pengfei Li**  
+  Developed the search feature, favourites (saving and sharing), and optional watchlist feature; contributed to group feature (group page, group list, create/delete groups), authentication (using hooks and context for credentials, frontend for deleting account and sign-out), and database structure design.
+
+- **Thach Nguyen**  
+  Contributed to designing and refining the database, implemented backend functionality for user sign-up, and developed both frontend and backend for group features. Additionally, created comprehensive API documentation to support seamless integration and functionality.
+
+- **Rohit Pariyar**  
+  Led UI wireframe design for a user-friendly website layout and developed a dynamic homepage slideshow to highlight films in theaters, incorporating smooth transitions and responsive design to enhance the user experience.
+
+- **Muhammad Tabish Tabish**  
+  Completed delete functionality, deployed the website, and facilitated task sharing through GitHub backlog. Performed thorough testing using the REST Client extension to ensure seamless functionality.
+
+- **Mingrui Cai**  
+  Led project initialization and version management, developed the Movie Detail, Showtimes, Movie Reviews, and Browse Reviews features, and implemented responsive design for the related pages. Conducted positive and negative testing for Signin, Signout, Signup, Account Deletion, and Browse Reviews REST APIs.
+
+---
+
+## Link to the Application and GitHub
+
+- **Live Application**: [EyeLandMovieApp](https://project-repo-movieapp-frontend.onrender.com/)
+- **GitHub Repository**: [Project Repository](https://github.com/EyeLandMovieApp-AWA-Group18/Project-Repo)
