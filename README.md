@@ -147,7 +147,7 @@ Our team, **Group18**, consists of 6 members:
 - **Rohit Pariyar**  
   Led UI wireframe design for a user-friendly website layout and developed a dynamic homepage slideshow to highlight films in theaters, incorporating smooth transitions and responsive design to enhance the user experience.
 
-- **Muhammad Tabish Tabish**  
+- **Muhammad Tabish**  
   Completed delete functionality, deployed the website, and facilitated task sharing through GitHub backlog. Performed thorough testing using the REST Client extension to ensure seamless functionality.
 
 - **Mingrui Cai**  
